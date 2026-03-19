@@ -1,0 +1,2229 @@
+{
+  "Engineering": {
+    "tagline": "Architecting the Future with Logic and Innovation ⚙️",
+    "overview": [
+      {
+        "id": "cse",
+        "name": "Computer Science (CSE)",
+        "degrees": "B.E, B.Tech, BCA",
+        "desc": [
+          "Core software engineering and algorithms.",
+          "High demand in global tech giants.",
+          "Highest starting salaries in India."
+        ],
+        "sub": "C++, Java, Python, DSA, OS"
+      },
+      {
+        "id": "tech",
+        "name": "Technology & AI (IT/AI)",
+        "degrees": "B.Tech, B.E, BSc IT",
+        "desc": [
+          "Focus on Artificial Intelligence and Cloud.",
+          "Building smart, learning machines.",
+          "Future-proof career in digital tech."
+        ],
+        "sub": "Python, ML, Neural Networks"
+      },
+      {
+        "id": "civil",
+        "name": "Civil & Infrastructure",
+        "degrees": "B.E, B.Tech, Diploma",
+        "desc": [
+          "Design smart cities and mega bridges.",
+          "Manage infrastructure projects.",
+          "Excellent Government job opportunities (PWD/WRD)."
+        ],
+        "sub": "Structural Analysis, Surveying, CAD"
+      },
+      {
+        "id": "mech",
+        "name": "Mechanical Engineering",
+        "degrees": "B.E, B.Tech, Diploma",
+        "desc": [
+          "Design and develop mechanical systems.",
+          "Work in manufacturing, automotive, aerospace, and energy sectors.",
+          "High demand in government and private industries."
+        ],
+        "sub": "Thermodynamics, Machine Design, Robotics"
+      },
+      {
+        "id": "electrical",
+        "name": "Electrical Engineering",
+        "degrees": "B.E, B.Tech, Diploma",
+        "desc": [
+          "Study of electricity, electronics, and electromagnetism.",
+          "Work in power generation, transmission, and renewable energy.",
+          "Government jobs in state electricity boards and public sector units."
+        ],
+        "sub": "Power Systems, Renewable Energy, Control Systems"
+      },
+      {
+        "id": "biotech",
+        "name": "Biotechnology Engineering",
+        "degrees": "B.E, B.Tech, Diploma",
+        "desc": [
+          "Apply engineering principles to biology and medicine.",
+          "Work in healthcare, agriculture, and environmental sustainability.",
+          "Growing field with global impact."
+        ],
+        "sub": "Genetic Engineering, Pharma R&D, Environmental Biotech"
+      },
+      {
+        "id": "petroleum",
+        "name": "Petroleum Engineering",
+        "degrees": "B.E, B.Tech, Diploma",
+        "desc": [
+          "Focus on extraction of oil and gas.",
+          "Work in energy sector with high-paying jobs.",
+          "Involves reservoir engineering, drilling technology, and environmental safety."
+        ],
+        "sub": "Reservoir Engineering, Drilling Technology, Environmental Safety"
+      }
+    ],
+    "branches": {
+      "cse": {
+        "name": "Computer Science & Engineering (CSE)",
+        "description": "The study of computers, computational systems, and software development.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Science (PCM) with Computer Science as Vocational subject",
+          "Option 2: 3-Year Diploma in Computer Engineering (Polytechnic)",
+          "Option 3: ITI Computer Operator & Programming Assistant (COPA)"
+        ],
+        "benefits": [
+          {
+            "title": "Universal Career Growth",
+            "info": "CSE graduates can work in any industry, from finance to healthcare to gaming."
+          },
+          {
+            "title": "Remote Work Flexibility",
+            "info": "Many CSE jobs offer remote work options, allowing for a better work-life balance."
+          },
+          {
+            "title": "Global Opportunities",
+            "info": "Work with top tech companies worldwide or as a freelancer."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Full Stack Development",
+            "info": "Building both the user facing part(frontend) and the server side (backend) of applications.",
+            "skills": "HTML, CSS, JavaScript, Node.js, Databases"
+          },
+          {
+            "title": "Database Management (DBMS)",
+            "info": "Designing and managing systems that store and organize huge amounts of company data.",
+            "skills": "SQL, NoSQL, Database Design, Data Modeling"
+          },
+          {
+            "title": "operating systems and Architectures",
+            "info": "Understanding how operating systems function and designing efficient system architectures.",
+            "skills": "Linux, Windows, System Design, Networking"
+          },
+          {
+            "title": "Software Testing & Quality Assurance",
+            "info": "Ensuring software products are reliable and meet quality standards through rigorous testing.",
+            "skills": "Selenium, JUnit, Test Automation, Bug Tracking"
+          },
+          {
+            "title": "Mobile App Development",
+            "info": "Creating applications for mobile devices, focusing on user experience and performance.",
+            "skills": "Android, iOS, Flutter, React Native"
+          }
+        ],
+        "salary": "₹10 LPA - ₹48 LPA",
+        "jobs": "Software Architect, Developer, Security Analyst",
+        "hiring_companies": [
+          "Google",
+          "Microsoft",
+          "Amazon",
+          "TCS",
+          "Infosys",
+          "ISRO"
+        ],
+        "exams": [
+          "JEE Main",
+          "JEE Advanced",
+          "BITSAT",
+          "CUET-UG",
+          "MHT-CET"
+        ],
+        "colleges": [
+          "All IITs",
+          "All NITs",
+          "BITS Pilani",
+          "All IIIT",
+          "VJTI Mumbai",
+          "State Engineering Colleges"
+        ],
+        "scholarships": [
+          "Central Sector Scholarship Scheme",
+          "AICTE Pragati Scholarship for Girls",
+          "AICTE Saksham Scholarship",
+          "L&T Build India Scholarship",
+          "IDFC FIRST Bank Engineering Scholarship",
+          "NTPC Merit Scholarship",
+          "LIC Golden Jubilee Scholarship",
+          "Indian Oil Academic Scholarship"
+        ]
+      },
+      "tech": {
+        "name": "Technology & AI (IT/AI)",
+        "description": "The backbone of the modern digital world, focusing on software, intelligence, and security.",
+        "path_after_10th": [
+          "Option 1: 3-Year Diploma in IT (Practical + Skill based)",
+          "Option 2: 11th & 12th Science (PCM)",
+          "Option 3: ITI Information Technology (Early job entry)"
+        ],
+        "benefits": [
+          {
+            "title": "High Demand",
+            "info": "Every industry—from smart farming to hospitals—needs tech experts."
+          },
+          {
+            "title": "Salary Growth",
+            "info": "Entry-level packages for AI/ML roles are significantly higher than traditional roles."
+          },
+          {
+            "title": "Innovation",
+            "info": "Build things that didn't exist before, like self-driving cars or AI doctors."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Ai &  Machine Learning",
+            "info": "Creating machines that learn and evolve like the human brain",
+            "skills": "Python, Statistics, TensorFlow, Neural Networks"
+          },
+          {
+            "title": "Cloud Computing",
+            "info": "Modern internet servers and infrastructure management.",
+            "skills": "AWS, Docker, Kubernetes, Linux"
+          },
+          {
+            "title": "Data Science & Analytics",
+            "info": "Extracting insights from massive datasets.",
+            "skills": "Python, R, SQL, Statistics"
+          },
+          {
+            "title": "Cybersecurity",
+            "info": "Protecting data and networks from cyber threats.",
+            "skills": "Networking, Linux, Ethical Hacking,networking"
+          }
+        ],
+        "salary": "₹8 LPA - ₹40 LPA",
+        "jobs": "AI Engineer, Cloud Architect, Data Scientist",
+        "hiring_companies": [
+          "NVIDIA",
+          "IBM",
+          "Wipro",
+          "Accenture",
+          "Google"
+        ],
+        "exams": [
+          "JEE Main",
+          "BITSAT",
+          "CUET-UG",
+          "MHT-CET"
+        ],
+        "colleges": [
+          "All IITs",
+          "All NITs",
+          "BITS Pilani",
+          "All IIIT",
+          "VJTI Mumbai",
+          "State Engineering Colleges"
+        ],
+        "scholarships": [
+          "Central Sector Scholarship Scheme",
+          "AICTE Pragati Scholarship for Girls",
+          "AICTE Saksham Scholarship",
+          "L&T Build India Scholarship",
+          "IDFC FIRST Bank Engineering Scholarship",
+          "NTPC Merit Scholarship",
+          "LIC Golden Jubilee Scholarship",
+          "Indian Oil Academic Scholarship"
+        ]
+      },
+      "civil": {
+        "name": "Civil & Infrastructure Engineering",
+        "description": "Designing and building the physical infrastructure that supports modern life.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Science (PCM) for Degree (B.E./B.Tech)",
+          "Option 2: 3-Year Diploma in Civil Engineering (Polytechnic)",
+          "Option 3: ITI Draughtsman (Civil) for early site-work entry"
+        ],
+        "benefits": [
+          {
+            "title": "Nation Building",
+            "info": "Civil engineers build the essential infrastructure of a country, from bridges and dams to high-speed railways."
+          },
+          {
+            "title": "Government Job Opportunities",
+            "info": "High demand for civil engineers in government departments (PWD, NHAI)."
+          },
+          {
+            "title": "On field & office Balance",
+            "info": "Ideal for those who don't want to sit in front of a computer all day and enjoy visiting construction sites."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Structural Engineering",
+            "info": "Designing the 'bones' of buildings to ensure they can withstand loads like wind and earthquakes.",
+            "skills": "AutoCAD, STAAD.Pro, Physics, Material Science"
+          },
+          {
+            "title": "Transportation Engineering",
+            "info": "Planning and building efficient road networks, highways, and airport runways.",
+            "skills": "Surveying, Pavement Design, Traffic Management"
+          },
+          {
+            "title": "Environmental Engineering",
+            "info": "Developing systems for clean water, waste management, and pollution control.",
+            "skills": "Biology, Chemistry, Water Treatment Design"
+          },
+          {
+            "title": "Smart City Planning",
+            "info": "Integrating technology with urban infrastructure for sustainable and efficient cities.",
+            "skills": "Urban Planning, IoT, GIS, Sustainable Design"
+          }
+        ],
+        "salary": "₹4 LPA - ₹18 LPA",
+        "jobs": "Site Engineer, Urban Planner, Structural Designer, Govt Contractor",
+        "hiring_companies": [
+          "L&T Construction",
+          "Tata Projects",
+          "Reliance Infra",
+          "NHAI",
+          "PWD"
+        ],
+        "exams": [
+          "JEE Main",
+          "MHT-CET",
+          "GATE (For Govt Jobs)"
+        ],
+        "colleges": [
+          "All IITs",
+          "All NITs",
+          "BITS Pilani",
+          "All IIIT",
+          "VJTI Mumbai",
+          "State Engineering Colleges"
+        ],
+        "scholarships": [
+          "Central Sector Scholarship Scheme",
+          "AICTE Pragati Scholarship for Girls",
+          "AICTE Saksham Scholarship",
+          "L&T Build India Scholarship",
+          "IDFC FIRST Bank Engineering Scholarship",
+          "NTPC Merit Scholarship",
+          "LIC Golden Jubilee Scholarship",
+          "Indian Oil Academic Scholarship"
+        ]
+      },
+      "petroleum": {
+        "name": "Petroleum Engineering",
+        "description": "The study of extraction of oil and gas efficiently while minimizing environmental impact.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Science (PCM) for Degree (B.E./B.Tech)",
+          "Option 2: 3-Year Diploma in Petroleum Engineering (Polytechnic)",
+          "Option 3: ITI Drilling Technician (Direct entry into oil rigs)"
+        ],
+        "benefits": [
+          {
+            "title": "High-Paying Jobs",
+            "info": "Petroleum engineers are among the highest-paid engineers due to the critical nature of their work."
+          },
+          {
+            "title": "Global Opportunities",
+            "info": "Work in oil-rich regions around the world, including the Middle East, USA, and Africa."
+          },
+          {
+            "title": "Energy Sector Impact",
+            "info": "Play a key role in energy production and transition to cleaner fuels."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Reservoir Engineering",
+            "info": "Analyzing underground formations to optimize oil and gas extraction.",
+            "skills": "Geology, Fluid Mechanics, Simulation Software"
+          },
+          {
+            "title": "Drilling Technology",
+            "info": "Designing and managing drilling operations to access oil reserves safely.",
+            "skills": "Drilling Techniques, Safety Protocols, Equipment Management"
+          },
+          {
+            "title": "Environmental Safety",
+            "info": "Ensuring that extraction processes minimize environmental damage and comply with regulations.",
+            "skills": "Environmental Science, Risk Assessment, Regulatory Compliance"
+          }
+        ],
+        "salary": "₹6 LPA - ₹30 LPA",
+        "jobs": "Reservoir Engineer, Drilling Engineer, Environmental Safety Officer",
+        "hiring_companies": [
+          "ONGC",
+          "Reliance Industries",
+          "Schlumberger",
+          "Halliburton",
+          "BPCL"
+        ],
+        "exams": [
+          "JEE Main",
+          "MHT-CET",
+          "GATE (For Govt Jobs)"
+        ],
+        "colleges": [
+          "All IITs",
+          "All NITs",
+          "BITS Pilani",
+          "All IIIT",
+          "VJTI Mumbai",
+          "State Engineering Colleges"
+        ],
+        "scholarships": [
+          "Central Sector Scholarship Scheme",
+          "AICTE Pragati Scholarship for Girls",
+          "AICTE Saksham Scholarship",
+          "L&T Build India Scholarship",
+          "IDFC FIRST Bank Engineering Scholarship",
+          "NTPC Merit Scholarship",
+          "LIC Golden Jubilee Scholarship",
+          "Indian Oil Academic Scholarship"
+        ] 
+      },
+      "mech": {
+        "name": "Mechanical Engineering",
+        "description": "The branch of engineering that combines physics and mathematics with materials science to design, analyze, and maintain mechanical systems.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Science (PCM) for Degree (B.E./B.Tech)",
+          "Option 2: 3-Year Diploma in Mechanical Engineering (Polytechnic)",
+          "Option 3: ITI Fitter, Machinist, or Turner (Direct technical entry)"
+        ],
+        "benefits": [
+          {
+            "title": "Evergreen Field",
+            "info": "Mechanical engineering is one of the oldest and broadest branches, ensuring jobs in almost every manufacturing industry."
+          },
+          {
+            "title": "Hands-on Work",
+            "info": "Perfect for students who enjoy working with tools, engines, and physical prototypes rather than just software."
+          },
+          {
+            "title": "Global Opportunities",
+            "info": "Skills in machine design and thermodynamics are standardized worldwide, allowing for easy international careers."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Automobile Engineering",
+            "info": "Designing and developing vehicles, from traditional petrol engines to modern electric cars (EVs).",
+            "skills": "IC Engines, Thermodynamics, Vehicle Dynamics, EV Battery Tech"
+          },
+          {
+            "title": "Robotics & Automation",
+            "info": "Designing robots and automated machines for factories, space exploration, and surgery.",
+            "skills": "Mechatronics, Control Systems, Sensors, CAD Design"
+          },
+          {
+            "title": "Aerospace & Aeronautical",
+            "info": "Focusing on the design and maintenance of aircraft, spacecraft, and missiles.",
+            "skills": "Aerodynamics, Propulsion Systems, Fluid Mechanics"
+          },
+          {
+            "title": "Manufacturing & Production",
+            "info": "Optimizing factory processes and using 3D printing or CNC machines to create products.",
+            "skills": "SolidWorks, CATIA, Supply Chain, 3D Printing"
+          }
+        ],
+        "salary": "₹4 LPA - ₹18 LPA",
+        "jobs": "Design Engineer, Manufacturing Engineer, Maintenance Engineer, Project Engineer",
+        "hiring_companies": [
+          "Maruti Suzuki",
+          "Tata Motors",
+          "GE Aviation",
+          "L&T Heavy Engineering",
+          "ISRO"
+        ],
+        "exams": [
+          "JEE Main",
+          "MHT-CET",
+          "GATE (For Govt Jobs)"
+        ],
+        "colleges": [
+          "All IITs",
+          "All NITs",
+          "BITS Pilani",
+          "All IIIT",
+          "VJTI Mumbai",
+          "State Engineering Colleges"
+        ],
+        "scholarships": [
+          "Central Sector Scholarship Scheme",
+          "AICTE Pragati Scholarship for Girls",
+          "AICTE Saksham Scholarship",
+          "L&T Build India Scholarship",
+          "IDFC FIRST Bank Engineering Scholarship",
+          "NTPC Merit Scholarship",
+          "LIC Golden Jubilee Scholarship",
+          "Indian Oil Academic Scholarship"
+        ]
+      },
+      "electrical": {
+        "name": "Electrical Engineering",
+        "description": "The study of electricity, electronics, and electromagnetism, ranging from small electronic circuits to large-scale power transmission.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Science (PCM) for B.E./B.Tech Degree",
+          "Option 2: 3-Year Diploma in Electrical Engineering (Polytechnic)",
+          "Option 3: ITI Electrician or Wireman (Direct vocational entry)"
+        ],
+        "benefits": [
+          {
+            "title": "Essential Services",
+            "info": "Electrical engineers are required in every sector—housing, hospitals, and factories—to manage and maintain power supply."
+          },
+          {
+            "title": "Renewable Energy Boom",
+            "info": "With the shift toward Solar and Wind energy, electrical engineers are at the forefront of the 'Green Revolution'."
+          },
+          {
+            "title": "Government Job Stability",
+            "info": "Huge opportunities in state electricity boards (MSEB/Mahatransco), Railways, and public sector units like BHEL and NTPC."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Power Systems & Grids",
+            "info": "Designing and managing the networks that transport electricity from power plants to homes.",
+            "skills": "Network Analysis, High Voltage Engineering, Power Electronics"
+          },
+          {
+            "title": "Renewable Energy Systems",
+            "info": "Installing and optimizing solar panels, wind turbines, and energy storage (batteries).",
+            "skills": "Solar PV Design, Energy Management, Sustainability"
+          },
+          {
+            "title": "Control Systems & Instrumentation",
+            "info": "Automating machines and processes in factories using electrical signals.",
+            "skills": "PLC/SCADA, Signal Processing, Sensors"
+          },
+          {
+            "title": "Electric Vehicle (EV) Technology",
+            "info": "Working on the electrical motors and charging infrastructure for electric cars and bikes.",
+            "skills": "Battery Management Systems (BMS), Motor Control, Charging Circuits"
+          }
+        ],
+        "salary": "₹4 LPA - ₹18 LPA",
+        "jobs": "Power Engineer, Renewable Energy Specialist, Control Systems Engineer",
+        "hiring_companies": [
+          "Tata Power",
+          "Adani Green Energy",
+          "BHEL",
+          "NTPC",
+          "MSEB"
+        ],
+        "exams": [
+          "JEE Main",
+          "MHT-CET",
+          "GATE (For Govt Jobs)"
+        ],
+        "colleges": [
+          "All IITs",
+          "All NITs",
+          "BITS Pilani",
+          "All IIIT",
+          "VJTI Mumbai",
+          "State Engineering Colleges"
+        ],
+        "scholarships": [
+          "Central Sector Scholarship Scheme",
+          "AICTE Pragati Scholarship for Girls",
+          "AICTE Saksham Scholarship",
+          "L&T Build India Scholarship",
+          "IDFC FIRST Bank Engineering Scholarship",
+          "NTPC Merit Scholarship",
+          "LIC Golden Jubilee Scholarship",
+          "Indian Oil Academic Scholarship"
+        ]
+      },
+      "biotech": {
+        "name": "Biotechnology Engineering",
+        "description": "The application of engineering principles to the fields of biology and medicine, focusing on developing technologies for healthcare, agriculture, and environmental sustainability.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Science (PCB) for B.E./B.Tech Degree",
+          "Option 2: 3-Year Diploma in Biotechnology (Polytechnic)",
+          "Option 3: ITI Lab Technician (Direct entry into biotech labs)"
+        ],
+        "benefits": [
+          {
+            "title": "Cutting-Edge Field",
+            "info": "Biotechnology is at the forefront of medical breakthroughs, genetic engineering, and sustainable agriculture."
+          },
+          {
+            "title": "Diverse Career Paths",
+            "info": "Work in pharmaceuticals, research labs, agricultural firms, or environmental agencies."
+          },
+          {
+            "title": "Global Impact",
+            "info": "Biotech innovations can improve health outcomes worldwide and address global challenges like food security."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Genetic Engineering & CRISPR",
+            "info": "Editing genes to cure diseases or create genetically modified organisms (GMOs).",
+            "skills": "Molecular Biology, CRISPR Techniques, Bioinformatics"
+          },
+          {
+            "title": "Pharmaceutical Biotechnology",
+            "info": "Developing new drugs and vaccines using biological processes.",
+            "skills": "Cell Culture, Drug Development, Clinical Trials"
+          },
+          {
+            "title": "Agricultural Biotechnology",
+            "info": "Creating pest-resistant crops and improving yield through genetic modification.",
+            "skills": "Plant Biology, Soil Science, GMO Regulations"
+          },
+          {
+            "title": "Environmental Biotechnology",
+            "info": "Using microbes to clean up pollution and manage waste sustainably.",
+            "skills": "Microbiology, Bioremediation Techniques, Environmental Science"
+          },
+          {
+            "title": "Petroleum engineering",
+            "info": "Extracting oil and gas efficiently while minimizing environmental impact.",
+            "skills": "Reservoir Engineering, Drilling Technology, Environmental Safety"
+          }
+        ],
+        "salary": "₹5 LPA - ₹25 LPA",
+        "jobs": "Biotech Researcher, Genetic Engineer, Pharmaceutical Scientist",
+        "hiring_companies": [
+          "Serum Institute",
+          "Biocon",
+          "Cipla",
+          "Syngene",
+          "Dr. Reddy's"
+        ],
+        "exams": [
+          "JEE Main",
+          "MHT-CET",
+          "GATE (For Govt Jobs)"
+        ],
+        "colleges": [
+          "All IITs",
+          "All NITs",
+          "BITS Pilani",
+          "All IIIT",
+          "VJTI Mumbai",
+          "State Engineering Colleges"
+        ],
+        "scholarships": [
+          "Central Sector Scholarship Scheme",
+          "AICTE Pragati Scholarship for Girls",
+          "AICTE Saksham Scholarship",
+          "L&T Build India Scholarship",
+          "IDFC FIRST Bank Engineering Scholarship",
+          "NTPC Merit Scholarship",
+          "LIC Golden Jubilee Scholarship",
+          "Indian Oil Academic Scholarship"
+        ]
+      }
+    }
+  },
+  "Medical": {
+    "tagline": "The Noble Path of Healing and Human Care 🏥",
+    "overview": [
+      {
+        "id": "mbbs",
+        "name": "Clinical Medicine (MBBS)",
+        "degrees": "MBBS",
+        "desc": [
+          "The traditional path for surgeons and physicians focusing on anatomy, physiology, and pharma.",
+          "High respect and direct patient care.",
+          "Diverse specializations available."
+        ],
+        "sub": "Precision, Patience, Clinical Diagnosis"
+      },
+      {
+        "id": "bds",
+        "name": "Dental Surgery (BDS)",
+        "degrees": "BDS",
+        "desc": [
+          "Specializing in oral health, orthodontics, and maxillofacial surgical procedures.",
+          "Growing demand for dental care.",
+          "Opportunities in private practice and hospitals."
+        ],
+        "sub": "Visual Skill, Tool Handling, Diagnostics"
+      },
+      {
+        "id": "bams",
+        "name": "Ayurvedic Medicine (BAMS)",
+        "degrees": "BAMS",
+        "desc": [
+          "Fusing ancient herbal wisdom with modern science to treat lifestyle diseases.",
+          "Rising popularity of alternative medicine.",
+          "Opportunities in wellness centers and research."
+        ],
+        "sub": "Holistic Healing, Herbology, Sanskrit"
+      },
+      {
+        "id": "bpharm",
+        "name": "Pharmacy (B.Pharm)",
+        "degrees": [
+          "B.Pharm",
+          "D.Pharm"
+        ],
+        "desc": [
+          "Experts in drug chemistry, quality control, and medical retail entrepreneurship.",
+          "Critical role in healthcare delivery.",
+          "Opportunities in pharma companies and retail."
+        ],
+        "sub": "Lab Research, Chemistry, Pharmacology"
+      },
+      {
+        "id": "bpt",
+        "name": "Physiotherapy (BPT)",
+        "degrees": "BPT",
+        "desc": [
+          "Restoring physical movement and function through exercise therapy and biomechanics.",
+          "Growing demand due to aging population and sports injuries.",
+          "Opportunities in hospitals and sports clinics."
+        ],
+        "sub": "Biomechanics, Exercise Therapy, Empathy"
+      },
+      {
+        "id": "bmlt",
+        "name": "Medical Lab Technology (BMLT)",
+        "degrees": "BMLT",
+        "desc": [
+          "Behind-the-scenes heroes who analyze samples to diagnose diseases.",
+          "Essential for accurate medical diagnoses.",
+          "Opportunities in diagnostic labs and hospitals."
+        ],
+        "sub": "Lab Techniques, Microbiology, Hematology"
+      },
+      {
+        "id": "bnursing",
+        "name": "Nursing (B.Sc Nursing)",
+        "degrees": "B.Sc Nursing",
+        "desc": [
+          "The frontline caregivers who provide holistic patient care and support doctors.",
+          "High demand globally for skilled nurses.",
+          "Opportunities in hospitals, community health, and research."
+        ],
+        "sub": "Patient Care, Medical Knowledge, Emotional Resilience"
+      },
+      {
+        "id": "public_health",
+        "name": "Public Health & Research",
+        "degrees": "BPH, MPH",
+        "desc": [
+          "Focusing on disease prevention, health policy, and medical research to improve population health.",
+          "Critical role in managing pandemics and health crises.",
+          "Opportunities in government and NGOs."
+        ],
+        "sub": "Epidemiology, Biostatistics, Public Policy"
+      },
+      {
+        "id": "sports_medicine",
+        "name": "Sports Medicine & Rehabilitation",
+        "degrees": "BPT, MPT",
+        "desc": [
+          "Specializing in injury prevention and recovery for athletes, combining physiotherapy with sports science.",
+          "Growing field with increasing sports participation.",
+          "Opportunities in sports teams and rehab centers."
+        ],
+        "sub": "Sports Science, Injury Management, Rehabilitation Techniques"
+      },
+      {
+        "id": "veterinary_sciences",
+        "name": "Animal & Veterinary Sciences",
+        "degrees": "BVSc, MVSc",
+        "desc": [
+          "Caring for animals and livestock, including diagnostics, treatment, and preventive care.",
+          "Essential for public health and agriculture.",
+          "Opportunities in clinics, farms, and research."
+        ],
+        "sub": "Animal Care, Veterinary Diagnosis, Surgery"
+      },
+      {
+        "id": "forensic_lab_tech",
+        "name": "Forensic Laboratory Technology",
+        "degrees": "B.Sc Forensic Science",
+        "desc": [
+          "Analyzing physical evidence in criminal investigations, including DNA, fingerprints, and toxicology.",
+          "Growing importance in the justice system.",
+          "Opportunities in forensic labs and law enforcement."
+        ],
+        "sub": "Evidence Analysis, Laboratory Techniques, Forensic Science"
+      }
+    ],
+    "branches": {
+      "mbbs": {
+        "name": "Clinical Medicine (MBBS)",
+        "description": "The traditional path for surgeons and physicians focusing on anatomy, physiology, and pharmacology.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Science (PCB) with English as a compulsory subject and then give NEET UG for MBBS admission."
+        ],
+        "benefits": [
+          {
+            "title": "High Respect & Trust",
+            "info": "Doctors are among the most respected professionals in society."
+          },
+          {
+            "title": "Diverse Specializations",
+            "info": "Opportunities to specialize in various fields like surgery, pediatrics, cardiology, etc."
+          },
+          {
+            "title": "Global Opportunities",
+            "info": "Medical degrees are recognized worldwide, allowing for international practice."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "General Medicine",
+            "info": "Diagnosing and treating a wide range of illnesses in patients of all ages.",
+            "skills": "Clinical Diagnosis, Patient Care, Pharmacology"
+          },
+          {
+            "title": "Surgery",
+            "info": "Performing operations to treat injuries, diseases, and deformities.",
+            "skills": "Surgical Techniques, Anatomy, Sterilization Procedures"
+          },
+          {
+            "title": "Pediatrics",
+            "info": "Specializing in the medical care of infants, children, and adolescents.",
+            "skills": "Child Development, Pediatric Diseases, Vaccination Protocols"
+          },
+          {
+            "title": "Cardiology",
+            "info": "Focusing on diagnosing and treating heart-related conditions.",
+            "skills": "ECG Interpretation, Cardiac Care, Interventional Procedures"
+          }
+        ],
+        "salary": "₹7 LPA - ₹50 LPA",
+        "jobs": "General Physician, Surgeon, Specialist Doctor",
+        "hiring_companies": [
+          "Apollo Hospitals",
+          "Fortis Healthcare",
+          "AIIMS",
+          "Max Healthcare",
+          "Goverment Hospitals "
+        ],
+        "exams": [
+          "NEET UG",
+          "AIIMS MBBS",
+          "JIPMER MBBS"
+        ],
+        "colleges": [
+          "AIIMS Delhi",
+          "AFMC Pune",
+          "CMC Vellore",
+          "KEM Mumbai",
+          "Top Government Medical Colleges"
+        ],
+        "scholarships": [
+          "AIIMS Scholarship for Meritorious Students",
+          "Central Sector Scholarship Scheme",
+          "AICTE Pragati Scholarship for Students from Economically Weaker Sections"
+        ]
+      },
+      "bds": {
+        "name": "Dental Surgery (BDS)",
+        "description": "Specializing in oral health, orthodontics, and maxillofacial surgical procedures.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Science (PCB) with English as a compulsory subject and then give NEET UG for BDS admission.",
+          "Option 2: Diploma in Dental Hygiene after 10th for early job entry in dental clinics."
+        ],
+        "benefits": [
+          {
+            "title": "Growing Demand",
+            "info": "Increasing awareness of dental health has led to a rise in demand for dental professionals."
+          },
+          {
+            "title": "Private Practice Opportunities",
+            "info": "Many dentists choose to open their own clinics, providing flexibility and independence."
+          },
+          {
+            "title": "Diverse Career Paths",
+            "info": "Opportunities in orthodontics, oral surgery, pediatric dentistry, and more."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Orthodontics",
+            "info": "Correcting misaligned teeth and jaws using braces and other appliances.",
+            "skills": "Braces Application, Dental Anatomy, Patient Management"
+          },
+          {
+            "title": "Oral Surgery",
+            "info": "Performing surgical procedures on the mouth, teeth, and jaws.",
+            "skills": "Surgical Techniques, Anesthesia, Post-Operative Care"
+          }
+        ],
+        "salary": "₹5 LPA - ₹30 LPA",
+        "jobs": "Dentist, Orthodontist, Oral Surgeon",
+        "hiring_companies": [
+          "Apollo Hospitals",
+          "Fortis Healthcare",
+          "Max Healthcare",
+          "Private Dental Clinics"
+        ],
+        "exams": [
+          "NEET UG"
+        ],
+        "colleges": [
+          "AIIMS Delhi",
+          "Maulana Azad Institute of Dental Sciences",
+          "Government Dental Colleges"
+        ],
+        "scholarships": [
+          "AIIMS Scholarship for Meritorious Students",
+          "Central Sector Scholarship Scheme",
+          "AICTE Pragati Scholarship for Students from Economically Weaker Sections"
+        ]
+      },
+      "bams": {
+        "name": "Ayurvedic Medicine (BAMS)",
+        "description": "Fusing ancient herbal wisdom with modern science to treat lifestyle diseases.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Science (PCB) with English as a compulsory subject and then give NEET UG for BAMS admission.",
+          "Option 2: Diploma in Ayurvedic Pharmacy after 10th for early job entry in Ayurvedic clinics."
+        ],
+        "benefits": [
+          {
+            "title": "Rising Popularity",
+            "info": "Increasing interest in alternative medicine and holistic health approaches."
+          },
+          {
+            "title": "Diverse Practice Areas",
+            "info": "Opportunities in clinical practice, wellness centers, research, and education."
+          },
+          {
+            "title": "Cultural Relevance",
+            "info": "Ayurveda is deeply rooted in Indian culture, providing a unique connection to traditional healing practices."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Herbal Medicine",
+            "info": "Using plant-based remedies to treat various health conditions.",
+            "skills": "Phytochemistry, Herbal Formulations, Patient Care"
+          },
+          {
+            "title": "Panchakarma Therapy",
+            "info": "Detoxification and rejuvenation treatments based on Ayurvedic principles.",
+            "skills": "Therapeutic Techniques, Massage Therapy, Patient Management"
+          }
+        ],
+        "salary": "₹4 LPA - ₹20 LPA",
+        "jobs": "Ayurvedic Doctor, Wellness Consultant, Researcher",
+        "hiring_companies": [
+          "Patanjali Ayurved",
+          "Dabur",
+          "Himalaya Wellness",
+          "Ayurvedic Clinics"
+        ],
+        "exams": [
+          "NEET UG"
+        ],
+        "colleges": [
+          "All India Institute of Ayurveda",
+          "Top Government Ayurvedic Colleges"
+        ],
+        "scholarships": [
+          "AIIMS Scholarship for Meritorious Students",
+          "Central Sector Scholarship Scheme",
+          "AICTE Pragati Scholarship for Students from Economically Weaker Sections"
+        ]
+      },
+      "bpharm": {
+        "name": "Pharmacy (B.Pharm)",
+        "description": "Experts in drug chemistry, quality control, and medical retail entrepreneurship.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Science (PCB) with English as a compulsory subject and then give entrance exams for B.Pharm admission.",
+          "Option 2: Diploma in Pharmacy (D.Pharm) after 10th for early job entry in medical retail."
+        ],
+        "benefits": [
+          {
+            "title": "Critical Healthcare Role",
+            "info": "Pharmacists play a vital role in medication management and patient care."
+          },
+          {
+            "title": "Diverse Career Opportunities",
+            "info": "Work in pharmaceutical companies, hospitals, research labs, or retail pharmacies."
+          },
+          {
+            "title": "Growing Industry",
+            "info": "The pharmaceutical sector is expanding rapidly, offering numerous job opportunities."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Pharmaceutical Research",
+            "info": "Developing new drugs and therapies through scientific research.",
+            "skills": "Drug Formulation, Clinical Trials, Regulatory Affairs"
+          },
+          {
+            "title": "Hospital Pharmacy",
+            "info": "Managing medication distribution and patient counseling in healthcare settings.",
+            "skills": "Pharmacology, Patient Care, Inventory Management"
+          }
+        ],
+        "salary": "₹4 LPA - ₹20 LPA",
+        "jobs": "Pharmacist, Research Scientist, Quality Control Analyst",
+        "hiring_companies": [
+          "Cipla",
+          "Sun Pharma",
+          "Dr. Reddy's",
+          "Hospitals",
+          "Retail Pharmacies"
+        ],
+        "exams": [
+          "GPAT",
+          "MHT-CET",
+          "CUET-UG"
+        ],
+        "colleges": [
+          "Jamia Hamdard",
+          "NIPER",
+          "Top Government Pharmacy Colleges"
+        ],
+        "scholarships": [
+          "AICTE Pragati Scholarship for Students from Economically Weaker Sections"
+        ]
+      },
+      "dpharm": {
+        "name": "Diploma in Pharmacy (D.Pharm)",
+        "description": "A 2-year diploma course that prepares students for entry-level pharmacy jobs.",
+        "path_after_10th": [
+          "Complete 10th with Science (PCB) and then pursue D.Pharm."
+        ],
+        "benefits": [
+          {
+            "title": "Quick Entry into the Field",
+            "info": "D.Pharm allows students to enter the pharmacy field quickly."
+          },
+          {
+            "title": "Job Opportunities",
+            "info": "Graduates can work in hospitals, retail pharmacies, and pharmaceutical companies."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Retail Pharmacy",
+            "info": "Working in retail pharmacies to dispense medications and provide patient counseling.",
+            "skills": "Medication Dispensing, Customer Service, Inventory Management"
+          },
+          {
+            "title": "Hospital Pharmacy",
+            "info": "Working in hospital settings to manage medication distribution and patient care.",
+            "skills": "Pharmacology, Patient Care, Medication Safety"
+          }
+        ],
+        "salary": "₹2.5 LPA - ₹6 LPA",
+        "jobs": [
+          "Pharmacist",
+          "Pharmacy Assistant",
+          "Retail Pharmacy Manager"
+        ],
+        "hiring_companies": [
+          "Apollo Hospitals",
+          "Fortis Hospitals",
+          "Retail Pharmacies"
+        ],
+        "exams": [],
+        "colleges": [
+          "Top Government Diploma Colleges"
+        ],
+        "scholarships": [
+          "AICTE Pragati Scholarship for Students from Economically Weaker Sections"
+        ]
+      },
+      "bnursing": {
+        "name": "B.Sc Nursing",
+        "description": "The frontline caregivers who provide holistic patient care and support doctors.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Science (PCB) with English as a compulsory subject and then give entrance exams for B.Sc Nursing admission.",
+          "Option 2: Diploma in General Nursing and Midwifery (GNM) after 10th for early job entry in nursing."
+        ],
+        "benefits": [
+          {
+            "title": "High Demand Globally",
+            "info": "There is a global shortage of skilled nurses, leading to abundant job opportunities."
+          },
+          {
+            "title": "Diverse Work Environments",
+            "info": "Nurses can work in hospitals, community health centers, research institutions, and more."
+          },
+          {
+            "title": "Emotional Fulfillment",
+            "info": "Nursing offers the opportunity to make a direct positive impact on patients' lives."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Clinical Nursing",
+            "info": "Providing direct patient care in hospital settings.",
+            "skills": "Patient Care, Medical Knowledge, Emotional Resilience"
+          },
+          {
+            "title": "Community Health Nursing",
+            "info": "Working in community settings to promote health and prevent disease.",
+            "skills": "Public Health, Health Education, Community Engagement"
+          }
+        ],
+        "salary": "₹3 LPA - ₹15 LPA",
+        "jobs": [
+          "Registered Nurse",
+          "Community Health Nurse",
+          "Nurse Educator"
+        ],
+        "hiring_companies": [
+          "Apollo Hospitals",
+          "Fortis Healthcare",
+          "AIIMS",
+          "Max Healthcare",
+          "Global Healthcare Organizations"
+        ],
+        "exams": [
+          "NEET UG",
+          "MHT-CET",
+          "CUET-UG"
+        ],
+        "colleges": [
+          "AIIMS Delhi",
+          "PGIMER Chandigarh",
+          "Top Government Nursing Colleges"
+        ],
+        "scholarships": [
+          "AIIMS Scholarship for Meritorious Students",
+          "Central Sector Scholarship Scheme",
+          "AICTE Pragati Scholarship for Students from Economically Weaker Sections"
+        ]
+      },
+      "public_health": {
+        "name": "Public Health & Research",
+        "description": "Focusing on disease prevention, health policy, and medical research to improve population health.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Science (PCB) with English as a compulsory subject and then give entrance exams for BPH or MPH admission.",
+          "Option 2: Diploma in Public Health after 10th for early job entry in public health roles."
+        ],
+        "benefits": [
+          {
+            "title": "Critical Role in Healthcare",
+            "info": "Public health professionals play a vital role in managing pandemics and improving population health."
+          },
+          {
+            "title": "Diverse Career Opportunities",
+            "info": "Work in government agencies, NGOs, research institutions, and international organizations."
+          },
+          {
+            "title": "Global Impact",
+            "info": "Public health initiatives can improve health outcomes on a global scale."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Epidemiology",
+            "info": "Studying the patterns and causes of diseases in populations.",
+            "skills": "Data Analysis, Biostatistics, Disease Surveillance"
+          },
+          {
+            "title": "Health Policy & Management",
+            "info": "Developing policies to improve healthcare delivery and manage healthcare organizations.",
+            "skills": "Health Economics, Policy Analysis, Leadership"
+          }
+        ],
+        "salary": "₹4 LPA - ₹20 LPA",
+        "jobs": [
+          "Epidemiologist",
+          "Health Policy Analyst",
+          "Public Health Researcher"
+        ],
+        "hiring_companies": [
+          "WHO",
+          "CDC",
+          "Government Health Departments",
+          "NGOs"
+        ],
+        "exams": [
+          "GPAT",
+          "MHT-CET",
+          "CUET-UG"
+        ],
+        "colleges": [
+          "All India Institute of Hygiene and Public Health",
+          "Top Government Public Health Colleges"
+        ],
+        "scholarships": [
+          "AICTE Pragati Scholarship for Students from Economically Weaker Sections"
+        ]
+      },
+      "sports_medicine": {
+        "name": "Sports Medicine & Rehabilitation",
+        "description": "Specializing in injury prevention and recovery for athletes, combining physiotherapy with sports science.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Science (PCB) with English as a compulsory subject and then give entrance exams for BPT or MPT admission.",
+          "Option 2: Diploma in Sports Therapy after 10th for early job entry in sports rehabilitation."
+        ],
+        "benefits": [
+          {
+            "title": "Growing Field",
+            "info": "With increasing sports participation, there is a rising demand for sports medicine professionals."
+          },
+          {
+            "title": "Diverse Career Opportunities",
+            "info": "Work with sports teams, rehabilitation centers, or in private practice."
+          },
+          {
+            "title": "Impact on Athletes' Lives",
+            "info": "Help athletes recover from injuries and improve their performance."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Sports Science",
+            "info": "Applying scientific principles to improve athletic performance and prevent injuries.",
+            "skills": "Exercise Physiology, Biomechanics, Sports Nutrition"
+          },
+          {
+            "title": "Injury Management & Rehabilitation",
+            "info": "Designing rehabilitation programs to help athletes recover from injuries.",
+            "skills": "Physical Therapy Techniques, Injury Assessment, Patient Care"
+          }
+        ],
+        "salary": "₹4 LPA - ₹15 LPA",
+        "jobs": [
+          "Sports Physiotherapist",
+          "Rehabilitation Specialist",
+          "Sports Scientist"
+        ],
+        "hiring_companies": [
+          "Sports Teams",
+          "Rehabilitation Centers",
+          "Private Practice"
+        ],
+        "exams": [
+          "GPAT",
+          "MHT-CET",
+          "CUET-UG"
+        ],
+        "colleges": [
+          "Top Government Physiotherapy Colleges"
+        ],
+        "scholarships": [
+          "AICTE Pragati Scholarship for Students from Economically Weaker Sections"
+        ]
+      },
+      "veterinary_sciences": {
+        "name": "Animal & Veterinary Sciences",
+        "description": "Caring for animals and livestock, including diagnostics, treatment, and preventive care.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Science (PCB) with English as a compulsory subject and then give entrance exams for BVSc or MVSc admission.",
+          "Option 2: Diploma in Veterinary Science after 10th for early job entry in veterinary clinics."
+        ],
+        "benefits": [
+          {
+            "title": "Essential Role in Public Health",
+            "info": "Veterinarians play a critical role in managing zoonotic diseases and ensuring food safety."
+          },
+          {
+            "title": "Diverse Career Opportunities",
+            "info": "Work in veterinary clinics, research institutions, wildlife conservation, or the pharmaceutical industry."
+          },
+          {
+            "title": "Passion for Animals",
+            "info": "Ideal for students who have a strong interest in animal care and welfare."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Veterinary Medicine",
+            "info": "Diagnosing and treating diseases in animals.",
+            "skills": "Animal Anatomy, Clinical Diagnosis, Surgical Techniques"
+          },
+          {
+            "title": "Veterinary Research",
+            "info": "Conducting research to improve animal health and develop new treatments.",
+            "skills": "Research Methodology, Data Analysis, Laboratory Techniques"
+          }
+        ],
+        "salary": "₹3 LPA - ₹15 LPA",
+        "jobs": [
+          "Veterinarian",
+          "Veterinary Researcher",
+          "Wildlife Conservationist"
+        ],
+        "hiring_companies": [
+          "Veterinary Clinics",
+          "Pharmaceutical Companies",
+          "Wildlife Organizations"
+        ],
+        "exams": [
+          "NEET UG",
+          "MHT-CET",
+          "CUET-UG"
+        ],
+        "colleges": [
+          "Indian Veterinary Research Institute",
+          "Top Government Veterinary Colleges"
+        ],
+        "scholarships": [
+          "AICTE Pragati Scholarship for Students from Economically Weaker Sections"
+        ]
+      },
+      "forensic_lab_tech": {
+        "name": "Forensic Laboratory Technology",
+        "description": "Analyzing physical evidence in criminal investigations, including DNA, fingerprints, and toxicology.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Science (PCB) with English as a compulsory subject and then give entrance exams for B.Sc Forensic Science admission.",
+          "Option 2: Diploma in Forensic Science after 10th for early job entry in forensic labs."
+        ],
+        "benefits": [
+          {
+            "title": "Growing Importance",
+            "info": "Forensic science is becoming increasingly important in the justice system, leading to more job opportunities."
+          },
+          {
+            "title": "Diverse Career Paths",
+            "info": "Work in forensic labs, law enforcement agencies, or research institutions."
+          },
+          {
+            "title": "Impact on Justice",
+            "info": "Contributing to solving crimes and delivering justice can be highly rewarding."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "DNA Analysis",
+            "info": "Analyzing genetic material to identify suspects or victims.",
+            "skills": "Molecular Biology, Genetic Profiling, Laboratory Techniques"
+          },
+          {
+            "title": "Fingerprint Analysis",
+            "info": "Examining fingerprint patterns to identify individuals.",
+            "skills": "Pattern Recognition, Microscopy, Evidence Handling"
+          },
+          {
+            "title": "Toxicology",
+            "info": "Analyzing bodily fluids for the presence of drugs or poisons.",
+            "skills": "Chemical Analysis, Pharmacology, Laboratory Safety"
+          }
+        ],
+        "salary": "₹3 LPA - ₹10 LPA",
+        "jobs": [
+          "Forensic Scientist",
+          "Forensic Analyst",
+          "Crime Lab Technician"
+        ],
+        "hiring_companies": [
+          "Forensic Labs",
+          "Law Enforcement Agencies",
+          "Research Institutions"
+        ],
+        "exams": [
+          "NEET UG",
+          "MHT-CET",
+          "CUET-UG"
+        ],
+        "colleges": [
+          "Top Government Forensic Science Colleges"
+        ],
+        "scholarships": [
+          "AICTE Pragati Scholarship for Students from Economically Weaker Sections"
+        ]
+      }
+    }
+  },
+  "Management": {
+    "tagline": "Leading with Vision, Strategy, and Innovation 📈",
+    "overview": [
+      {
+        "id": "bba",
+        "name": "Business Administration (BBA)",
+        "degrees": "BBA",
+        "desc": [
+          "Focuses on core business principles like marketing, finance, and human resources.",
+          "Provides a strong foundation for various management roles.",
+          "Opportunities for specialization in areas like HR, Marketing, Finance, etc."
+        ],
+        "sub": "Leadership, Communication, Strategic Thinking"
+      },
+      {
+        "id": "financial_management",
+        "name": "Financial Management",
+        "degrees": [
+          "B.Com (Finance)",
+          "BBA Finance"
+        ],
+        "desc": [
+          "Specializing in managing an organization's finances, including investments and risk management.",
+          "Critical for the financial health of any organization.",
+          "Opportunities in banking, investment firms, and corporate finance."
+        ],
+        "sub": "Financial Analysis, Investment Strategies, Risk Assessment"
+      },
+      {
+        "id": "marketing_management",
+        "name": "Marketing & Sales Management",
+        "degrees": [
+          "BBA Marketing",
+          "B.Com (Marketing)"
+        ],
+        "desc": [
+          "Creating strategies to promote products and services effectively in the market.",
+          "Essential for business growth and customer engagement.",
+          "Opportunities in advertising agencies, corporate marketing departments, and digital marketing firms."
+        ],
+        "sub": "Market Research, Digital Marketing, Consumer Behavior"
+      },
+      {
+        "id": "hr_management",
+        "name": "Human Resource Management(HRM)",
+        "degrees": [
+          "BBA HR",
+          "B.Com (HR)"
+        ],
+        "desc": [
+          "Managing employee relations, recruitment, and organizational development.",
+          "Vital for maintaining a productive and satisfied workforce.",
+          "Opportunities in HR departments of various organizations, recruitment agencies, and HR consulting firms."
+        ],
+        "sub": "Talent Acquisition, Employee Engagement, Labor Laws"
+      },
+      {
+        "id": "operations_management",
+        "name": "Operations Management",
+        "degrees": [
+          "BBA Operations",
+          "B.Com (Operations)"
+        ],
+        "desc": [
+          "Optimizing business processes to improve efficiency and productivity.",
+          "Key for the smooth functioning of any organization.",
+          "Opportunities in manufacturing firms, logistics companies, and corporate operations departments."
+        ],
+        "sub": "Process Improvement, Supply Chain Management, Quality Control"
+      },
+      {
+        "id": "entrepreneurship",
+        "name": "Entrepreneurship & Startups",
+        "degrees": [
+          "BBA Entrepreneurship",
+          "B.Com (Entrepreneurship)"
+        ],
+        "desc": [
+          "Focusing on creating and managing new business ventures, from ideation to execution.",
+          "Encourages innovation and economic growth.",
+          "Opportunities to start your own business or work in startup ecosystems."
+        ],
+        "sub": "Business Planning, Fundraising, Innovation"
+      },
+      {
+        "id": "business_analytics",
+        "name": "Business Analytics",
+        "degrees": [
+          "BBA Business Analytics",
+          "B.Com (Business Analytics)"
+        ],
+        "desc": [
+          "Using data analysis and statistical methods to inform business decisions and strategy.",
+          "Increasingly important in the data-driven business environment.",
+          "Opportunities in consulting firms, corporate analytics departments, and tech companies."
+        ],
+        "sub": "Data Analysis, Statistical Software, Business Intelligence"
+      },
+      {
+        "id": "digital_marketing",
+        "name": "Digital Marketing & E-commerce",
+        "degrees": [
+          "BBA Digital Marketing",
+          "B.Com (Digital Marketing)"
+        ],
+        "desc": [
+          "Specializing in online marketing strategies and managing e-commerce platforms.",
+          "Critical for businesses to reach customers in the digital age.",
+          "Opportunities in digital marketing agencies, e-commerce companies, and corporate marketing departments."
+        ],
+        "sub": "SEO, Social Media Marketing, E-commerce Platforms"
+      },
+      {
+        "id": "project_management",
+        "name": "Project Management",
+        "degrees": [
+          "BBA Project Management",
+          "B.Com (Project Management)"
+        ],
+        "desc": [
+          "Planning and executing projects on time and within budget across various industries.",
+          "Essential for the successful completion of business initiatives.",
+          "Opportunities in consulting firms, corporate project management offices, and construction companies."
+        ],
+        "sub": "Project Planning, Risk Management, Agile Methodologies"
+      },
+      {
+        "id": "bms",
+        "name": "Bachelor of Management Studies (BMS)",
+        "degrees": "BMS",
+        "desc": [
+          "Similar to BBA but with a stronger focus on management theories and practices.",
+          "Offers a more comprehensive curriculum covering various aspects of management.",
+          "Opportunities for specialization in areas like HR, Marketing, Finance, etc."
+        ],
+        "sub": "Leadership, Strategic Thinking, Business Acumen"
+      }
+    ],
+    "branches": {
+      "bba": {
+        "name": "Business Administration (BBA)",
+        "description": "Focuses on core business principles like marketing, finance, and human resources.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Commerce (for BBA/BMS)",
+          "Option 2: 11th & 12th Science or Arts (for BBA/BMS)",
+          "Option 3: Diploma in Business Management (for early entry into business roles)"
+        ],
+        "benefits": [
+          {
+            "title": "Versatile Career Paths",
+            "info": "Management skills are applicable across industries, from startups to multinational corporations."
+          },
+          {
+            "title": "Leadership Opportunities",
+            "info": "Management roles often lead to executive positions with high earning potential."
+          },
+          {
+            "title": "Entrepreneurial Skills",
+            "info": "Management education provides the tools to start and grow your own business successfully."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Business Administration (BBA)",
+            "info": "Focuses on core business principles like marketing, finance, and human resources.",
+            "skills": "Leadership, Communication, Strategic Thinking"
+          },
+          {
+            "title": "Financial Management",
+            "info": "Specializing in managing an organization's finances, including investments and risk management.",
+            "skills": "Financial Analysis, Investment Strategies, Risk Assessment"
+          },
+          {
+            "title": "Marketing & Sales Management",
+            "info": "Creating strategies to promote products and services effectively in the market.",
+            "skills": "Market Research, Digital Marketing, Consumer Behavior"
+          },
+          {
+            "title": "Human Resource Management(HRM)",
+            "info": "Managing employee relations, recruitment, and organizational development.",
+            "skills": "Talent Acquisition, Employee Engagement, Labor Laws"
+          },
+          {
+            "title": "Operations Management",
+            "info": "Optimizing business processes to improve efficiency and productivity.",
+            "skills": "Process Improvement, Supply Chain Management, Quality Control"
+          },
+          {
+            "title": "Entrepreneurship & Startups",
+            "info": "Focusing on creating and managing new business ventures, from ideation to execution.",
+            "skills": "Business Planning, Fundraising, Innovation"
+          },
+          {
+            "title": "Business Analytics",
+            "info": "Using data analysis and statistical methods to inform business decisions and strategy.",
+            "skills": "Data Analysis, Statistical Software, Business Intelligence"
+          },
+          {
+            "title": "Digital Marketing & E-commerce",
+            "info": "Specializing in online marketing strategies and managing e-commerce platforms.",
+            "skills": "SEO, Social Media Marketing, E-commerce Platforms"
+          },
+          {
+            "title": "Project Management",
+            "info": "Planning and executing projects on time and within budget across various industries.",
+            "skills": "Project Planning, Risk Management, Agile Methodologies"
+          }
+        ],
+        "salary": "₹3,00,000 - ₹12,00,000 per annum",
+        "jobs": [
+          "Business Analyst",
+          "Marketing Manager",
+          "Financial Analyst",
+          "HR Manager",
+          "Operations Manager"
+        ],
+        "hiring_companies": [
+          "Tata Consultancy Services",
+          "Infosys",
+          "HDFC Bank",
+          "Amazon",
+          "Flipkart"
+        ],
+        "exams": [
+          "DU JAT",
+          "IPU CET",
+          "Symbiosis Entrance Test"
+        ],
+        "colleges": [
+          "Shaheed Sukhdev College of Business Studies",
+          "Christ University",
+          "Symbiosis International University",
+          "NMIMS",
+          "Loyola College"
+        ],
+        "scholarships": [
+          "Tata Scholarship for Management Students",
+          "HDFC Bank Management Scholarship",
+          "Symbiosis Management Scholarship"
+        ]
+      }
+    }
+  },
+  "Design": {
+    "tagline": "Turning Imagination into Visual Reality 🎨",
+    "overview": [
+      {
+        "id": "design_creative",
+        "name": "Design & Creative Field",
+        "desc": [
+          "A dynamic field that blends art, technology, and psychology to create products, visuals, and digital experiences.",
+          "Opportunities in various industries like Film, Fashion, Gaming, and Tech Startups.",
+          "High demand for designers in the digital age with flexible work options."
+        ],
+        "sub": "UI/UX Design, Graphic Design, Animation, Interior Design, Fashion Design, Game Design, Digital Illustration, Motion Graphics"
+      },
+      {
+        "id": "architecture",
+        "name": "Architecture & Urban Planning",
+        "desc": [
+          "Designing buildings and urban spaces that are functional, sustainable, and aesthetically pleasing.",
+          "Combines creativity with technical knowledge of construction and materials.",
+          "Opportunities in architectural firms, urban planning agencies, and real estate development."
+        ],
+        "sub": "Architectural Design, Urban Planning, Sustainable Architecture"
+      },
+      {
+        "id": "industrial_design",
+        "name": "Industrial & Product Design",
+        "desc": [
+          "Creating functional and innovative products that improve people's lives.",
+          "Involves understanding user needs, materials, and manufacturing processes.",
+          "Opportunities in consumer goods companies, automotive industry, and design consultancies."
+        ],
+        "sub": "Product Design, User-Centered Design, Prototyping"
+      },
+      {
+        "id": "fashion_design",
+        "name": "Fashion Design",
+        "desc": [
+          "Creating clothing, footwear, and accessories by blending traditional crafts with modern trends.",
+          "Requires a strong sense of aesthetics, creativity, and knowledge of textiles.",
+          "Opportunities in fashion houses, retail brands, and as independent designers."
+        ],
+        "sub": "Fashion Illustration, Textile Science, Pattern Making"
+      }
+    ],
+    "branches": {
+      "design_creative": {
+        "name": "Design & Creative Field",
+        "tagline": "Turning Imagination into Visual Reality 🎨",
+        "description": "A dynamic field that blends art, technology, and psychology to create products, visuals, and digital experiences.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th (Any Stream) — Design is open to Science, Commerce, and Arts students.",
+          "Option 2: Diploma in Fine Arts or Graphic Design (1-2 years after 10th).",
+          "Option 3: Vocational courses in Animation, VFX, or Interior Decoration."
+        ],
+        "benefits": [
+          {
+            "title": "High Digital Demand",
+            "info": "As every business moves online, there is a massive need for designers to create websites, apps, and digital ads."
+          },
+          {
+            "title": "Creative Freedom",
+            "info": "This career allows you to work in diverse industries like Film, Fashion, Gaming, or even Tech Startups."
+          },
+          {
+            "title": "Freelance & Remote Work",
+            "info": "Designers have the highest flexibility to work as freelancers from their homes in rural areas for global clients."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "UI/UX Design",
+            "info": "Designing the 'look' and 'feel' of mobile apps and websites to make them easy for people to use.",
+            "skills": "Figma, Adobe XD, User Psychology, Wireframing"
+          },
+          {
+            "title": "Graphic Design & Branding",
+            "info": "Creating logos, social media posters, and brand identities that tell a story.",
+            "skills": "Photoshop, Illustrator, Typography, Color Theory"
+          },
+          {
+            "title": "Animation & VFX",
+            "info": "Bringing characters and stories to life for movies, cartoons, and video games.",
+            "skills": "Maya, After Effects, 3D Modeling, Storyboarding"
+          },
+          {
+            "title": "Interior Design",
+            "info": "Designing beautiful and functional spaces for homes, offices, and public areas.",
+            "skills": "AutoCAD, Space Planning, Material Knowledge, Client Communication"
+          },
+          {
+            "title": "Game Design",
+            "info": "Creating engaging and interactive video games for entertainment and education.",
+            "skills": "Unity, C#, Storytelling, Level Design"
+          }
+        ],
+        "salary": "₹3 LPA - ₹20 LPA",
+        "jobs": [
+          "UI/UX Designer",
+          "Graphic Designer",
+          "Animator",
+          "Interior Designer",
+          "Game Designer"
+        ],
+        "hiring_companies": [
+          "Tech Companies",
+          "Design Agencies",
+          "Film Studios",
+          "freelancing for global clients",
+          "Own Designing Studio"
+        ],
+        "exams": [
+          "NID Entrance Exam",
+          "NIFT Entrance Exam",
+          "Symbiosis Institute of Design Entrance"
+        ],
+        "colleges": [
+          "National Institute of Design (NID)",
+          "National Institute of Fashion Technology (NIFT)",
+          "Symbiosis Institute of Design",
+          "Srishti Institute of Art, Design and Technology"
+        ],
+        "scholarships": [
+          "NID Scholarship for Design Excellence",
+          "NIFT Scholarship for Meritorious Students",
+          "Symbiosis Design Scholarship"
+        ]
+      },
+      "fashion_design": {
+        "name": "Fashion Design",
+        "tagline": "Fashion is a form of self-expression and creativity that can make a powerful statement.",
+        "description": "Creating clothing, footwear, and accessories by blending traditional crafts with modern trends.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th (Any Stream) — Arts/Humanities is often preferred for base knowledge.",
+          "Option 2: Diploma in Fashion Design (1-2 years after 10th).",
+          "Option 3: Vocational courses in Textile Design or Fashion Illustration."
+        ],
+        "benefits": [
+          {
+            "title": "Creative Expression",
+            "info": "Fashion design allows you to express your creativity and make a statement through clothing."
+          },
+          {
+            "title": "Diverse Opportunities",
+            "info": "You can work in fashion houses, retail brands, or even start your own label."
+          },
+          {
+            "title": "Global Industry",
+            "info": "The fashion industry is global, offering opportunities to work with international brands and clients."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Fashion Illustration",
+            "info": "Creating visual representations of clothing designs to communicate ideas.",
+            "skills": "Drawing, Adobe Illustrator, Creativity, Attention to Detail"
+          },
+          {
+            "title": "Textile Science",
+            "info": "Understanding the properties and behavior of fabrics to create better clothing and accessories.",
+            "skills": "Material Science, Fabric Testing, Sustainable Textiles"
+          },
+          {
+            "title": "Pattern Making & Garment Construction",
+            "info": "Translating fashion designs into actual garments through pattern making and sewing.",
+            "skills": "Pattern Drafting, Sewing Techniques, Garment Fitting"
+          }
+        ],
+        "salary": "₹3 LPA - ₹15 LPA",
+        "jobs": [
+          "Fashion Designer",
+          "Textile Designer",
+          "Fashion Illustrator"
+        ],
+        "hiring_companies": [
+          "Fashion Houses",
+          "Retail Brands",
+          "Textile Companies",
+          "Freelance Opportunities",
+          "Own Boutiques",
+          "startup own brand"
+        ],
+        "exams": [
+          "NIFT Entrance Exam",
+          "NID Entrance Exam",
+          "Symbiosis Institute of Design Entrance"
+        ],
+        "colleges": [
+          "National Institute of Fashion Technology (NIFT)",
+          "National Institute of Design (NID)",
+          "Symbiosis Institute of Design",
+          "Pearl Academy"
+        ],
+        "scholarships": [
+          "NIFT Scholarship for Meritorious Students",
+          "NID Scholarship for Design Excellence",
+          "Symbiosis Design Scholarship"
+        ]
+      },
+      "architecture": {
+        "name": "Architecture & Urban Planning",
+        "tagline": "Designing the Future of Our Cities and Spaces 🏙️",
+        "description": "Designing buildings and urban spaces that are functional, sustainable, and aesthetically pleasing.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Science (PCM) with English as a compulsory subject and then give entrance exams for B.Arch admission.",
+          "Option 2: Diploma in Architecture (3 years after 10th) for early entry into architectural firms."
+        ],
+        "benefits": [
+          {
+            "title": "Creative Impact on Society",
+            "info": "Architects shape the built environment, influencing how people live, work, and interact."
+          },
+          {
+            "title": "Diverse Career Opportunities",
+            "info": "Work in architectural firms, urban planning agencies, real estate development, or start your own practice."
+          },
+          {
+            "title": "Sustainable Design",
+            "info": "Opportunity to contribute to sustainable development by designing eco-friendly buildings and cities."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Architectural Design",
+            "info": "Creating innovative building designs that are both functional and aesthetically pleasing.",
+            "skills": "AutoCAD, Revit, Creativity, Structural Knowledge"
+          },
+          {
+            "title": "Urban Planning",
+            "info": "Designing urban spaces that are sustainable, efficient, and livable.",
+            "skills": "GIS Software, Urban Economics, Public Policy"
+          },
+          {
+            "title": "Sustainable Architecture",
+            "info": "Focusing on eco-friendly design principles to reduce environmental impact.",
+            "skills": "Green Building Design, Energy Efficiency, Material Science"
+          }
+        ],
+        "salary": "₹4 LPA - ₹20 LPA",
+        "jobs": [
+          "Architect",
+          "Urban Planner",
+          "Sustainable Design Consultant"
+        ],
+        "hiring_companies": [
+          "Architectural Firms",
+          "Urban Planning Agencies",
+          "Real Estate Developers",
+          "Government Planning Departments"
+        ],
+        "exams": [
+          "NATA",
+          "JEE Main (B.Arch)",
+          "CEED (for M.Arch)"
+        ],
+        "colleges": [
+          "Indian Institute of Technology (IITs)",
+          "School of Planning and Architecture (SPA)",
+          "National Institute of Technology (NITs)",
+          "Top Government Architecture Colleges"
+        ],
+        "scholarships": [
+          "AICTE Pragati Scholarship for Students from Economically Weaker Sections",
+          "CEED Scholarship for M.Arch Students"
+        ]
+      },
+      "industrial_design": {
+        "name": "Industrial & Product Design",
+        "tagline": "Creating Innovative Products that Shape Our Lives 🛠️",
+        "description": "Creating functional and innovative products that improve people's lives.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Science (PCM) with English as a compulsory subject and then give entrance exams for B.Des in Product Design admission.",
+          "Option 2: Diploma in Industrial Design (3 years after 10th) for early entry into product design roles."
+        ],
+        "benefits": [
+          {
+            "title": "Impact on Daily Life",
+            "info": "Industrial designers create products that people use every day, from smartphones to household appliances."
+          },
+          {
+            "title": "Diverse Career Opportunities",
+            "info": "Work in consumer goods companies, automotive industry, design consultancies, or start your own product design firm."
+          },
+          {
+            "title": "Innovation & Creativity",
+            "info": "This field allows you to combine creativity with technical knowledge to solve real-world problems."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Product Design",
+            "info": "Designing consumer products that are functional, aesthetically pleasing, and user-friendly.",
+            "skills": "CAD Software, Prototyping, User-Centered Design"
+          },
+          {
+            "title": "User-Centered Design",
+            "info": "Focusing on designing products that meet the needs and preferences of users.",
+            "skills": "User Research, Usability Testing, Human Factors"
+          },
+          {
+            "title": "Prototyping & Manufacturing",
+            "info": "Creating prototypes and understanding manufacturing processes to bring designs to life.",
+            "skills": "3D Printing, CNC Machining, Material Science"
+          }
+        ],
+        "salary": "₹4 LPA - ₹15 LPA",
+        "jobs": [
+          "Product Designer",
+          "User Experience Designer",
+          "Industrial Designer"
+        ],
+        "hiring_companies": [
+          "Consumer Goods Companies",
+          "Automotive Industry",
+          "Design Consultancies",
+          "Tech Startups"
+        ],
+        "exams": [
+          "NID Entrance Exam",
+          "NIFT Entrance Exam",
+          "Symbiosis Institute of Design Entrance"
+        ],
+        "colleges": [
+          "National Institute of Design (NID)",
+          "National Institute of Fashion Technology (NIFT)",
+          "Symbiosis Institute of Design",
+          "Srishti Institute of Art, Design and Technology"
+        ],
+        "scholarships": [
+          "NID Scholarship for Design Excellence",
+          "NIFT Scholarship for Meritorious Students",
+          "Symbiosis Design Scholarship"
+        ]
+      }
+    }
+  },
+  "Government": {
+    "tagline": "Serving the Nation with Integrity and Excellence 🇮🇳",
+    "overview": [
+      {
+        "id": "civil_services",
+        "name": "Civil Services",
+        "desc": [
+          "Prestigious services like IAS, IPS, and IFS that govern the country.",
+          "Direct role in administration, policy making, and public welfare.",
+          "Highly competitive with rigorous preparation required."
+        ],
+        "sub": "IAS, IPS, IFS, State Civil Services"
+      },
+      {
+        "id": "defense_services",
+        "name": "Defense Services",
+        "desc": [
+          "Serving in the Indian Army, Navy, or Air Force.",
+          "Leadership, discipline, adventure, and national pride.",
+          "Physical fitness and dedication are essential."
+        ],
+        "sub": "Army, Navy, Air Force, BSF, CRPF, ITBP, Assam Rifles,CISF"
+      },
+      {
+        "id": "public_sector",
+        "name": "Public Sector Undertakings (PSUs)",
+        "desc": [
+          "Working in government-owned corporations like ONGC, BHEL, SAIL, etc.",
+          "Stable jobs with good salaries and benefits.",
+          "Opportunities in engineering, finance, HR, and more."
+        ],
+        "sub": "Oil & Gas, Power, Steel, Banking, Finance, HR"
+      },
+      {
+        "id": "judiciary",
+        "name": "Judiciary & Legal Services",
+        "desc": [
+          "Becoming a judge, lawyer, or legal advisor in government institutions.",
+          "Upholding justice and contributing to the legal system.",
+          "Requires a law degree and passing relevant exams."
+        ],
+        "sub": "Judges, Public Prosecutors, Legal Advisors"
+      },
+      {
+        "id": "education",
+        "name": "Education & Research Services",
+        "desc": [
+          "Teaching and research positions in government schools and colleges.",
+          "Contributing to the development of education and knowledge.",
+          "Requires relevant degrees and passing teaching eligibility tests."
+        ],
+        "sub": "Government Schools, Colleges, Research Institutions"
+      }
+    ],
+    "branches": {
+      "civil_services": {
+        "name": "Civil Services",
+        "description": "Prestigious services like IAS, IPS, and IFS that govern the country.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th (Any Stream) with English as a compulsory subject and then prepare for UPSC Civil Services Exam.",
+          "Option 2: Diploma in Public Administration after 10th for early entry into government administrative roles."
+        ],
+        "benefits": [
+          {
+            "title": "Prestige and Influence",
+            "info": "Civil servants hold influential positions in government and society, contributing to national development."
+          },
+          {
+            "title": "Diverse Career Opportunities",
+            "info": "Work in various departments like administration, police, foreign service, revenue, etc."
+          },
+          {
+            "title": "Job Security and Benefits",
+            "info": "Government jobs offer stability, good salaries, pensions, and other benefits."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Indian Administrative Service (IAS)",
+            "info": "Responsible for policy implementation and administration at various levels of government.",
+            "skills": "Leadership, Policy Analysis, Public Administration"
+          },
+          {
+            "title": "Indian Police Service (IPS)",
+            "info": "Maintaining law and order, preventing crime, and ensuring public safety.",
+            "skills": "Crisis Management, Law Enforcement, Community Policing"
+          },
+          {
+            "title": "Indian Foreign Service (IFS)",
+            "info": "Representing India abroad and managing diplomatic relations.",
+            "skills": "Diplomacy, International Relations, Cultural Sensitivity"
+          }
+        ],
+        "salary": "₹56,100 - ₹2,50,000 per month (varies by rank and department)",
+        "jobs": [
+          "District Collector",
+          "Police Commissioner",
+          "Ambassador",
+          "Revenue Officer"
+        ],
+        "hiring_companies": [
+          "Government of India",
+          "State Governments",
+          "Public Sector Undertakings"
+        ],
+        "exams": [
+          "UPSC Civil Services Exam",
+          "State Civil Services Exams"
+        ],
+        "colleges": [
+          "Civil services do not require a specific college but having a degree from a reputed institution can be beneficial."
+        ],
+        "scholarships": [
+          "NO scholarships for civil services but various coaching institutes offer scholarships for UPSC preparation."
+        ]
+      },
+      "defense_services": {
+        "name": "Defense Services",
+        "description": "Serving in the Indian Army, Navy, or Air Force.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Science (PCM) with English as a compulsory subject and then give entrance exams for NDA or AFCAT admission.",
+          "Option 2: Join the National Defence Academy (NDA) after 10th for early entry into defense services."
+        ],
+        "benefits": [
+          {
+            "title": "National Pride and Service",
+            "info": "Serving in the defense forces is a matter of great pride and contributes to national security."
+          },
+          {
+            "title": "Adventure and Discipline",
+            "info": "A career in defense offers opportunities for adventure, travel, and instills discipline and leadership skills."
+          },
+          {
+            "title": "Job Security and Benefits",
+            "info": "Defense personnel receive good salaries, pensions, healthcare, and other benefits."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Indian Army",
+            "info": "Responsible for land-based military operations and defense.",
+            "skills": "Combat Skills, Leadership, Physical Fitness"
+          },
+          {
+            "title": "Indian Navy",
+            "info": "Responsible for maritime defense and operations.",
+            "skills": "Navigation, Seamanship, Naval Warfare"
+          },
+          {
+            "title": "Indian Air Force",
+            "info": "Responsible for aerial defense and operations.",
+            "skills": "Flying Skills, Aeronautical Knowledge, Combat Tactics"
+          }
+        ],
+        "salary": "₹56,100 - ₹2,50,000 per month (varies by rank and branch)",
+        "jobs": [
+          "Army Officer",
+          "Navy Officer",
+          "Air Force Pilot"
+        ],
+        "hiring_companies": [
+          "Indian Army",
+          "Indian Navy",
+          "Indian Air Force"
+        ],
+        "exams": [
+          "NDA Exam",
+          "AFCAT Exam"
+        ],
+        "colleges": [
+          "Defense academies like NDA, IMA, OTA, AFA, and NA are the primary training centers."
+        ],
+        "scholarships": [
+          "Coaching institutes often provide merit-based aid for defense entrance exams."
+        ]
+      },
+      "public_sector": {
+        "name": "Public Sector Undertakings (PSUs)",
+        "description": "Working in government-owned corporations like ONGC, BHEL, SAIL, etc.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th Science (PCM) for Engineering/Finance degrees.",
+          "Option 2: Diploma in Engineering for technical roles."
+        ],
+        "benefits": [
+          {
+            "title": "Stable Career",
+            "info": "PSUs offer job security, competitive salaries, and extensive benefits."
+          },
+          {
+            "title": "National Impact",
+            "info": "Contribute directly to the country's economic and industrial growth."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Technical Roles",
+            "info": "Engineers managing plants and infrastructure.",
+            "skills": "Core Engineering, Safety Protocols, Project Management"
+          }
+        ],
+        "salary": "₹3 LPA - ₹15 LPA",
+        "jobs": [
+          "Engineer",
+          "HR Manager",
+          "Finance Officer"
+        ],
+        "hiring_companies": [
+          "ONGC",
+          "BHEL",
+          "SAIL",
+          "IOCL"
+        ],
+        "exams": [
+          "GATE",
+          "Individual PSU Recruitment Exams"
+        ],
+        "colleges": [
+          "Degree from recognized universities; Engineering from IITs/NITs is highly valued."
+        ],
+        "scholarships": [
+          "No direct PSU scholarships; standard engineering scholarships apply."
+        ]
+      },
+      "judiciary": {
+        "name": "Judiciary & Legal Services",
+        "description": "Becoming a judge, lawyer, or legal advisor in government institutions.",
+        "path_after_10th": [
+          "Option 1: 11th & 12th (Any Stream) then 5-year integrated LLB.",
+          "Option 2: Graduation then 3-year LLB."
+        ],
+        "benefits": [
+          {
+            "title": "Upholding Justice",
+            "info": "Contribution to the legal system and ensuring fair justice."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Judicial Officers",
+            "info": "Presiding over cases in district or high courts.",
+            "skills": "Legal Research, Integrity, Analytical Thinking"
+          }
+        ],
+        "salary": "₹50,000 - ₹2,00,000 per month",
+        "jobs": [
+          "Civil Judge",
+          "Public Prosecutor",
+          "Legal Consultant"
+        ],
+        "hiring_companies": [
+          "Supreme Court",
+          "High Courts",
+          "Ministry of Law"
+        ],
+        "exams": [
+          "CLAT",
+          "Judicial Services Exam"
+        ],
+        "colleges": [
+          "National Law Universities (NLUs) and other reputed Law Colleges."
+        ],
+        "scholarships": [
+          "Coaching scholarships for judicial services exams."
+        ]
+      },
+      "education": {
+        "name": "Education & Research Services",
+        "description": "Teaching and research positions in government institutions.",
+        "path_after_10th": [
+          "Option 1: 12th then B.Ed/D.Ed for teaching.",
+          "Option 2: Masters/PhD for professor roles."
+        ],
+        "benefits": [
+          {
+            "title": "Nation Building",
+            "info": "Shaping the minds of future generations."
+          }
+        ],
+        "sub_categories": [
+          {
+            "title": "Teaching",
+            "info": "Working in schools or colleges.",
+            "skills": "Pedagogy, Subject Expertise, Communication"
+          }
+        ],
+        "salary": "₹30,000 - ₹1,20,000 per month",
+        "jobs": [
+          "School Teacher",
+          "Professor",
+          "Scientist"
+        ],
+        "hiring_companies": [
+          "KVS",
+          "UGC",
+          "CSIR"
+        ],
+        "exams": [
+          "CTET",
+          "NET/SET"
+        ],
+        "colleges": [
+          "UGC recognized Universities and B.Ed colleges."
+        ],
+        "scholarships": [
+          "CSIR/UGC Fellowship for Researchers."
+        ]
+      }
+    }
+}
+
+}
+

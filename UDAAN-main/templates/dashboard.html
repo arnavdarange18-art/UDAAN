@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UDAAN | Your Career Flight</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+:root{
+  --saffron:#ff9933;
+  --white:#ffffff;
+  --green:#138808;
+  --ashoka:#1e3a8a;
+  --sky1:#38bdf8;
+  --sky2:#0ea5e9;
+  --sun:#f97316;
+  --card:#ffffff;
+  --text:#1f2937;
+  --muted:#64748b;
+  --radius:18px;
+}
+
+*{ box-sizing:border-box; font-family:"Segoe UI", "Nirmala UI", sans-serif; }
+
+body{
+  margin:0;
+  min-height:100vh;
+  background: radial-gradient(circle at top, rgba(255,255,255,.4), transparent 60%), linear-gradient(180deg,var(--sky1),var(--sky2));
+  color:var(--text);
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:18px 30px; background:rgba(255,255,255,.15); backdrop-filter:blur(10px);
+}
+
+.brand{ font-size:30px; font-weight:900; letter-spacing:2px; text-decoration: none; }
+.brand .u{ color:var(--saffron); }
+.brand .daan{ color:var(--green); }
+.brand .a{ color:var(--ashoka); border-bottom:3px solid var(--ashoka); }
+
+.nav-right { display: flex; align-items: center; gap: 15px; }
+.nav-user{ color:white; font-weight:600; }
+
+.lang-select {
+    padding: 8px 12px; border-radius: 20px; border: 2px solid rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.2); color: var(--ashoka); font-weight: 700; cursor: pointer;
+}
+
+/* ================= HERO & CONTENT ================= */
+.hero{
+  padding:45px 30px;
+  background:linear-gradient(135deg,rgba(255,153,51,.95),rgba(30,58,138,.95),rgba(19,136,8,.9));
+  color:white;
+}
+
+.hero h1{ margin:0; font-size:32px; font-weight:800; }
+.hero p{ margin-top:8px; opacity:.95; }
+
+.badge{
+  display:inline-block; margin-top:16px; padding:8px 22px;
+  background:rgba(255,255,255,.25); border-radius:20px; font-size:14px; font-weight:600;
+}
+
+.container{ max-width:1200px; margin:auto; padding:35px 30px; }
+.grid{ display:grid; grid-template-columns:2fr 1fr; gap:28px; }
+
+.roadmap, .actions, .feature, .motivation{
+  background:var(--card); padding:28px; border-radius:var(--radius);
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+.roadmap h3{ margin-top:0; color:var(--ashoka); }
+
+.step{ margin-bottom:18px; padding-left:16px; border-left:4px solid var(--sun); }
+.step h4{ margin:0; font-size:15px; }
+.step p{ font-size:13px; color:var(--muted); }
+
+.view{ display:inline-block; margin-top:10px; font-weight:600; color:var(--sun); text-decoration:none; }
+
+.action{
+  display:block; padding:15px; margin-bottom:14px; border-radius:14px;
+  background:#f8fafc; color:var(--text); text-decoration:none; font-weight:600; transition:.3s;
+}
+.action:hover{ background:linear-gradient(135deg,var(--ashoka),var(--sun)); color:white; }
+
+.features{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:22px; margin-top:35px; }
+.feature h4{ color:var(--ashoka); }
+
+.motivation{ margin-top:35px; background:linear-gradient(135deg,var(--ashoka),#1e40af); color:white; }
+
+/* VOICE ASSISTANT CSS */
+.mic-btn {
+    position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+    background: linear-gradient(135deg, #1e3a8a, #f97316); border-radius: 50%;
+    border: none; color: white; font-size: 24px; cursor: pointer; z-index: 1000;
+}
+.mic-btn.listening { animation: pulse 1.5s infinite; background: #dc2626; }
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+    70% { box-shadow: 0 0 0 20px rgba(220, 38, 38, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+
+.voice-status {
+    position: fixed; bottom: 100px; right: 30px; background: white;
+    padding: 10px 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    font-weight: 600; color: #1e3a8a; display: none; z-index: 1000;
+}
+
+@media(max-width:900px){ .grid{ grid-template-columns:1fr; } }
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+  <a href="{{ url_for('dashboard') }}" class="brand">
+    <span class="u">U</span><span class="a">D</span><span class="daan">AAN</span>
+  </a>
+  <div class="nav-right" style="display: flex; align-items: center; gap: 20px;">
+    
+    <div style="display: flex; align-items: center; gap: 15px; border-right: 2px solid rgba(0,0,0,0.1); padding-right: 20px; height: 30px;">
+        
+        <a href="{{ url_for('admin_login') }}" 
+   style="color: #1e3a8a; font-size: 22px; text-decoration: none;" 
+   title="Admin Panel">
+    <i class="fa-solid fa-user-shield"></i>
+</a>
+        <select id="langSelect" class="lang-select" onchange="changeLanguage(this.value)" style="border: 2px solid #1e3a8a; color: #1e3a8a;">
+            <option value="en">English</option>
+            <option value="hi">हिंदी</option>
+            <option value="mr">मराठी</option>
+        </select>
+    </div>
+
+    <div class="nav-user" style="color: #1e3a8a; display: flex; align-items: center; gap: 8px;">
+        <i class="fa-solid fa-circle-user" style="font-size: 22px; color: #1e3a8a;"></i>
+        <strong style="text-transform: uppercase; letter-spacing: 1px; font-size: 18px;">
+            {{ user.fullname }}
+        </strong>
+    </div>
+
+    <a href="{{ url_for('logout') }}" style="color: #1e3a8a; font-size: 20px;" title="Logout">
+        <i class="fa-solid fa-power-off"></i>
+    </a>
+</div>
+
+</div>
+  </div>
+</div>
+
+<div class="hero">
+  <h1 data-i18n="hero_title">Your Career Takes UDAAN 🚀</h1>
+  <p data-i18n="hero_desc">Guiding students from dreams to direction</p>
+  <div class="badge"><span data-i18n="aptitude_label">Aptitude Focus:</span> {{ user.aptitude_label }} </div>
+</div>
+
+<div class="container">
+  <div class="grid">
+    <div class="roadmap">
+      <h3><span class="icon">🗺️</span> <span data-i18n="roadmap_title">Your Career Roadmap</span></h3>
+      <div class="step"><h4 data-i18n="step1_title">Understand Your Strengths</h4><p data-i18n="step1_desc">Based on your aptitude and interests.</p></div>
+      <div class="step"><h4 data-i18n="step2_title">Build Skills Early</h4><p data-i18n="step2_desc">Focus on practical and future-ready skills.</p></div>
+      <div class="step"><h4 data-i18n="step3_title">Prepare for Opportunities</h4><p data-i18n="step3_desc">Exams, scholarships, and career paths.</p></div>
+      <a href="{{ url_for('roadmap_overview', stream_id=user.recommended_stream) }}" class="view"><span data-i18n="view_roadmap">View Full Roadmap</span> →</a>
+    </div>
+
+    <div class="actions">
+      <div class="action" style="background: var(--ashoka); color: white;">
+        <i class="fa-solid fa-id-card"></i> <span>{{ user.fullname }}</span>
+      </div>
+      <a href="{{ url_for('aptitude') }}" class="action">🎯 <span data-i18n="act_aptitude">Retake Aptitude</span></a>
+      <a href="{{ url_for('exams') }}" class="action">📝 <span data-i18n="act_exams">Exams</span></a>
+      <a href="{{ url_for('parent_guidance') }}" class="action">👨‍👩‍👧 <span data-i18n="act_parents">Parent Guidance</span></a>
+      <a href="{{ url_for('parent_feedback') }}" class="action">📝 <span data-i18n="act_feedback">Parent Feedback</span></a>
+      <a href="{{ url_for('roadmap_streams') }}" class="action">🗺️ <span data-i18n="act_roadmap">Explore All Streams</span></a>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="feature"><h4 data-i18n="feat1_title">Career Guidance</h4><p data-i18n="feat1_desc">Clear direction after aptitude.</p></div>
+    <div class="feature"><h4 data-i18n="feat2_title">Rural Inspiration</h4><p data-i18n="feat2_desc">Real success stories.</p></div>
+    <div class="feature"><h4 data-i18n="feat3_title">Skill-First India</h4><p data-i18n="feat3_desc">Learn what matters.</p></div>
+  </div>
+
+  <div class="motivation">
+    <h3>✨ <span data-i18n="motivation_title">Daily Motivation</span></h3>
+    <p id="motivationText">“UDAAN is not about where you start, but how high you fly.”</p>
+  </div>
+</div>
+<div id="voiceStatus" class="voice-status" style="display: none; position: fixed; bottom: 100px; right: 30px; background: white; padding: 12px 25px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); font-weight: 700; color: var(--ashoka); z-index: 1000; border-left: 5px solid var(--sun);">
+    Listening... Speak now 🎙️
+</div>
+
+<button class="mic-btn" onclick="toggleVoice()" title="Voice Assistant" style="position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: linear-gradient(135deg, var(--ashoka), var(--sun)); border: none; border-radius: 50%; color: white; font-size: 28px; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 1000; display: flex; justify-content: center; align-items: center; transition: 0.3s;">
+    <i class="fa-solid fa-microphone" id="micIcon"></i>
+</button>
+
+<style>
+    /* Pulse Animation when listening */
+    .mic-btn.listening {
+        animation: pulse-red 1.5s infinite;
+        background: #dc2626 !important;
+    }
+
+    @keyframes pulse-red {
+        0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+        70% { box-shadow: 0 0 0 20px rgba(220, 38, 38, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+    }
+</style>
+
+<script>
+    // --- DICTIONARY FOR FAST UI TRANSITION (RETAINS ICONS) ---
+    const translations = {
+        'en': { 'hero_title': 'Your Career Takes UDAAN 🚀', 'hero_desc': 'Guiding students from dreams to direction', 'aptitude_label': 'Aptitude Focus:', 'roadmap_title': 'Your Career Roadmap', 'view_roadmap': 'View Full Roadmap →', 'act_aptitude': 'Retake Aptitude', 'act_exams': 'Exams', 'act_parents': 'Parent Guidance', 'act_feedback': 'Parent Feedback' },
+        'hi': { 'hero_title': 'आपका करियर भरेगा "उड़ान" 🚀', 'hero_desc': 'छात्रों को सपनों से सही दिशा की ओर ले जाना', 'aptitude_label': 'योग्यता फोकस:', 'roadmap_title': 'आपका करियर रोडमैप', 'view_roadmap': 'पूरा रोडमैप देखें →', 'act_aptitude': 'योग्यता परीक्षा पुनः दें', 'act_exams': 'परीक्षाएं', 'act_parents': 'अभिभावक मार्गदर्शन', 'act_feedback': 'अभिभावक फीडबैक' },
+        'mr': { 'hero_title': 'तुमचे करिअर घेईल "उडाण" 🚀', 'hero_desc': 'विद्यार्थ्यांना स्वप्नांकडून योग्य दिशेकडे नेणारे माध्यम', 'aptitude_label': 'अभियोग्यता फोकस:', 'roadmap_title': 'तुमचा करिअर रोडमॅप', 'view_roadmap': 'पूर्ण रोडमॅप पहा →', 'act_aptitude': 'अभियोग्यता चाचणी पुन्हा द्या', 'act_exams': 'परीक्षा', 'act_parents': 'पालक मार्गदर्शन', 'act_feedback': 'पालकांचा अभिप्राय' }
+    };
+
+    // --- 1. DEEP AUTO-TRANSLATION LOGIC ---
+    async function changeLanguage(targetLang) {
+        // Show Spinner
+        const overlay = document.getElementById('loadingOverlay');
+        const loadingText = document.getElementById('loadingText');
+        if(overlay) {
+            overlay.style.display = 'flex';
+            loadingText.innerText = targetLang === 'hi' ? 'अनुवाद हो रहा है...' : targetLang === 'mr' ? 'भाषांतर होत आहे...' : 'TRANSLATING...';
+        }
+
+        localStorage.setItem('udaan_lang', targetLang);
+        
+        // A. Immediate Manual Swap for Main UI
+        const t = translations[targetLang];
+        document.querySelectorAll("[data-i18n]").forEach(el => {
+            const key = el.getAttribute("data-i18n");
+            if (t[key]) el.innerText = t[key];
+        });
+
+        // B. Deep Scan Auto-Translate for dynamic/nested text
+        // This targets steps, features, motivation, and paragraph descriptions
+        const elementsToDeepTranslate = document.querySelectorAll('.step h4, .step p, .motivation p, .feature h4, .feature p, .roadmap p');
+
+        try {
+            await Promise.all(Array.from(elementsToDeepTranslate).map(async (el) => {
+                const text = el.innerText;
+                if (!text.trim()) return;
+
+                const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURI(text)}`);
+                const result = await res.json();
+                el.innerText = result[0][0][0];
+            }));
+        } catch (error) {
+            console.error("Auto-translate Error:", error);
+        } finally {
+            if(overlay) overlay.style.display = 'none';
+        }
+    }
+
+    // --- 2. VOICE ASSISTANT LOGIC (Navigation) ---
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    let recognition;
+
+    if (SpeechRecognition) {
+        recognition = new SpeechRecognition();
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+        recognition.onresult = function(event) {
+            const transcript = event.results[0][0].transcript.toLowerCase();
+            const status = document.getElementById('voiceStatus');
+            if(status) status.innerText = `Heard: "${transcript}"`;
+
+            // Smart Commands Sync
+            const commands = {
+                '/aptitude': ['aptitude', 'test', 'yogyata', 'chachani', 'योग्यता'],
+                '/roadmap': ['roadmap', 'guide', 'path', 'marg', 'road map'],
+                '/exams': ['exam', 'paper', 'pariksha', 'परीक्षा'],
+                '/parent-feedback': ['feedback', 'suggest', 'अभिप्राय', 'सुझाव']
+            };
+
+            for (const [url, keywords] of Object.entries(commands)) {
+                if (keywords.some(k => transcript.includes(k))) {
+                    if(status) status.innerText = "Redirecting... 🚀";
+                    setTimeout(() => { window.location.href = url; }, 800);
+                    return;
+                }
+            }
+        };
+    }
+
+    function toggleVoice() {
+        if (!recognition) return alert("Voice not supported.");
+        const btn = document.querySelector('.mic-btn');
+        const status = document.getElementById('voiceStatus');
+
+        if (!btn.classList.contains('listening')) {
+            const currentLang = localStorage.getItem('udaan_lang') || 'en';
+            recognition.lang = currentLang === 'hi' ? 'hi-IN' : currentLang === 'mr' ? 'mr-IN' : 'en-IN';
+            recognition.start();
+            btn.classList.add('listening');
+            if(status) status.style.display = 'block';
+        } else {
+            recognition.stop();
+            btn.classList.remove('listening');
+            if(status) status.style.display = 'none';
+        }
+    }
+
+    // Initialize on Page Load
+    window.onload = () => {
+        const savedLang = localStorage.getItem('udaan_lang') || 'en';
+        document.getElementById('langSelect').value = savedLang;
+        changeLanguage(savedLang); 
+    };
+
+    function toggleVoice() {
+    if (!recognition) return alert("Voice recognition not supported in this browser.");
+    
+    const btn = document.querySelector('.mic-btn');
+    const status = document.getElementById('voiceStatus');
+    const icon = document.getElementById('micIcon');
+
+    if (!btn.classList.contains('listening')) {
+        const currentLang = localStorage.getItem('udaan_lang') || 'en';
+        recognition.lang = currentLang === 'hi' ? 'hi-IN' : currentLang === 'mr' ? 'mr-IN' : 'en-IN';
+        
+        recognition.start();
+        btn.classList.add('listening');
+        icon.classList.replace('fa-microphone', 'fa-stop'); // Change icon to stop
+        status.style.display = 'block';
+        status.innerText = "Listening... 🎤";
+    } else {
+        recognition.stop();
+        btn.classList.remove('listening');
+        icon.classList.replace('fa-stop', 'fa-microphone'); // Change icon back
+        status.style.display = 'none';
+    }
+}
+</script>
+</body>
+</html>

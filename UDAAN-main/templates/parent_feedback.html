@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UDAAN | Parent Feedback</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --sky1:#38bdf8;
+  --sky2:#0ea5e9;
+  --deep:#1e3a8a;
+  --sun:#f97316;
+  --card:#ffffff;
+  --text:#1f2937;
+  --radius:18px;
+}
+
+*{
+  box-sizing:border-box;
+  font-family:"Segoe UI", "Nirmala UI", sans-serif;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.4), transparent 60%),
+              linear-gradient(180deg,var(--sky1),var(--sky2));
+  color:var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* NAVBAR */
+.navbar{
+  width: 100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 30px;
+  background:rgba(255,255,255,.15);
+  backdrop-filter:blur(10px);
+}
+
+.brand{ font-size:26px; font-weight:900; letter-spacing:1px; }
+.u{color:#ff9933;} .daan{color:#138808;} .a{color:var(--deep);border-bottom:3px solid var(--deep);}
+
+/* FEEDBACK CARD */
+.container{
+  width:90%;
+  max-width:600px;
+  background: white;
+  margin-top: 40px;
+  padding: 40px;
+  border-radius: 26px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+h2 { text-align: center; color: var(--deep); margin-bottom: 30px; }
+
+/* FORM ELEMENTS */
+.form-group { margin-bottom: 20px; text-align: left; }
+label { font-weight: 600; color: #475569; display: block; margin-bottom: 8px; }
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: 0.3s;
+  background: #f8fafc;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--sky2);
+  outline: none;
+  background: white;
+}
+
+/* DICTATION INPUT WRAPPER */
+.dictation-box { position: relative; }
+
+.small-mic {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: white;
+  border: 1px solid #cbd5e1;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: 0.2s;
+}
+
+.small-mic:hover { background: var(--soft); transform: scale(1.1); }
+
+.small-mic.recording {
+  background: #ef4444;
+  color: white;
+  border-color: #ef4444;
+  animation: pulse-small 1.5s infinite;
+}
+
+@keyframes pulse-small {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* SUBMIT BUTTON */
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, var(--deep), var(--sun));
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+/* GLOBAL MIC & LANG */
+.lang-select { padding: 6px 12px; border-radius: 15px; border: 1px solid white; background: rgba(255,255,255,0.3); font-weight: bold; color: var(--deep); cursor: pointer; }
+
+/* Dashboard button (top-right) */
+.dashboard-btn {
+  background: var(--sun);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 800;
+  margin-left: 12px;
+}
+
+.dashboard-btn:hover { opacity: 0.95; transform: translateY(-2px); }
+
+.mic-btn {
+    position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+    background: linear-gradient(135deg, #1e3a8a, #f97316);
+    border-radius: 50%; border: none; color: white; font-size: 24px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3); cursor: pointer; z-index: 1000;
+    transition: 0.3s; display: flex; justify-content: center; align-items: center;
+}
+.mic-btn:hover { transform: scale(1.1); }
+.mic-btn.listening { animation: pulse 1.5s infinite; background: #dc2626; }
+.voice-status { position: fixed; bottom: 100px; right: 30px; background: white; padding: 10px 20px; border-radius: 12px; font-weight: 600; color: var(--deep); display: none; z-index: 1000; }
+
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+  <div class="brand"><span class="u">U</span><span class="a">A</span><span class="daan">DAAN</span></div>
+  <select class="lang-select" onchange="changeLanguage(this.value)" id="langSelect">
+      <option value="en">English</option>
+      <option value="hi">हिंदी (Hindi)</option>
+      <option value="mr">मराठी (Marathi)</option>
+  </select>
+  <a href="{{ url_for('dashboard') }}" class="dashboard-btn" title="Go to Dashboard">Dashboard</a>
+</div>
+
+<div class="container">
+  <h2 data-i18n="form_title">Parent Feedback Form 📝</h2>
+  
+  <form id="feedbackForm" action="{{ url_for('parent_feedback') }}" method="POST">
+    
+    <div class="form-group">
+      <label data-i18n="lbl_name">Parent's Name:</label>
+      <input type="text" name="name" placeholder="Enter your name..." required>
+    </div>
+
+    <div class="form-group">
+      <label data-i18n="lbl_rating">How was your experience?</label>
+      <select name="rating">
+        <option value="5">⭐⭐⭐⭐⭐ (Excellent)</option>
+        <option value="4">⭐⭐⭐⭐ (Good)</option>
+        <option value="3">⭐⭐⭐ (Average)</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label data-i18n="lbl_message">Your Suggestions / Message:</label>
+      <div class="dictation-box">
+        <textarea id="feedbackMsg" name="message" rows="5" placeholder="Type here or click the mic to speak..." required></textarea>
+        <div class="small-mic" onclick="startDictation()" title="Speak to type">🎙️</div>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn" data-i18n="btn_submit">Submit Feedback</button>
+
+  </form>
+</div>
+
+<div id="voiceStatus" class="voice-status">Listening...</div>
+<button class="mic-btn" onclick="toggleNavVoice()">🎙️</button>
+
+<script>
+let currentLang = 'en';
+
+// TRANSLATIONS
+const translations = {
+  en: { form_title: "Parent Feedback Form 📝", lbl_name: "Parent's Name:", lbl_rating: "How was your experience?", lbl_message: "Your Suggestions / Message:", btn_submit: "Submit Feedback" },
+  hi: { form_title: "अभिभावक प्रतिक्रिया फॉर्म 📝", lbl_name: "अभिभावक का नाम:", lbl_rating: "आपका अनुभव कैसा रहा?", lbl_message: "आपके सुझाव / संदेश:", btn_submit: "प्रतिक्रिया जमा करें" },
+  mr: { form_title: "पालक अभिप्राय फॉर्म 📝", lbl_name: "पालकांचे नाव:", lbl_rating: "तुमचा अनुभव कसा होता?", lbl_message: "तुमच्या सूचना / संदेश:", btn_submit: "अभिप्राय जमा करा" }
+};
+
+function changeLanguage(lang) {
+  currentLang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+      if(translations[lang][el.getAttribute("data-i18n")]) el.innerText = translations[lang][el.getAttribute("data-i18n")];
+  });
+}
+
+// ---------------------------------------------------------
+// 1. DICTATION LOGIC (For the Text Area)
+// ---------------------------------------------------------
+function startDictation() {
+  const micIcon = document.querySelector('.small-mic');
+  const textArea = document.getElementById('feedbackMsg');
+
+  if (!('SpeechRecognition' in window) && !('webkitSpeechRecognition' in window)) {
+    alert('Speech recognition is not supported in this browser. Please use Chrome or Edge.');
+    return;
+  }
+
+  // Request microphone access first to ensure permission prompt appears
+  navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+    try {
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      // Set language
+      if (currentLang === 'hi') recognition.lang = 'hi-IN';
+      else if (currentLang === 'mr') recognition.lang = 'mr-IN';
+      else recognition.lang = 'en-IN';
+
+      micIcon.classList.add('recording');
+      textArea.placeholder = 'Listening... (' + recognition.lang + ')';
+
+      recognition.onresult = function(event) {
+        const text = event.results[0][0].transcript;
+        textArea.value = text;
+      };
+
+      recognition.onerror = function(evt) {
+        console.error('Recognition error', evt);
+        alert('Voice recognition error. Please try again.');
+      };
+
+      recognition.onend = function() {
+        micIcon.classList.remove('recording');
+        textArea.placeholder = 'Type here or click the mic to speak...';
+        // stop all tracks from getUserMedia
+        stream.getTracks().forEach(t => t.stop());
+      };
+
+      recognition.start();
+    } catch (err) {
+      console.error(err);
+      alert('Could not start speech recognition.');
+      stream.getTracks().forEach(t => t.stop());
+    }
+  }).catch(err => {
+    console.error('getUserMedia error', err);
+    alert('Microphone permission denied or not available.');
+  });
+}
+
+// ---------------------------------------------------------
+// 2. GLOBAL NAVIGATION LOGIC (The Big Corner Button)
+// ---------------------------------------------------------
+const navCommands = {
+    '/dashboard': { hi: ['होम', 'घर'], mr: ['होम', 'घर'], en: ['home', 'dashboard'] },
+    '/exams': { hi: ['परीक्षा'], mr: ['परीक्षा'], en: ['exams'] },
+    '/scholarships': { hi: ['छात्रवृत्ति'], mr: ['शिष्यवृत्ती'], en: ['scholarships'] }
+};
+
+function toggleNavVoice() {
+  const btn = document.querySelector('.mic-btn');
+  const status = document.getElementById('voiceStatus');
+
+  if (!('SpeechRecognition' in window) && !('webkitSpeechRecognition' in window)) {
+    alert('Speech recognition is not supported in this browser. Use Chrome or Edge.');
+    return;
+  }
+
+  // Ask for microphone permission first
+  navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+    try {
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      if (currentLang === 'hi') recognition.lang = 'hi-IN';
+      else if (currentLang === 'mr') recognition.lang = 'mr-IN';
+      else recognition.lang = 'en-IN';
+
+      btn.classList.add('listening');
+      status.style.display = 'block';
+      status.innerText = 'Listening...';
+
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript.toLowerCase();
+        status.innerText = `Heard: "${transcript}"`;
+
+        let dest = null;
+        for (const [url, langObj] of Object.entries(navCommands)) {
+            if (langObj.hi.some(w => transcript.includes(w)) || 
+                langObj.mr.some(w => transcript.includes(w)) || 
+                langObj.en.some(w => transcript.includes(w))) {
+                dest = url; break;
+            }
+        }
+
+        if (dest) {
+          status.innerText = 'Redirecting... 🚀';
+          setTimeout(() => window.location.href = dest + '?lang=' + currentLang, 1000);
+        } else {
+          setTimeout(() => { status.style.display = 'none'; btn.classList.remove('listening'); }, 2000);
+        }
+      };
+
+      recognition.onerror = function(e) {
+        console.error('Recognition error', e);
+        alert('Voice recognition error. Please try again.');
+      };
+
+      recognition.onend = function() {
+        btn.classList.remove('listening');
+        status.style.display = 'none';
+        stream.getTracks().forEach(t => t.stop());
+      };
+
+      recognition.start();
+    } catch (err) {
+      console.error(err);
+      alert('Could not start voice recognition.');
+      stream.getTracks().forEach(t => t.stop());
+    }
+  }).catch(err => {
+    console.error('getUserMedia error', err);
+    alert('Microphone permission denied or not available.');
+  });
+}
+
+// Check URL param for language
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get('lang');
+    if(langParam && ['en', 'hi', 'mr'].includes(langParam)) {
+        document.getElementById('langSelect').value = langParam;
+        changeLanguage(langParam);
+    }
+};
+</script>
+
+</body>
+</html>
+
+<script>
+// AJAX submit to show confirmation alert and keep UX smooth
+document.getElementById('feedbackForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const form = e.currentTarget;
+  const action = form.action;
+  const data = new FormData(form);
+
+  fetch(action, {
+    method: 'POST',
+    body: data,
+    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+  })
+  .then(r => r.json())
+  .then(resp => {
+    if(resp && resp.status === 'success'){
+      alert('Feedback submitted successfully');
+      form.reset();
+      // User can click Dashboard button at top-right to go back
+    } else {
+      alert('Could not submit feedback. Please try again.');
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    alert('Submission error. Check your connection and try again.');
+  });
+});
+</script>

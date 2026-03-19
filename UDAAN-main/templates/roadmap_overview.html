@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UDAAN | {{ stream }} Overview</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root { 
+            --p-blue: #1e3a8a; 
+            --orange: #ea580c; 
+            --green: #16a34a; 
+            --nav-bg: #0f172a; 
+        }
+
+        body { 
+            margin: 0; 
+            font-family: 'Segoe UI', sans-serif; 
+            background: linear-gradient(135deg, #ea580c, #0ea5e9, #16a34a, #4338ca); 
+            background-attachment: fixed; 
+            min-height: 100vh; 
+        }
+
+        .navbar { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            padding: 15px 40px; 
+            background: rgba(15, 23, 42, 0.85); 
+            backdrop-filter: blur(12px); 
+            color: white; 
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .brand { font-size: 28px; font-weight: 900; letter-spacing: 2px; text-decoration: none; }
+        .brand .u { color: var(--orange); }
+        .brand .a { color: #38bdf8; border-bottom: 3px solid #38bdf8; }
+        .brand .daan { color: #22c55e; }
+
+        .user-pill {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .lang-select {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            outline: none;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        .lang-select option { color: black; }
+
+        .hero { padding: 60px 20px 30px; text-align: center; color: white; }
+        .hero h1 { font-size: 42px; margin-bottom: 10px; text-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        
+        .tagline { 
+            display: inline-block; 
+            padding: 12px 30px; 
+            background: rgba(255,255,255,0.2); 
+            backdrop-filter: blur(5px);
+            border-radius: 50px; 
+            margin-top: 15px;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .search-container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+        }
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            padding: 15px 60px 15px 50px; /* Adjusted padding for mic button */
+            border-radius: 50px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .container { max-width: 950px; margin: auto; padding: 20px 20px 80px; }
+        
+        .btn-back {
+            background: var(--orange);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
+            margin-bottom: 25px;
+            transition: 0.3s;
+        }
+        .btn-back:hover { transform: translateX(-5px); background: #c2410c; }
+
+        .card { 
+            background: white; 
+            border-radius: 24px; 
+            display: flex; 
+            overflow: hidden; 
+            margin-bottom: 35px; 
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+        .card:hover { transform: translateY(-5px); }
+
+        .sidebar { background: var(--p-blue); color: white; width: 25%; padding: 45px 20px; text-align: center; }
+        .content { width: 75%; padding: 40px; position: relative; padding-bottom: 90px; }
+        
+        .points { list-style: none; padding: 0; margin-bottom: 20px;}
+        .points li { position: relative; padding-left: 32px; margin-bottom: 12px; line-height: 1.5; color: #374151; font-size: 15px;}
+        .points li::before { 
+            content: '\f058'; 
+            font-family: 'Font Awesome 6 Free'; 
+            font-weight: 900; 
+            position: absolute; 
+            left: 0; 
+            color: var(--green); 
+            font-size: 18px;
+        }
+
+        .core-box {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 16px;
+            border-left: 6px solid var(--orange);
+            margin-top: 10px;
+        }
+        
+        .btn { 
+            background: var(--p-blue); 
+            color: white; 
+            padding: 10px 22px;
+            font-size: 14px;
+            border-radius: 10px; 
+            text-decoration: none; 
+            position: absolute; 
+            bottom: 30px; 
+            right: 40px; 
+            font-weight: 700; 
+            box-shadow: 0 6px 15px rgba(30, 58, 138, 0.2);
+            transition: 0.3s;
+        }
+        .btn:hover { background: var(--orange); transform: translateY(-2px); }
+
+        /* Voice Mic Button */
+        .mic-btn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: var(--p-blue);
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .mic-btn.listening { color: var(--orange); }
+
+        /* Speaker Button */
+        .speak-btn {
+            background: rgba(30, 58, 138, 0.1);
+            border: none;
+            color: var(--p-blue);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: 0.3s;
+        }
+        .speak-btn:hover { background: var(--p-blue); color: white; }
+
+        /* Stop Button */
+        .stop-btn {
+            background: rgba(234, 88, 12, 0.1);
+            border: none;
+            color: var(--orange);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-left: 8px;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .stop-btn:hover { background: var(--orange); color: white; }
+        .stop-btn.active { display: inline-flex; }
+
+        /* Speed Selector */
+        .speed-selector {
+            display: none;
+        }
+        
+        .speed-controls {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .speed-dropdown-btn {
+            padding: 8px 12px;
+            border-radius: 50px;
+            border: 2px solid #3b82f6;
+            background: white;
+            color: #1e40af;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .speed-dropdown-btn:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+        
+        .speed-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background: white;
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            min-width: 120px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            overflow: hidden;
+        }
+        
+        .speed-dropdown-menu.active {
+            display: block;
+        }
+        
+        .speed-dropdown-menu button {
+            display: block;
+            width: 100%;
+            padding: 10px 12px;
+            border: none;
+            background: white;
+            color: #333;
+            font-size: 11px;
+            font-weight: 700;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #e5e7eb;
+            text-transform: uppercase;
+        }
+        
+        .speed-dropdown-menu button:last-child {
+            border-bottom: none;
+        }
+        
+        .speed-dropdown-menu button:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+        
+        .speed-dropdown-menu button.slow {
+            color: #991b1b;
+        }
+        
+        .speed-dropdown-menu button.slow:hover {
+            background: rgba(239, 68, 68, 0.1);
+        }
+        
+        .speed-dropdown-menu button.fast {
+            color: #15803d;
+        }
+        
+        .speed-dropdown-menu button.fast:hover {
+            background: rgba(22, 163, 74, 0.1);
+        }
+        
+        .speed-btn {
+            padding: 8px 14px;
+            border-radius: 50px;
+            border: 2px solid #ccc;
+            background: white;
+            color: #333;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        @media(max-width: 768px) {
+            .card { flex-direction: column; }
+            .sidebar { width: 100%; padding: 20px; }
+            .content { width: 100%; padding-bottom: 90px; }
+            .navbar { padding: 15px 20px; }
+            .btn { position: relative; bottom: 0; right: 0; display: inline-block; margin-top: 20px; }
+            .speed-selector { font-size: 12px; padding: 5px 10px; }
+        }
+    </style>
+</head>
+<body>
+    <style>
+        #stopTranslateBtn { background: #ea580c; position: absolute; top: 30px; right: 30px; border: none; color: white; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 24px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s; }
+        #stopTranslateBtn:hover { background: #c2410c; transform: scale(1.1); }
+    </style>
+    <div id="loadingOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15, 23, 42, 0.9); z-index:9999; justify-content:center; align-items:center; flex-direction:column; color:white;">
+        <button id="stopTranslateBtn" onclick="stopTranslationSpeech()" title="Stop translation">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <i class="fa-solid fa-arrows-rotate fa-spin fa-4x" style="color: #ea580c;"></i>
+        <p style="margin-top: 20px; font-weight: 700;" id="loadingText">TRANSLATING...</p>
+        <p style="font-size: 12px; opacity: 0.8; margin-top: 10px;">Translating content...</p>
+    </div>
+    <nav class="navbar">
+        <a href="/dashboard" class="brand">
+            <span class="u">U</span><span class="a">D</span><span class="daan">AAN</span>
+        </a>
+        <div style="display: flex; align-items: center;">
+            <select id="langSelect" class="lang-select" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="hi">हिन्दी</option>
+                <option value="mr">मराठी</option>
+            </select>
+            <div class="user-pill">
+                <i class="fa-solid fa-user-graduate" style="margin-right: 8px;"></i> {{ user_name }}
+            </div>
+        </div>
+    </nav>
+    
+    <div class="hero">
+        <h1 data-i18n="hero_title">{{ stream }} Pathways</h1>
+        <div class="tagline">{{ data.tagline }}</div>
+
+        <div class="search-container">
+            <div style="position: relative; width: 100%; max-width: 500px;">
+                <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--p-blue);"></i>
+                <input type="text" id="branchSearch" class="search-box" onkeyup="filterBranches()" placeholder="Search career branches...">
+                <button class="mic-btn" id="micBtn" onclick="startVoiceSearch()"><i class="fa-solid fa-microphone"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <a href="{{ url_for('dashboard') }}" class="btn-back">
+            <i class="fa-solid fa-house"></i> <span data-i18n="back_dash">BACK TO DASHBOARD</span>
+        </a>
+
+    {% if data and data.overview %}
+        {% for item in data.overview %}
+        <div class="card career-card">
+            <div class="sidebar">
+                <i class="fa-solid fa-graduation-cap fa-3x"></i><br><br>
+                <div style="font-size: 11px; text-transform: uppercase; opacity: 0.8;" data-i18n="degrees">Possible Degrees</div>
+                <strong>{{ item.degrees }}</strong>
+            </div>
+            
+            <div class="content">
+                <div style="display: flex; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+                    <h2 class="branch-name" style="margin: 0; color: #1e3a8a; font-size: 26px; flex: 1; min-width: 200px;">{{ item.name }}</h2>
+                    <div class="speed-controls" style="position: relative;">
+                        <button class="speed-dropdown-btn" onclick="toggleSpeedDropdown(event)" title="Select speed">
+                            <i class="fa-solid fa-sliders"></i>
+                            <span class="speed-label-card">Normal</span>
+                            <i class="fa-solid fa-chevron-down" style="font-size: 9px;"></i>
+                        </button>
+                        <div class="speed-dropdown-menu">
+                            <button onclick="setCardSpeed(event, 0.5)" class="slow">
+                                <i class="fa-solid fa-backward" style="margin-right: 4px;"></i><span class="speed-dropdown-label-slow">Slow</span>
+                            </button>
+                            <button onclick="setCardSpeed(event, 1)" class="normal" style="color: #1e40af;">
+                                <i class="fa-solid fa-play" style="margin-right: 4px;"></i><span class="speed-dropdown-label-normal">Normal</span>
+                            </button>
+                            <button onclick="setCardSpeed(event, 1.5)" class="fast">
+                                <i class="fa-solid fa-forward" style="margin-right: 4px;"></i><span class="speed-dropdown-label-fast">Fast</span>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="button" class="speak-btn" onclick="readAloud(this)" title="Play audio"><i class="fa-solid fa-play"></i></button>
+                    <button type="button" class="stop-btn" onclick="stopSpeechForCard(this)" title="Stop audio"><i class="fa-solid fa-stop"></i></button>
+                </div>
+                
+                <ul class="points">
+                    {% for p in item.desc %}
+                    <li>{{ p }}</li>
+                    {% endfor %}
+                </ul>
+
+                <div class="core-box" style="background: #f8fafc; padding: 15px; border-radius: 12px; border-left: 5px solid #f97316; margin: 20px 0;">
+                    <span style="font-size: 12px; font-weight: 800; color: #f97316; text-transform: uppercase;" data-i18n="core">Core Subjects:</span>
+                    <p style="font-size: 18px; font-weight: 800; color: #1e3a8a; margin: 5px 0;" class="core-text">{{ item.sub }}</p>
+                </div>
+                
+                <a href="{{ url_for('roadmap_detail', branch_id=item.id) }}" class="btn">
+                    <span data-i18n="explore">EXPLORE PATH</span> <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
+                </a>
+            </div>
+        </div>
+        {% endfor %} 
+    {% else %}
+        <p style="text-align:center; color:white;">No overview data found for this stream.</p>
+    {% endif %}
+    </div>
+
+    <script>
+    // Feature 1: Live Search Filtering (Typing)
+    function filterBranches() {
+        let input = document.getElementById('branchSearch').value.toLowerCase();
+        let cards = document.getElementsByClassName('career-card');
+
+        for (let i = 0; i < cards.length; i++) {
+            let name = cards[i].querySelector('.branch-name').innerText.toLowerCase();
+            // Also search within the points/subjects for better results
+            let content = cards[i].querySelector('.content').innerText.toLowerCase();
+            
+            if (name.includes(input) || content.includes(input)) {
+                cards[i].style.display = "";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+
+    // Toggle speed dropdown for card
+    function toggleSpeedDropdown(event) {
+        event.stopPropagation();
+        const btn = event.target.closest('.speed-dropdown-btn');
+        const dropdown = btn.nextElementSibling;
+        dropdown.classList.toggle('active');
+        
+        // Close any other dropdowns
+        document.querySelectorAll('.speed-dropdown-menu').forEach(d => {
+            if (d !== dropdown) d.classList.remove('active');
+        });
+    }
+    
+    // Set speed for card audio
+    function setCardSpeed(event, speed) {
+        event.stopPropagation();
+        const speedBtn = event.target.closest('button');
+        const dropdown = speedBtn.closest('.speed-dropdown-menu');
+        const labelSpan = dropdown.previousElementSibling.querySelector('.speed-label-card');
+        const speedLabels = {
+            en: { 0.5: 'Slow', 1: 'Normal', 1.5: 'Fast' },
+            hi: { 0.5: 'धीमा', 1: 'सामान्य', 1.5: 'तेज' },
+            mr: { 0.5: 'हळू', 1: 'सामान्य', 1.5: 'वेगवान' }
+        };
+        const currentLang = localStorage.getItem('udaan_lang') || 'en';
+        const labels = speedLabels[currentLang] || speedLabels.en;
+        labelSpan.innerText = labels[speed];
+        dropdown.classList.remove('active');
+        
+        // Store speed in data attribute for readAloud function
+        dropdown.closest('.speed-controls').dataset.speed = speed;
+    }
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+        document.querySelectorAll('.speed-dropdown-menu').forEach(dropdown => {
+            const btn = dropdown.previousElementSibling;
+            if (!btn.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+    });
+
+    function startVoiceSearch() {
+        const micBtn = document.getElementById('micBtn');
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        const activeLang = localStorage.getItem('udaan_lang') || 'en';
+        
+        // Sets listening accent based on selected language
+        recognition.lang = activeLang === 'hi' ? 'hi-IN' : activeLang === 'mr' ? 'mr-IN' : 'en-IN';
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+        
+        micBtn.classList.add('listening');
+        recognition.start();
+
+        recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            document.getElementById('branchSearch').value = transcript;
+            filterBranches(); // Trigger the filter immediately
+            micBtn.classList.remove('listening');
+        };
+
+        recognition.onerror = () => micBtn.classList.remove('listening');
+        recognition.onend = () => micBtn.classList.remove('listening');
+    }
+
+    // Feature 3: Read Aloud (Speaker Icon)
+    // Keep reference to currently playing utterance so it can be cancelled
+    window.currentUtterance = null;
+    window.currentCard = null;
+    window.availableSpeechVoices = [];
+    window.currentAudio = null;
+    window.audioSessionId = 0;
+
+    function getSpeechEngine() {
+        return 'speechSynthesis' in window ? window.speechSynthesis : null;
+    }
+
+    function canPlaySpeech() {
+        return typeof Audio !== 'undefined' || !!getSpeechEngine();
+    }
+
+    function loadVoices() {
+        const synth = getSpeechEngine();
+        if (!synth) return [];
+        window.availableSpeechVoices = synth.getVoices();
+        return window.availableSpeechVoices;
+    }
+
+    function getSpeechLang(lang) {
+        return lang === 'hi' ? 'hi-IN' : lang === 'mr' ? 'mr-IN' : 'en-IN';
+    }
+
+    function getTtsLang(lang) {
+        return lang === 'hi' ? 'hi' : lang === 'mr' ? 'mr' : 'en';
+    }
+
+    function pickVoice(lang) {
+        const targetLang = getSpeechLang(lang).toLowerCase();
+        const baseLang = targetLang.split('-')[0];
+        const voices = window.availableSpeechVoices.length ? window.availableSpeechVoices : loadVoices();
+        return voices.find(v => (v.lang || '').toLowerCase() === targetLang)
+            || voices.find(v => (v.lang || '').toLowerCase().startsWith(baseLang))
+            || null;
+    }
+
+    function hasPreferredVoice(lang) {
+        return Boolean(pickVoice(lang));
+    }
+
+    function speakText(text, options = {}) {
+        if (!text) return null;
+
+        stopSpeech();
+
+        const lang = options.lang || 'en';
+        const rate = options.rate || 0.7;
+        const chunks = splitTtsText(text);
+        const sessionId = ++window.audioSessionId;
+
+        if (chunks.length) {
+            playAudioChunks(chunks, {
+                lang,
+                rate,
+                sessionId,
+                onend: options.onend,
+                onerror: () => playBrowserSpeech(text, { lang, rate, onend: options.onend, onerror: options.onerror })
+            });
+            return { mode: 'audio', sessionId };
+        }
+
+        return playBrowserSpeech(text, { ...options, lang, rate });
+    }
+
+    function splitTtsText(text, maxLength = 180) {
+        const cleanText = (text || '').replace(/\s+/g, ' ').trim();
+        if (!cleanText) return [];
+
+        const sentences = cleanText.split(/(?<=[.!?])\s+/);
+        const chunks = [];
+        let currentChunk = '';
+
+        sentences.forEach(sentence => {
+            if ((currentChunk + ' ' + sentence).trim().length <= maxLength) {
+                currentChunk = `${currentChunk} ${sentence}`.trim();
+                return;
+            }
+
+            if (currentChunk) chunks.push(currentChunk);
+
+            if (sentence.length <= maxLength) {
+                currentChunk = sentence;
+                return;
+            }
+
+            const words = sentence.split(' ');
+            currentChunk = '';
+            words.forEach(word => {
+                if ((currentChunk + ' ' + word).trim().length <= maxLength) {
+                    currentChunk = `${currentChunk} ${word}`.trim();
+                } else {
+                    if (currentChunk) chunks.push(currentChunk);
+                    currentChunk = word;
+                }
+            });
+        });
+
+        if (currentChunk) chunks.push(currentChunk);
+        return chunks;
+    }
+
+    function buildTtsUrl(text, lang) {
+        return `/tts?lang=${getTtsLang(lang)}&text=${encodeURIComponent(text)}`;
+    }
+
+    function playAudioChunks(chunks, options = {}, index = 0) {
+        if (index >= chunks.length) {
+            if (options.onend) options.onend();
+            return;
+        }
+
+        if (options.sessionId !== window.audioSessionId) return;
+
+        const audio = new Audio(buildTtsUrl(chunks[index], options.lang));
+        window.currentAudio = audio;
+        audio.playbackRate = Math.min(Math.max(options.rate || 1, 0.5), 1.5);
+        audio.preload = 'auto';
+        audio.onended = () => playAudioChunks(chunks, options, index + 1);
+        audio.onerror = () => {
+            window.currentAudio = null;
+            if (options.onerror) options.onerror();
+        };
+        audio.play().catch(() => {
+            window.currentAudio = null;
+            if (options.onerror) options.onerror();
+        });
+    }
+
+    function playBrowserSpeech(text, options = {}) {
+        const synth = getSpeechEngine();
+        if (!synth || !text) return null;
+
+        const utterance = new SpeechSynthesisUtterance(text);
+        const lang = options.lang || 'en';
+        utterance.lang = getSpeechLang(lang);
+        utterance.rate = options.rate || 0.7;
+
+        const voice = pickVoice(lang);
+        if (voice) utterance.voice = voice;
+        if (options.onend) utterance.onend = options.onend;
+        if (options.onerror) utterance.onerror = options.onerror;
+
+        synth.cancel();
+        window.setTimeout(() => {
+            try { synth.resume(); } catch (e) {}
+            synth.speak(utterance);
+            window.setTimeout(() => {
+                try { synth.resume(); } catch (e) {}
+            }, 100);
+        }, 120);
+        return utterance;
+    }
+
+    loadVoices();
+    if (getSpeechEngine()) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+
+    function readAloud(btn) {
+        // Cancel any previous speech first
+        stopSpeech();
+        if (!canPlaySpeech()) {
+            alert('Audio is not supported in this browser.');
+            return;
+        }
+        const content = btn.closest('.content');
+        const name = content.querySelector('.branch-name').innerText;
+        const core = content.querySelector('.core-box p').innerText;
+        const points = Array.from(content.querySelectorAll('.points li')).map(li => li.innerText).join('. ');
+        
+        const activeLang = localStorage.getItem('udaan_lang') || 'en';
+        
+        // Construct natural sounding sentences based on language
+        let textToSpeak = "";
+        if(activeLang === 'hi') {
+            textToSpeak = `${name}. इसके बारे में जानकारी: ${points}. मुख्य विषय हैं: ${core}`;
+        } else if(activeLang === 'mr') {
+            textToSpeak = `${name}. याबद्दल माहिती: ${points}. मुख्य विषय आहेत: ${core}`;
+        } else {
+            textToSpeak = `${name}. Details: ${points}. Core subjects are ${core}`;
+        }
+        
+        // Get selected speed from dropdown
+        const speedControls = content.querySelector('.speed-controls');
+        const speed = speedControls && speedControls.dataset.speed ? parseFloat(speedControls.dataset.speed) : 0.6;
+
+        // Set global reference and icon state
+        window.currentCard = content;
+        const ico = btn.querySelector('i');
+        const stopBtn = content.querySelector('.stop-btn');
+        if (ico) { ico.className = 'fa-solid fa-pause'; }
+        if (stopBtn) { stopBtn.classList.add('active'); }
+
+        const clearSpeechState = () => {
+            if (ico) ico.className = 'fa-solid fa-play';
+            if (stopBtn) stopBtn.classList.remove('active');
+            window.currentUtterance = null;
+            window.currentCard = null;
+        };
+        window.currentUtterance = speakText(textToSpeak, {
+            lang: activeLang,
+            rate: speed,
+            onend: clearSpeechState,
+            onerror: clearSpeechState
+        });
+    }
+
+    // Stop speech for a specific card
+    function stopSpeechForCard(btn) {
+        try {
+            stopSpeech();
+            const content = btn.closest('.content');
+            const speakBtn = content.querySelector('.speak-btn');
+            const ico = speakBtn.querySelector('i');
+            if (ico) { ico.className = 'fa-solid fa-play'; }
+            btn.classList.remove('active');
+            window.currentUtterance = null;
+            window.currentCard = null;
+        } catch (e) {
+            console.error('Error stopping speech', e);
+        }
+    }
+
+    // Stop any ongoing speech (called on double-click or page lifecycle events)
+    function stopSpeech() {
+        window.audioSessionId++;
+        if (window.currentAudio) {
+            window.currentAudio.pause();
+            window.currentAudio.currentTime = 0;
+            window.currentAudio = null;
+        }
+        try {
+            if (window.currentUtterance) {
+                window.speechSynthesis.cancel();
+                window.currentUtterance = null;
+            } else {
+                // still cancel any speech to be safe
+                window.speechSynthesis.cancel();
+            }
+        } catch (e) {
+            console.error('Error stopping speech', e);
+        }
+        // reset any spinning icons and hide stop buttons
+        document.querySelectorAll('.speak-btn i').forEach(el => {
+            if (el.className && el.className.includes('fa-pause')) {
+                el.className = 'fa-solid fa-play';
+            }
+        });
+        document.querySelectorAll('.stop-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+    }
+
+    // Stop speech on page unload or when page is hidden (user navigates away)
+    window.addEventListener('beforeunload', stopSpeech);
+    document.addEventListener('visibilitychange', function() { if (document.hidden) stopSpeech(); });
+
+    // Track translation utterance globally
+    window.translationUtterance = null;
+    window.isTranslating = false;
+    
+    function stopTranslationSpeech() {
+        stopSpeech();
+        window.translationUtterance = null;
+        window.isTranslating = false;
+        const overlay = document.getElementById('loadingOverlay');
+        if (overlay) overlay.style.display = 'none';
+    }
+
+    // Feature 4: AUTOMATIC TRANSLATION (No manual data needed)
+    async function changeLanguage(targetLang) {
+        // Show Loading Spinner
+        const overlay = document.getElementById('loadingOverlay');
+        const loadingText = document.getElementById('loadingText');
+        window.isTranslating = true;
+        if(overlay) {
+            overlay.style.display = 'flex';
+            const translationMsg = targetLang === 'hi' ? 'अनुवाद हो रहा है' : targetLang === 'mr' ? 'भाषांतर होत आहे' : 'TRANSLATING';
+            loadingText.innerText = translationMsg;
+            // Announce the translation start with speech
+            window.translationUtterance = speakText(translationMsg, {
+                lang: targetLang,
+                rate: 0.6
+            });
+            try {
+                // Speech already started by speakText.
+            } catch (e) { console.log('Translation speech skipped'); }
+        }
+
+        localStorage.setItem('udaan_lang', targetLang);
+        
+        // Select all text elements that need translation
+        const elements = document.querySelectorAll('.branch-name, .points li, .core-box p, .tagline, h1, .sidebar strong, .btn span, .btn-back span');
+
+        try {
+            await Promise.all(Array.from(elements).map(async (el) => {
+                const text = el.innerText;
+                if (!text.trim()) return;
+
+                // Call Free Google Translate API
+                const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURI(text)}`);
+                const result = await res.json();
+                el.innerText = result[0][0][0]; // Update text with translated version
+            }));
+        } catch (error) {
+            console.error("Translation Error:", error);
+        } finally { 
+            // Update speed button labels for all cards
+            updateAllSpeedLabels(targetLang);
+            
+            // Hide Spinner and stop speech
+            stopSpeech();
+            window.translationUtterance = null;
+            window.isTranslating = false;
+            if(overlay) overlay.style.display = 'none'; 
+        }
+    }
+    
+    // Update speed button labels for all cards based on language
+    function updateAllSpeedLabels(lang) {
+        const speedLabels = {
+            en: { slow: 'Slow', normal: 'Normal', fast: 'Fast' },
+            hi: { slow: 'धीमा', normal: 'सामान्य', fast: 'तेज' },
+            mr: { slow: 'हळू', normal: 'सामान्य', fast: 'वेगवान' }
+        };
+        const labels = speedLabels[lang] || speedLabels.en;
+        
+        // Update all speed label spans
+        document.querySelectorAll('.speed-dropdown-label-slow').forEach(el => el.innerText = labels.slow);
+        document.querySelectorAll('.speed-dropdown-label-normal').forEach(el => el.innerText = labels.normal);
+        document.querySelectorAll('.speed-dropdown-label-fast').forEach(el => el.innerText = labels.fast);
+        
+        // Update current speed labels on buttons
+        document.querySelectorAll('.speed-label-card').forEach(el => el.innerText = labels.normal);
+    }
+
+    // Initialize saved settings on Page Load
+    window.onload = () => {
+        const savedLang = localStorage.getItem('udaan_lang') || 'en';
+        document.getElementById('langSelect').value = savedLang;
+        
+        // Initialize speed dropdown data attributes for all speed-controls
+        document.querySelectorAll('.speed-controls').forEach(control => {
+            control.dataset.speed = 0.6; // Default speed
+        });
+        
+        // Initialize speed labels
+        updateAllSpeedLabels(savedLang);
+        
+        // If the language is not English, translate the page immediately
+        if(savedLang !== 'en') {
+            changeLanguage(savedLang);
+        }
+    };
+</script>
+</body>
+</html>

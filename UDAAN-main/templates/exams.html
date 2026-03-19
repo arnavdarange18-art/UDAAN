@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UDAAN | Entrance Exams</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+:root{
+  --sky1:#38bdf8; --sky2:#0ea5e9; --deep:#1e3a8a; --sun:#f97316;
+  --card:#ffffff; --text:#1f2937; --bg:#f1f5f9;
+}
+
+body{ margin:0; font-family:"Segoe UI", "Nirmala UI", sans-serif; background: var(--bg); color: var(--text); }
+
+/* NAVBAR */
+.navbar{ display:flex; justify-content:space-between; align-items:center; padding:15px 30px; background:linear-gradient(90deg, var(--deep), var(--sky2)); color:white; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+.brand{ font-size:26px; font-weight:900; letter-spacing:1px; } 
+.u{color:#ff9933;} .daan{color:#ffffff;} .a{border-bottom:3px solid #ff9933;}
+
+.nav-right{ display: flex; align-items: center; gap: 15px; }
+
+.back-btn{ text-decoration:none; color:var(--deep); font-weight:700; background:white; padding:8px 18px; border-radius:20px; transition:0.3s; font-size:14px; }
+.back-btn:hover{ transform:scale(1.05); box-shadow:0 5px 15px rgba(0,0,0,0.2); }
+
+/* LANGUAGE SELECTOR */
+.lang-select {
+    padding: 8px 12px; border-radius: 20px; border: none;
+    background: rgba(255,255,255,0.2); color: white; font-weight: 700;
+    cursor: pointer; outline: none; font-size: 14px; transition: 0.3s;
+}
+.lang-select option { background: white; color: var(--text); }
+.lang-select:hover { background: rgba(255,255,255,0.3); }
+
+/* HEADER */
+.header{ text-align:center; padding:40px 20px; background:white; }
+.header h1{ margin:0; color:var(--deep); font-size:32px; }
+.header p{ color:#64748b; margin-top:8px; font-size:16px; }
+
+/* FILTERS */
+.filter-bar{ display:flex; justify-content:center; gap:12px; flex-wrap:wrap; padding:0 20px 30px; background:white; position:sticky; top:0; z-index:100; box-shadow:0 10px 20px -10px rgba(0,0,0,0.1); }
+.filter-btn{ padding:10px 24px; border:2px solid #e2e8f0; border-radius:30px; background:white; color:#64748b; font-weight:700; cursor:pointer; transition:0.3s; font-size:14px; }
+.filter-btn:hover, .filter-btn.active{ background:var(--deep); color:white; border-color:var(--deep); transform:translateY(-2px); }
+
+/* GRID LAYOUT */
+.container{ max-width:1200px; margin:30px auto; padding:0 20px; }
+.grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:25px; }
+
+/* EXAM CARD */
+.exam-card{ background:white; border-radius:20px; padding:25px; box-shadow:0 10px 25px rgba(0,0,0,0.05); transition:0.3s; position:relative; border-top:5px solid var(--deep); display:flex; flex-direction:column; }
+.exam-card:hover{ transform:translateY(-8px); box-shadow:0 20px 40px rgba(0,0,0,0.15); }
+
+.badge{ position:absolute; top:20px; right:20px; padding:5px 12px; border-radius:12px; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; }
+.badge.eng{ background:#e0f2fe; color:#0369a1; }
+.badge.med{ background:#dcfce7; color:#15803d; }
+.badge.govt{ background:#ffedd5; color:#c2410c; }
+.badge.law{ background:#f3e8ff; color:#7e22ce; }
+
+.exam-card h3{ margin:0 0 5px; color:var(--deep); font-size:22px; }
+.exam-card .full-name{ font-size:13px; color:#94a3b8; font-weight:600; margin-bottom:15px; }
+
+.info-row{ display:flex; align-items:center; gap:8px; margin-bottom:8px; font-size:14px; color:#475569; }
+.info-icon{ color:var(--sun); }
+
+.desc{ font-size:13px; color:#64748b; line-height:1.6; margin:15px 0 20px; flex-grow:1; }
+
+.card-actions{ margin-top:auto; }
+.apply-btn{ display:block; width:100%; padding:12px; text-align:center; background:linear-gradient(135deg, var(--deep), var(--sky2)); color:white; text-decoration:none; border-radius:12px; font-weight:700; transition:0.3s; }
+.apply-btn:hover{ opacity:0.9; box-shadow:0 5px 15px rgba(14, 165, 233, 0.4); }
+
+/* PREP TIPS SECTION */
+.prep-section{ margin-top:60px; background:white; padding:40px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.05); }
+.prep-title{ text-align:center; color:var(--deep); margin-bottom:30px; }
+.tips-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px; }
+.tip-box{ background:#f8fafc; padding:20px; border-radius:15px; text-align:center; border:1px solid #e2e8f0; }
+.tip-icon{ font-size:30px; margin-bottom:10px; display:block; }
+.tip-box h4{ margin:0 0 5px; color:var(--text); }
+.tip-box p{ font-size:13px; color:#64748b; margin:0; }
+
+@media(max-width:768px){ .filter-bar{ top:0; overflow-x:auto; justify-content:flex-start; padding-bottom:15px; } .filter-btn{ white-space:nowrap; } }
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <div class="brand"><span class="u">U</span><span class="daan">DAAN</span></div>
+  <div class="nav-right">
+      <select id="langSelect" class="lang-select" onchange="changeLanguage(this.value)">
+          <option value="en">English</option>
+          <option value="hi">हिंदी (Hindi)</option>
+          <option value="mr">मराठी (Marathi)</option>
+      </select>
+      <a href="{{ url_for('dashboard') }}" class="back-btn" data-i18n="back_btn">⬅ Dashboard</a>
+  </div>
+</div>
+
+<div class="header">
+  <h1 data-i18n="page_title">🏆 Entrance Exams 2026</h1>
+  <p data-i18n="page_subtitle">Find your path. Apply on time. Prepare well.</p>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterExams('all', this)" data-i18n="filter_all">All Exams</button>
+  <button class="filter-btn" onclick="filterExams('eng', this)" data-i18n="filter_eng">Engineering 🛠️</button>
+  <button class="filter-btn" onclick="filterExams('med', this)" data-i18n="filter_med">Medical 🩺</button>
+  <button class="filter-btn" onclick="filterExams('govt', this)" data-i18n="filter_govt">Govt / Defence 🇮🇳</button>
+  <button class="filter-btn" onclick="filterExams('law', this)" data-i18n="filter_law">Law & University ⚖️</button>
+</div>
+
+<div class="container">
+  
+  <div class="grid" id="examGrid">
+
+    <div class="exam-card" data-category="eng">
+      <span class="badge eng" data-i18n="badge_eng">Engineering</span>
+      <h3>JEE Main</h3>
+      <div class="full-name" data-i18n="jee_name">Joint Entrance Examination</div>
+      <div class="info-row"><span class="info-icon">📅</span> <span data-i18n="jee_date">Exam: Jan & April 2026</span></div>
+      <div class="info-row"><span class="info-icon">📝</span> <span data-i18n="jee_eligibility">Eligibility: 12th Science (PCM)</span></div>
+      <p class="desc" data-i18n="jee_desc">The gateway to NITs, IIITs, and CFTIs. Also the screening test for JEE Advanced (IITs).</p>
+      <div class="card-actions">
+        <a href="https://jeemain.nta.ac.in/" target="_blank" class="apply-btn" data-i18n="apply_btn">Apply Now ↗</a>
+      </div>
+    </div>
+
+    <div class="exam-card" data-category="med">
+      <span class="badge med" data-i18n="badge_med">Medical</span>
+      <h3>NEET UG</h3>
+      <div class="full-name" data-i18n="neet_name">National Eligibility cum Entrance Test</div>
+      <div class="info-row"><span class="info-icon">📅</span> <span data-i18n="neet_date">Exam: May 2026</span></div>
+      <div class="info-row"><span class="info-icon">📝</span> <span data-i18n="neet_eligibility">Eligibility: 12th Science (PCB)</span></div>
+      <p class="desc" data-i18n="neet_desc">Single entrance exam for MBBS, BDS, BAMS, and other medical courses in India.</p>
+      <div class="card-actions">
+        <a href="https://exams.nta.ac.in/NEET/" target="_blank" class="apply-btn" data-i18n="apply_btn">Apply Now ↗</a>
+      </div>
+    </div>
+
+    <div class="exam-card" data-category="govt">
+      <span class="badge govt" data-i18n="badge_govt">Defence</span>
+      <h3>NDA (I) & (II)</h3>
+      <div class="full-name" data-i18n="nda_name">National Defence Academy</div>
+      <div class="info-row"><span class="info-icon">📅</span> <span data-i18n="nda_date">Exam: April & Sept</span></div>
+      <div class="info-row"><span class="info-icon">📝</span> <span data-i18n="nda_eligibility">Eligibility: 12th Pass/Appearing</span></div>
+      <p class="desc" data-i18n="nda_desc">Join the Indian Army, Navy, or Air Force as an officer. Conducted by UPSC.</p>
+      <div class="card-actions">
+        <a href="https://upsc.gov.in/" target="_blank" class="apply-btn" data-i18n="apply_btn">Apply Now ↗</a>
+      </div>
+    </div>
+
+    <div class="exam-card" data-category="law">
+      <span class="badge law" data-i18n="badge_uni">University</span>
+      <h3>CUET (UG)</h3>
+      <div class="full-name" data-i18n="cuet_name">Common University Entrance Test</div>
+      <div class="info-row"><span class="info-icon">📅</span> <span data-i18n="cuet_date">Exam: May 2026</span></div>
+      <div class="info-row"><span class="info-icon">📝</span> <span data-i18n="cuet_eligibility">Eligibility: 12th Any Stream</span></div>
+      <p class="desc" data-i18n="cuet_desc">One exam for admission to all Central Universities like DU, BHU, JNU, and others.</p>
+      <div class="card-actions">
+        <a href="https://exams.nta.ac.in/CUET-UG/" target="_blank" class="apply-btn" data-i18n="apply_btn">Apply Now ↗</a>
+      </div>
+    </div>
+
+    <div class="exam-card" data-category="law">
+      <span class="badge law" data-i18n="badge_law">Law</span>
+      <h3>CLAT</h3>
+      <div class="full-name" data-i18n="clat_name">Common Law Admission Test</div>
+      <div class="info-row"><span class="info-icon">📅</span> <span data-i18n="clat_date">Exam: Dec 2025</span></div>
+      <div class="info-row"><span class="info-icon">📝</span> <span data-i18n="clat_eligibility">Eligibility: 12th Any Stream</span></div>
+      <p class="desc" data-i18n="clat_desc">Entrance for 22 National Law Universities (NLUs) in India for 5-year LLB.</p>
+      <div class="card-actions">
+        <a href="https://consortiumofnlus.ac.in/" target="_blank" class="apply-btn" data-i18n="apply_btn">Apply Now ↗</a>
+      </div>
+    </div>
+
+    <div class="exam-card" data-category="eng">
+      <span class="badge eng" data-i18n="badge_state">State</span>
+      <h3>MHT CET</h3>
+      <div class="full-name" data-i18n="mht_name">Maharashtra Common Entrance Test</div>
+      <div class="info-row"><span class="info-icon">📅</span> <span data-i18n="mht_date">Exam: May 2026</span></div>
+      <div class="info-row"><span class="info-icon">📝</span> <span data-i18n="mht_eligibility">Eligibility: 12th (PCM/PCB)</span></div>
+      <p class="desc" data-i18n="mht_desc">State-level exam for Engineering, Pharmacy, and Agriculture courses in Maharashtra.</p>
+      <div class="card-actions">
+        <a href="https://cetcell.mahacet.org/" target="_blank" class="apply-btn" data-i18n="apply_btn">Apply Now ↗</a>
+      </div>
+    </div>
+
+    <div class="exam-card" data-category="govt">
+      <span class="badge govt" data-i18n="badge_govt_job">Govt Job</span>
+      <h3>SSC CHSL</h3>
+      <div class="full-name" data-i18n="ssc_name">Combined Higher Secondary Level</div>
+      <div class="info-row"><span class="info-icon">📅</span> <span data-i18n="ssc_date">Exam: June-July</span></div>
+      <div class="info-row"><span class="info-icon">📝</span> <span data-i18n="ssc_eligibility">Eligibility: 12th Pass</span></div>
+      <p class="desc" data-i18n="ssc_desc">Recruitment for lower division clerks and assistants in central government ministries.</p>
+      <div class="card-actions">
+        <a href="https://ssc.gov.in/" target="_blank" class="apply-btn" data-i18n="apply_btn">Apply Now ↗</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="prep-section">
+    <h2 class="prep-title" data-i18n="tips_title">📚 Preparation Tips</h2>
+    <div class="tips-grid">
+      <div class="tip-box">
+        <span class="tip-icon">📖</span>
+        <h4 data-i18n="tip1_title">NCERT First</h4>
+        <p data-i18n="tip1_desc">Master your NCERT textbooks before moving to reference books.</p>
+      </div>
+      <div class="tip-box">
+        <span class="tip-icon">⏰</span>
+        <h4 data-i18n="tip2_title">Time Management</h4>
+        <p data-i18n="tip2_desc">Create a daily schedule and stick to it. Consistency is key.</p>
+      </div>
+      <div class="tip-box">
+        <span class="tip-icon">📝</span>
+        <h4 data-i18n="tip3_title">Mock Tests</h4>
+        <p data-i18n="tip3_desc">Solve previous years' papers to understand the exam pattern.</p>
+      </div>
+      <div class="tip-box">
+        <span class="tip-icon">🧘</span>
+        <h4 data-i18n="tip4_title">Stay Healthy</h4>
+        <p data-i18n="tip4_desc">Eat well and sleep 7-8 hours. A sharp mind needs rest.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// --- TRANSLATION DATABASE ---
+const translations = {
+    en: {
+        back_btn: "⬅ Dashboard",
+        page_title: "🏆 Entrance Exams 2026",
+        page_subtitle: "Find your path. Apply on time. Prepare well.",
+        filter_all: "All Exams", filter_eng: "Engineering 🛠️", filter_med: "Medical 🩺", filter_govt: "Govt / Defence 🇮🇳", filter_law: "Law & University ⚖️",
+        apply_btn: "Apply Now ↗",
+        
+        // Tags
+        badge_eng: "Engineering", badge_med: "Medical", badge_govt: "Defence", badge_uni: "University", badge_law: "Law", badge_state: "State", badge_govt_job: "Govt Job",
+
+        // JEE
+        jee_name: "Joint Entrance Examination", jee_date: "Exam: Jan & April 2026", jee_eligibility: "Eligibility: 12th Science (PCM)", jee_desc: "The gateway to NITs, IIITs, and CFTIs. Also the screening test for JEE Advanced (IITs).",
+        // NEET
+        neet_name: "National Eligibility cum Entrance Test", neet_date: "Exam: May 2026", neet_eligibility: "Eligibility: 12th Science (PCB)", neet_desc: "Single entrance exam for MBBS, BDS, BAMS, and other medical courses in India.",
+        // NDA
+        nda_name: "National Defence Academy", nda_date: "Exam: April & Sept", nda_eligibility: "Eligibility: 12th Pass/Appearing", nda_desc: "Join the Indian Army, Navy, or Air Force as an officer. Conducted by UPSC.",
+        // CUET
+        cuet_name: "Common University Entrance Test", cuet_date: "Exam: May 2026", cuet_eligibility: "Eligibility: 12th Any Stream", cuet_desc: "One exam for admission to all Central Universities like DU, BHU, JNU, and others.",
+        // CLAT
+        clat_name: "Common Law Admission Test", clat_date: "Exam: Dec 2025", clat_eligibility: "Eligibility: 12th Any Stream", clat_desc: "Entrance for 22 National Law Universities (NLUs) in India for 5-year LLB.",
+        // MHT CET
+        mht_name: "Maharashtra Common Entrance Test", mht_date: "Exam: May 2026", mht_eligibility: "Eligibility: 12th (PCM/PCB)", mht_desc: "State-level exam for Engineering, Pharmacy, and Agriculture courses in Maharashtra.",
+        // SSC
+        ssc_name: "Combined Higher Secondary Level", ssc_date: "Exam: June-July", ssc_eligibility: "Eligibility: 12th Pass", ssc_desc: "Recruitment for lower division clerks and assistants in central government ministries.",
+
+        // TIPS
+        tips_title: "📚 Preparation Tips",
+        tip1_title: "NCERT First", tip1_desc: "Master your NCERT textbooks before moving to reference books.",
+        tip2_title: "Time Management", tip2_desc: "Create a daily schedule and stick to it. Consistency is key.",
+        tip3_title: "Mock Tests", tip3_desc: "Solve previous years' papers to understand the exam pattern.",
+        tip4_title: "Stay Healthy", tip4_desc: "Eat well and sleep 7-8 hours. A sharp mind needs rest."
+    },
+    hi: {
+        back_btn: "⬅ डैशबोर्ड",
+        page_title: "🏆 प्रवेश परीक्षा 2026",
+        page_subtitle: "अपनी राह चुनें। समय पर आवेदन करें। अच्छी तैयारी करें।",
+        filter_all: "सभी परीक्षाएं", filter_eng: "इंजीनियरिंग 🛠️", filter_med: "मेडिकल 🩺", filter_govt: "सरकारी / रक्षा 🇮🇳", filter_law: "कानून और विश्वविद्यालय ⚖️",
+        apply_btn: "अभी आवेदन करें ↗",
+
+        badge_eng: "इंजीनियरिंग", badge_med: "मेडिकल", badge_govt: "रक्षा", badge_uni: "विश्वविद्यालय", badge_law: "कानून", badge_state: "राज्य स्तर", badge_govt_job: "सरकारी नौकरी",
+
+        jee_name: "संयुक्त प्रवेश परीक्षा", jee_date: "परीक्षा: जनवरी और अप्रैल 2026", jee_eligibility: "पात्रता: 12वीं विज्ञान (PCM)", jee_desc: "NITs, IIITs और CFTIs का प्रवेश द्वार। JEE Advanced (IITs) के लिए स्क्रीनिंग टेस्ट भी।",
+        neet_name: "राष्ट्रीय पात्रता सह प्रवेश परीक्षा", neet_date: "परीक्षा: मई 2026", neet_eligibility: "पात्रता: 12वीं विज्ञान (PCB)", neet_desc: "भारत में MBBS, BDS, BAMS और अन्य मेडिकल पाठ्यक्रमों के लिए एकमात्र प्रवेश परीक्षा।",
+        nda_name: "राष्ट्रीय रक्षा अकादमी", nda_date: "परीक्षा: अप्रैल और सितंबर", nda_eligibility: "पात्रता: 12वीं पास/उपस्थित", nda_desc: "एक अधिकारी के रूप में भारतीय सेना, नौसेना या वायु सेना में शामिल हों। UPSC द्वारा आयोजित।",
+        cuet_name: "सामान्य विश्वविद्यालय प्रवेश परीक्षा", cuet_date: "परीक्षा: मई 2026", cuet_eligibility: "पात्रता: 12वीं (कोई भी स्ट्रीम)", cuet_desc: "DU, BHU, JNU और अन्य सभी केंद्रीय विश्वविद्यालयों में प्रवेश के लिए एक परीक्षा।",
+        clat_name: "कॉमन लॉ एडमिशन टेस्ट", clat_date: "परीक्षा: दिसंबर 2025", clat_eligibility: "पात्रता: 12वीं (कोई भी स्ट्रीम)", clat_desc: "भारत में 22 राष्ट्रीय विधि विश्वविद्यालयों (NLUs) में 5-वर्षीय LLB के लिए प्रवेश।",
+        mht_name: "महाराष्ट्र कॉमन एंट्रेंस टेस्ट", mht_date: "परीक्षा: मई 2026", mht_eligibility: "पात्रता: 12वीं (PCM/PCB)", mht_desc: "महाराष्ट्र में इंजीनियरिंग, फार्मेसी और कृषि पाठ्यक्रमों के लिए राज्य स्तरीय परीक्षा।",
+        ssc_name: "कंबाइंड हायर सेकेंडरी लेवल", ssc_date: "परीक्षा: जून-जुलाई", ssc_eligibility: "पात्रता: 12वीं पास", ssc_desc: "केंद्र सरकार के मंत्रालयों में लोअर डिवीजन क्लर्क और सहायकों की भर्ती।",
+
+        tips_title: "📚 तैयारी के सुझाव",
+        tip1_title: "NCERT सबसे पहले", tip1_desc: "संदर्भ पुस्तकों पर जाने से पहले अपनी NCERT पाठ्यपुस्तकों में महारत हासिल करें।",
+        tip2_title: "समय प्रबंधन", tip2_desc: "एक दैनिक कार्यक्रम बनाएं और उसका पालन करें। निरंतरता महत्वपूर्ण है।",
+        tip3_title: "मॉक टेस्ट", tip3_desc: "परीक्षा पैटर्न को समझने के लिए पिछले वर्षों के प्रश्नपत्र हल करें।",
+        tip4_title: "स्वस्थ रहें", tip4_desc: "अच्छा खाएं और 7-8 घंटे सोएं। तेज दिमाग के लिए आराम जरूरी है।"
+    },
+    mr: {
+        back_btn: "⬅ डॅशबोर्ड",
+        page_title: "🏆 प्रवेश परीक्षा 2026",
+        page_subtitle: "तुमची दिशा शोधा. वेळेवर अर्ज करा. चांगली तयारी करा.",
+        filter_all: "सर्व परीक्षा", filter_eng: "अभियांत्रिकी 🛠️", filter_med: "वैद्यकीय 🩺", filter_govt: "सरकारी / संरक्षण 🇮🇳", filter_law: "कायदा आणि विद्यापीठ ⚖️",
+        apply_btn: "आत्ताच अर्ज करा ↗",
+
+        badge_eng: "अभियांत्रिकी", badge_med: "वैद्यकीय", badge_govt: "संरक्षण", badge_uni: "विद्यापीठ", badge_law: "कायदा", badge_state: "राज्य स्तर", badge_govt_job: "सरकारी नोकरी",
+
+        jee_name: "संयुक्त प्रवेश परीक्षा", jee_date: "परीक्षा: जाने. आणि एप्रिल 2026", jee_eligibility: "पात्रता: १२वी विज्ञान (PCM)", jee_desc: "NITs, IIITs आणि CFTIs चे प्रवेशद्वार. JEE Advanced (IITs) साठी स्क्रीनिंग टेस्ट.",
+        neet_name: "राष्ट्रीय पात्रता सह प्रवेश परीक्षा", neet_date: "परीक्षा: मे 2026", neet_eligibility: "पात्रता: १२वी विज्ञान (PCB)", neet_desc: "भारतातील MBBS, BDS, BAMS आणि इतर वैद्यकीय अभ्यासक्रमांसाठी एकमेव प्रवेश परीक्षा.",
+        nda_name: "राष्ट्रीय संरक्षण प्रबोधिनी", nda_date: "परीक्षा: एप्रिल आणि सप्टेंबर", nda_eligibility: "पात्रता: १२वी पास/दिसणारे", nda_desc: "अधिकारी म्हणून भारतीय लष्कर, नौदल किंवा हवाई दलात सामील व्हा. UPSC द्वारे आयोजित.",
+        cuet_name: "सामायिक विद्यापीठ प्रवेश परीक्षा", cuet_date: "परीक्षा: मे 2026", cuet_eligibility: "पात्रता: १२वी (कोणतीही शाखा)", cuet_desc: "DU, BHU, JNU आणि इतर सर्व केंद्रीय विद्यापीठांमध्ये प्रवेशासाठी एकच परीक्षा.",
+        clat_name: "कॉमन लॉ ऍडमिशन टेस्ट", clat_date: "परीक्षा: डिसेंबर 2025", clat_eligibility: "पात्रता: १२वी (कोणतीही शाखा)", clat_desc: "भारतातील 22 राष्ट्रीय विधी विद्यापीठांमध्ये (NLUs) 5-वर्षीय LLB साठी प्रवेश.",
+        mht_name: "महाराष्ट्र कॉमन एंट्रन्स टेस्ट", mht_date: "परीक्षा: मे 2026", mht_eligibility: "पात्रता: १२वी (PCM/PCB)", mht_desc: "महाराष्ट्रातील अभियांत्रिकी, फार्मसी आणि कृषी अभ्यासक्रमांसाठी राज्यस्तरीय परीक्षा.",
+        ssc_name: "कम्बाइंड हायर सेकंडरी लेव्हल", ssc_date: "परीक्षा: जून-जुलै", ssc_eligibility: "पात्रता: १२वी पास", ssc_desc: "केंद्र सरकारच्या मंत्रालयांमध्ये लोअर डिव्हिजन क्लर्क आणि सहाय्यकांसाठी भरती.",
+
+        tips_title: "📚 तयारीसाठी टिप्स",
+        tip1_title: "NCERT प्रथम", tip1_desc: "संदर्भ पुस्तकांकडे वळण्यापूर्वी तुमची NCERT पाठ्यपुस्तके पक्की करा.",
+        tip2_title: "वेळेचे नियोजन", tip2_desc: "दैनिक वेळापत्रक तयार करा आणि त्याचे पालन करा. सातत्य महत्त्वाचे आहे.",
+        tip3_title: "मॉक टेस्ट्स", tip3_desc: "परीक्षेचे स्वरूप समजून घेण्यासाठी मागील वर्षांच्या प्रश्नपत्रिका सोडवा.",
+        tip4_title: "निरोगी राहा", tip4_desc: "चांगले खा आणि 7-8 तास झपा. तीक्ष्ण बुद्धीसाठी विश्रांती आवश्यक आहे."
+    }
+};
+
+// --- LANGUAGE CHANGER ---
+function changeLanguage(lang) {
+    // 1. Update all elements with data-i18n attribute
+    document.querySelectorAll("[data-i18n]").forEach(element => {
+        const key = element.getAttribute("data-i18n");
+        if (translations[lang][key]) {
+            element.innerText = translations[lang][key];
+        }
+    });
+
+    // 2. Update Dropdown Value
+    document.getElementById("langSelect").value = lang;
+}
+
+// --- FILTER LOGIC (Updated to work with translations) ---
+function filterExams(category, btnElement) {
+  const cards = document.querySelectorAll('.exam-card');
+  const buttons = document.querySelectorAll('.filter-btn');
+
+  // Active Button State
+  buttons.forEach(btn => btn.classList.remove('active'));
+  if(btnElement) btnElement.classList.add('active');
+
+  // Show/Hide Cards
+  cards.forEach(card => {
+    if (category === 'all' || card.getAttribute('data-category') === category) {
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// --- CHECK URL PARAMETER ON LOAD ---
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get('lang');
+    if(langParam && ['en', 'hi', 'mr'].includes(langParam)) {
+        changeLanguage(langParam);
+    }
+};
+</script>
+
+</body>
+</html>

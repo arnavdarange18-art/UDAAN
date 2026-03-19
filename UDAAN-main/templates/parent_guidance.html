@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Parent Guidance | UDAAN</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    font-family:"Segoe UI",sans-serif;
+    background:linear-gradient(180deg,#38bdf8,#0ea5e9);
+}
+
+.container{
+    max-width:1100px;
+    margin:40px auto;
+    background:white;
+    padding:40px;
+    border-radius:22px;
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+.header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.header h1{
+    font-size:32px;
+    color:#0f172a;
+}
+
+.header p{
+    font-size:16px;
+    color:#334155;
+    max-width:850px;
+    margin:12px auto;
+}
+
+.language-switcher{
+    position:fixed;
+    top:15px;
+    right:20px;
+    background:white;
+    padding:8px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,.2);
+}
+
+.language-switcher button{
+    border:none;
+    margin:2px;
+    padding:6px 10px;
+    border-radius:6px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.card{
+    background:#f8fafc;
+    border-radius:18px;
+    padding:28px;
+    margin-bottom:30px;
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+}
+
+.card h2{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#1e293b;
+}
+
+.card p, .card li{
+    color:#334155;
+    line-height:1.7;
+}
+
+.card ul{
+    margin-top:10px;
+    padding-left:20px;
+}
+
+.icon{font-size:26px;}
+
+.btn-bar{
+    display:flex;
+    justify-content:space-between;
+    margin-top:40px;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:14px 22px;
+    border:none;
+    border-radius:14px;
+    background:#f97316;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.btn.secondary{
+    background:#1e3a8a;
+}
+
+@media print{
+    body{background:white;}
+    .language-switcher,.btn-bar{display:none;}
+    .container{box-shadow:none;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- LANGUAGE SWITCHER -->
+<div class="language-switcher">
+    <button onclick="setLanguage('en')">EN</button>
+    <button onclick="setLanguage('hi')">हिंदी</button>
+    <button onclick="setLanguage('mr')">मराठी</button>
+</div>
+
+<div class="container">
+
+<!-- ================= ENGLISH ================= -->
+<div data-lang="en">
+
+<div class="header">
+<h1>👨‍👩‍👧 Parent Guidance & Career Support</h1>
+<p>
+This guidance section is specially prepared for parents to help them understand modern
+career opportunities, educational pathways, and the correct way to guide and support
+their children in building a successful and satisfying career.
+</p>
+</div>
+
+<div class="card">
+<h2><span class="icon">🧭</span>1. Role of Parents in Career Decisions</h2>
+<p>
+Parents play a vital role in shaping a child’s future. Emotional support, correct
+information, and timely guidance are more important than pressure or control.
+</p>
+<p>
+Parents should act as mentors—guiding, motivating, and helping children take
+well-informed career decisions.
+</p>
+</div>
+
+<div class="card">
+<h2><span class="icon">🎯</span>2. Understanding Your Child’s Interest and Ability</h2>
+<ul>
+<li>Observe subjects and activities your child enjoys</li>
+<li>Identify strengths and improvement areas</li>
+<li>Encourage honest communication</li>
+<li>Avoid forcing unfulfilled dreams</li>
+<li>Never compare children</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><span class="icon">🚫</span>3. Common Career Myths</h2>
+<ul>
+<li>❌ Only doctors and engineers succeed</li>
+<li>❌ Government jobs are the only secure option</li>
+<li>❌ Skill-based careers lack respect</li>
+</ul>
+<p>True success depends on skills, dedication, and adaptability.</p>
+</div>
+
+<div class="card">
+<h2><span class="icon">📚</span>4. Career Options After 12th</h2>
+<ul>
+<li><b>Science:</b> Engineering, Medical, IT, Research</li>
+<li><b>Commerce:</b> CA, CS, Banking, Management</li>
+<li><b>Arts:</b> Law, Teaching, Journalism</li>
+<li><b>Skill-Based:</b> IT & vocational skills</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><span class="icon">🛠️</span>5. Skills Along with Education</h2>
+<ul>
+<li>Communication skills</li>
+<li>Problem-solving ability</li>
+<li>Digital literacy</li>
+<li>Time management</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><span class="icon">💰</span>6. Financial Planning & Scholarships</h2>
+<ul>
+<li>Government scholarships</li>
+<li>Merit & need-based aid</li>
+<li>Education loans</li>
+<li>Free online platforms</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><span class="icon">❤️</span>7. Mental & Emotional Well-being</h2>
+<ul>
+<li>Regular conversations</li>
+<li>Identify stress early</li>
+<li>Balance study & rest</li>
+<li>Appreciate effort</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><span class="icon">🤖</span>8. Technology & AI in Career Guidance</h2>
+<p>
+AI-based platforms like UDAAN provide personalized career guidance based on
+aptitude and interests.
+</p>
+</div>
+
+</div>
+
+<!-- ================= HINDI ================= -->
+<div data-lang="hi">
+
+<div class="header">
+<h1>👨‍👩‍👧 अभिभावक मार्गदर्शन और करियर सहयोग</h1>
+<p>
+यह मार्गदर्शन अनुभाग विशेष रूप से अभिभावकों के लिए तैयार किया गया है ताकि वे आधुनिक 
+करियर के अवसरों, शैक्षिक रास्तों और अपने बच्चों को एक सफल और संतोषजनक करियर बनाने में 
+सही तरीके से मार्गदर्शन और सहयोग देने के तरीकों को समझ सकें।
+</p>
+</div>
+
+<div class="card">
+<h2><span class="icon">🧭</span>1. करियर के फैसलों में अभिभावकों की भूमिका</h2>
+<p>
+बच्चे के भविष्य को आकार देने में माता-पिता की अहम भूमिका होती है। भावात्मक सहयोग, 
+सही जानकारी और समय पर दिया गया मार्गदर्शन, दबाव या नियंत्रण से ज्यादा महत्वपूर्ण है।
+</p>
+<p>
+अभिभावकों को एक मेंटर (mentor) की तरह काम करना चाहिए—जो बच्चों को सही जानकारी के साथ 
+करियर के फैसले लेने में मार्गदर्शन दें, प्रेरित करें और मदद करें।
+</p>
+</div>
+
+<div class="card">
+<h2><span class="icon">🎯</span>2. अपने बच्चे की रुचि और क्षमता को समझना</h2>
+<ul>
+<li>उन विषयों और गतिविधियों पर ध्यान दें जिनमें आपका बच्चा आनंद लेता है</li>
+<li>ताकत और सुधार के क्षेत्रों (strengths and improvement areas) की पहचान करें</li>
+<li>ईमानदार बातचीत को प्रोत्साहित करें</li>
+<li>अपने अधूरे सपनों को बच्चों पर थोपने से बचें</li>
+<li>बच्चों की तुलना कभी न करें</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><span class="icon">🚫</span>3. करियर से जुड़ी आम गलतफहमियां (Myths)</h2>
+<ul>
+<li>❌ केवल डॉक्टर और इंजीनियर ही सफल होते हैं</li>
+<li>❌ सरकारी नौकरी ही एकमात्र सुरक्षित विकल्प है</li>
+<li>❌ कौशल-आधारित (Skill-based) करियर में सम्मान नहीं मिलता</li>
+</ul>
+<p>सच्ची सफलता कौशल, समर्पण और अनुकूलन क्षमता (adaptability) पर निर्भर करती है।</p>
+</div>
+
+<div class="card">
+<h2><span class="icon">📚</span>4. 12वीं के बाद करियर विकल्प</h2>
+<ul>
+<li><b>विज्ञान (Science):</b> इंजीनियरिंग, मेडिकल, आईटी, रिसर्च</li>
+<li><b>कॉमर्स (Commerce):</b> सीए (CA), सीएस (CS), बैंकिंग, मैनेजमेंट</li>
+<li><b>आर्ट्स (Arts):</b> कानून (Law), शिक्षण, पत्रकारिता</li>
+<li><b>कौशल-आधारित:</b> आईटी और वोकेशनल स्किल्स</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><span class="icon">🛠️</span>5. शिक्षा के साथ कौशल (Skills)</h2>
+<ul>
+<li>संचार कौशल (Communication skills)</li>
+<li>समस्या सुलझाने की क्षमता (Problem-solving ability)</li>
+<li>डिजिटल साक्षरता (Digital literacy)</li>
+<li>समय प्रबंधन (Time management)</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><span class="icon">💰</span>6. वित्तीय योजना और छात्रवृत्तियां</h2>
+<ul>
+<li>सरकारी छात्रवृत्तियां (Scholarships)</li>
+<li>योग्यता और आवश्यकता-आधारित सहायता</li>
+<li>एजुकेशन लोन (Education loans)</li>
+<li>मुफ्त ऑनलाइन प्लेटफॉर्म</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><span class="icon">❤️</span>7. मानसिक और भावनात्मक स्वास्थ्य</h2>
+<ul>
+<li>नियमित बातचीत करें</li>
+<li>तनाव को जल्दी पहचानें</li>
+<li>पढ़ाई और आराम में संतुलन बनाए रखें</li>
+<li>प्रयासों की सराहना करें</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><span class="icon">🤖</span>8. करियर मार्गदर्शन में तकनीक और AI</h2>
+<p>
+'उड़ान' (UDAAN) जैसे AI-आधारित प्लेटफॉर्म योग्यता और रुचियों के आधार पर 
+व्यक्तिगत करियर मार्गदर्शन प्रदान करते हैं।
+</p>
+</div>
+
+</div>
+<!-- ================= MARATHI ================= -->
+<div data-lang="mr">
+
+<div class="header">
+<h1>👨‍👩‍👧 पालक मार्गदर्शन आणि करिअर सहाय्य</h1>
+<p>
+हे मार्गदर्शन विभाग विशेषतः पालकांसाठी तयार करण्यात आले आहे, जेणेकरून त्यांना आधुनिक 
+करिअरच्या संधी, शैक्षणिक मार्ग आणि आपल्या मुलाला यशस्वी आणि समाधानकारक करिअर घडवण्यासाठी 
+योग्य मार्गदर्शन आणि पाठिंबा कसा द्यावा, हे समजण्यास मदत होईल.
+</p>
+</div>
+
+<div class="card">
+<h2><span class="icon">🧭</span>१. करिअरच्या निर्णयांमध्ये पालकांची भूमिका</h2>
+<p>
+मुलाचे भविष्य घडवण्यात पालकांची भूमिका अत्यंत महत्त्वाची असते. दबाव किंवा नियंत्रणापेक्षा 
+भावनिक आधार, योग्य माहिती आणि वेळीच दिलेले मार्गदर्शन जास्त महत्त्वाचे असते.
+</p>
+<p>
+पालकांनी मार्गदर्शक (Mentors) म्हणून काम केले पाहिजे—जे मुलांना माहितीपूर्ण करिअर निर्णय 
+घेण्यासाठी दिशा देतात, प्रेरित करतात आणि मदत करतात.
+</p>
+</div>
+
+<div class="card">
+<h2><span class="icon">🎯</span>२. आपल्या मुलाची आवड आणि क्षमता समजून घेणे</h2>
+<ul>
+<li>मुलाला आनंद देणारे विषय आणि उपक्रमांचे निरीक्षण करा</li>
+<li>त्यांची बलस्थाने (Strengths) आणि सुधारणेची क्षेत्रे ओळखा</li>
+<li>मनमोकळ्या संवादाला प्रोत्साहन द्या</li>
+<li>आपली अपूर्ण स्वप्ने मुलांवर लादणे टाळा</li>
+<li>मुलांची तुलना कधीही करू नका</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><span class="icon">🚫</span>३. करिअरविषयीचे सामान्य गैरसमज</h2>
+<ul>
+<li>❌ फक्त डॉक्टर आणि इंजिनिअरच यशस्वी होतात</li>
+<li>❌ सरकारी नोकरी हाच एकमेव सुरक्षित पर्याय आहे</li>
+<li>❌ कौशल्य-आधारित (Skill-based) करिअरला सन्मान मिळत नाही</li>
+</ul>
+<p>खरे यश हे कौशल्य, जिद्द आणि परिस्थितीनुसार बदलण्याच्या क्षमतेवर (Adaptability) अवलंबून असते.</p>
+</div>
+
+<div class="card">
+<h2><span class="icon">📚</span>४. १२वी नंतरचे करिअर पर्याय</h2>
+<ul>
+<li><b>विज्ञान (Science):</b> इंजिनिअरिंग, मेडिकल, आयटी, संशोधन</li>
+<li><b>वाणिज्य (Commerce):</b> सीए (CA), सीएस (CS), बँकिंग, मॅनेजमेंट</li>
+<li><b>कला (Arts):</b> कायदा (Law), शिक्षण, पत्रकारिता</li>
+<li><b>कौशल्य-आधारित:</b> आयटी आणि व्यावसायिक कौशल्ये</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><span class="icon">🛠️</span>५. शिक्षणासोबतच आवश्यक कौशल्ये</h2>
+<ul>
+<li>संवाद कौशल्य (Communication skills)</li>
+<li>समस्या सोडवण्याची क्षमता (Problem-solving)</li>
+<li>डिजिटल साक्षरता (Digital literacy)</li>
+<li>वेळेचे नियोजन (Time management)</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><span class="icon">💰</span>६. आर्थिक नियोजन आणि शिष्यवृत्ती</h2>
+<ul>
+<li>सरकारी शिष्यवृत्ती (Scholarships)</li>
+<li>गुणवत्ता आणि गरजेवर आधारित मदत</li>
+<li>शैक्षणिक कर्ज (Education loans)</li>
+<li>मोफत ऑनलाइन प्लॅटफॉर्म्स</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><span class="icon">❤️</span>७. मानसिक आणि भावनिक आरोग्य</h2>
+<ul>
+<li>नियमित संवाद साधा</li>
+<li>तणाव लवकर ओळखा</li>
+<li>अभ्यास आणि विश्रांतीमध्ये समतोल राखा</li>
+<li>प्रयत्नांचे कौतुक करा</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><span class="icon">🤖</span>८. करिअर मार्गदर्शनामध्ये तंत्रज्ञान आणि AI</h2>
+<p>
+'उडाण' (UDAAN) सारखे AI-आधारित प्लॅटफॉर्म मुलांची बुद्धिमत्ता आणि आवडीनुसार 
+वैयक्तिकृत करिअर मार्गदर्शन प्रदान करतात.
+</p>
+</div>
+
+</div>
+
+<!-- BUTTONS -->
+<div class="btn-bar">
+<button class="btn secondary" onclick="window.location.href='/dashboard'">
+⬅ Back to Dashboard
+</button>
+<button class="btn" onclick="window.print()">📄 Download PDF</button>
+</div>
+
+</div>
+
+<script>
+function setLanguage(lang){
+ document.querySelectorAll('[data-lang]').forEach(el=>{
+  el.style.display = el.getAttribute('data-lang')===lang?'block':'none';
+ });
+ localStorage.setItem("parentLang",lang);
+}
+window.onload=()=>setLanguage(localStorage.getItem("parentLang")||"en");
+</script>
+
+</body>
+</html>

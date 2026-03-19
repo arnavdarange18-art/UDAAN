@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UDAAN | Aptitude Test</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --sky1:#38bdf8;
+  --sky2:#0ea5e9;
+  --deep:#1e3a8a;
+  --sun:#f97316;
+  --soft:#f8fafc;
+  --border:#e5e7eb;
+  --tech:#6366f1;
+  --medical:#10b981;
+  --design:#f43f5e;
+  --business:#f59e0b;
+  --govt:#8b5cf6;
+}
+
+*{ box-sizing:border-box; font-family:"Nunito","Segoe UI","Nirmala UI",sans-serif; }
+
+body{
+  margin:0;
+  min-height:100vh;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.6), transparent 60%),
+    linear-gradient(180deg,var(--sky1),var(--sky2));
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding: 20px 10px;
+}
+
+/* PHASE INTRO SCREEN */
+#phaseIntro {
+  width:100%; max-width:720px;
+  background:white;
+  border-radius:26px;
+  padding:36px 28px;
+  box-shadow:0 40px 80px rgba(0,0,0,0.25);
+  text-align:center;
+  animation: fadeUp 0.5s ease;
+  position:relative;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.phase-badge {
+  display:inline-block;
+  background: linear-gradient(135deg,var(--deep),var(--sun));
+  color:white;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:6px 18px;
+  border-radius:30px;
+  margin-bottom:20px;
+}
+
+.phase-icon-big {
+  font-size:70px;
+  margin:10px 0 20px;
+  line-height:1;
+}
+
+#phaseIntro h1 {
+  font-size:26px;
+  font-weight:900;
+  color:var(--deep);
+  margin:0 0 14px;
+  font-family:"Poppins",sans-serif;
+}
+
+#phaseIntro p {
+  font-size:15px;
+  color:#64748b;
+  line-height:1.7;
+  margin:0 auto 24px;
+  max-width:500px;
+}
+
+.stream-preview-grid {
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+  margin:22px 0;
+}
+
+.stream-chip {
+  border-radius:14px;
+  padding:12px 6px;
+  font-size:11px;
+  font-weight:800;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  cursor:default;
+}
+
+.stream-chip .s-icon { font-size:24px; }
+
+/* MAIN CONTAINER */
+.container{
+  width:100%;
+  max-width:720px;
+  min-height:92vh;
+  background:white;
+  border-radius:26px;
+  padding:28px 26px;
+  box-shadow:0 40px 80px rgba(0,0,0,0.25);
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  animation: fadeUp 0.5s ease;
+}
+
+.lang-box {
+  position:absolute; top:20px; right:20px;
+}
+.lang-select {
+  padding:6px 10px; border-radius:12px;
+  border:1px solid var(--border);
+  background:var(--soft); color:var(--deep);
+  font-weight:600; cursor:pointer; font-size:13px; outline:none;
+}
+
+/* Phase indicator strip */
+.phase-strip {
+  display:flex; align-items:center; gap:8px;
+  margin-bottom:16px; padding:10px 14px;
+  background:linear-gradient(135deg,rgba(30,58,138,0.07),rgba(249,115,22,0.07));
+  border-radius:14px;
+  border:1px solid rgba(30,58,138,0.1);
+}
+.phase-dot {
+  width:30px; height:30px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:12px; font-weight:800; border:2px solid var(--border);
+  color:#94a3b8;
+}
+.phase-dot.active {
+  background:linear-gradient(135deg,var(--deep),var(--sun));
+  color:white; border-color:transparent;
+}
+.phase-dot.done {
+  background:#dcfce7; color:#16a34a; border-color:#bbf7d0;
+}
+.phase-line { flex:1; height:3px; background:var(--border); border-radius:4px; }
+.phase-line.done { background:linear-gradient(90deg,var(--deep),var(--sun)); }
+.phase-label { font-size:12px; font-weight:700; color:var(--deep); margin-left:auto; }
+
+/* TOP BAR */
+.top{
+  display:flex; justify-content:space-between;
+  align-items:center; margin-bottom:18px;
+}
+#qCount{ font-size:14px; font-weight:700; color:#475569; }
+.progress{
+  width:55%; height:8px; background:var(--border);
+  border-radius:10px; overflow:hidden;
+}
+.progress-bar{
+  height:100%; width:0%;
+  background:linear-gradient(90deg,var(--deep),var(--sun));
+  transition:width 0.4s ease;
+}
+
+/* STREAM CONTEXT CARD (Phase 2 & 3) */
+.stream-ctx {
+  display:none;
+  align-items:center; gap:12px;
+  padding:12px 16px;
+  border-radius:16px;
+  margin-bottom:16px;
+  font-weight:700; font-size:14px; color:white;
+}
+.stream-ctx .ctx-icon { font-size:28px; }
+
+/* QUESTION */
+h2{
+  font-size:20px; line-height:1.45;
+  margin-bottom:22px; color:var(--deep);
+  text-align:center; font-family:"Poppins",sans-serif; font-weight:700;
+}
+
+.question-box{
+  flex:1; display:flex; flex-direction:column; justify-content:center;
+}
+
+/* PICTURE OPTIONS (Phase 3) */
+.options-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:12px;
+}
+.option-card {
+  border:2px solid var(--border); border-radius:18px;
+  overflow:hidden; cursor:pointer;
+  background:var(--soft);
+  transition:all 0.25s ease;
+  position:relative;
+}
+.option-card:hover { border-color:var(--deep); transform:translateY(-2px); }
+.option-card.selected {
+  border-color:transparent;
+  box-shadow:0 12px 25px rgba(0,0,0,0.25);
+}
+.option-card .card-img {
+  width:100%; height:110px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:52px;
+  background:linear-gradient(135deg,rgba(30,58,138,0.06),rgba(249,115,22,0.06));
+}
+.option-card .card-label {
+  padding:10px 12px 12px;
+  font-size:13px; font-weight:700; color:#334155; text-align:center;
+}
+.option-card.selected .card-label { color:white; }
+.option-card .selected-tick {
+  position:absolute; top:8px; right:8px;
+  width:22px; height:22px; border-radius:50%;
+  background:white; color:var(--deep);
+  font-size:12px; display:none;
+  align-items:center; justify-content:center; font-weight:900;
+}
+.option-card.selected .selected-tick { display:flex; }
+
+/* TEXT OPTIONS */
+.option{
+  padding:15px 18px;
+  border:2px solid var(--border); border-radius:16px;
+  margin-bottom:12px; cursor:pointer;
+  background:var(--soft); font-weight:600;
+  transition:all 0.25s ease; font-size:15px;
+  display:flex; align-items:center; gap:10px;
+}
+.option:hover { border-color:var(--deep); transform:translateY(-2px); }
+.option.selected {
+  background:linear-gradient(135deg,var(--deep),var(--sun));
+  color:white; border-color:transparent;
+  box-shadow:0 12px 25px rgba(0,0,0,0.25);
+}
+.option-num {
+  min-width:26px; height:26px; border-radius:8px;
+  background:rgba(30,58,138,0.1); color:var(--deep);
+  font-size:12px; font-weight:800; display:flex;
+  align-items:center; justify-content:center;
+}
+.option.selected .option-num { background:rgba(255,255,255,0.3); color:white; }
+
+/* FACT CARD */
+.fact-card {
+  background:linear-gradient(135deg,rgba(30,58,138,0.05),rgba(249,115,22,0.05));
+  border:1px solid rgba(30,58,138,0.12);
+  border-radius:14px; padding:12px 16px;
+  margin-bottom:16px; display:none;
+  align-items:flex-start; gap:10px; font-size:13px;
+  color:#475569; line-height:1.6;
+}
+.fact-card .fact-icon { font-size:18px; min-width:22px; }
+
+/* NEXT BUTTON */
+.btn{
+  margin-top:10px; padding:15px; border:none;
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--deep),var(--sun));
+  color:white; font-size:16px; font-weight:800;
+  cursor:pointer; opacity:0.4;
+  transition:all 0.3s ease;
+  font-family:"Poppins",sans-serif;
+}
+.btn.active{
+  opacity:1; box-shadow:0 18px 40px rgba(0,0,0,0.3);
+}
+.btn.active:hover { transform:translateY(-2px); }
+.btn-start {
+  opacity:1 !important;
+  box-shadow:0 18px 40px rgba(0,0,0,0.3);
+  margin-top:10px; padding:15px 30px; border:none;
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--deep),var(--sun));
+  color:white; font-size:16px; font-weight:800;
+  cursor:pointer; transition:all 0.3s ease;
+  font-family:"Poppins",sans-serif;
+  width:100%;
+}
+.btn-start:hover { transform:translateY(-2px); }
+
+/* RESULT MODAL */
+.modal{
+  position:fixed; inset:0; background:rgba(0,0,0,0.65);
+  display:none; justify-content:center; align-items:center; z-index:100;
+  padding:20px;
+}
+.modal-content{
+  background:white; padding:32px 28px;
+  border-radius:26px; width:100%; max-width:480px;
+  text-align:center; animation:pop 0.4s ease; max-height:90vh; overflow-y:auto;
+}
+@keyframes pop{
+  from{transform:scale(0.8);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+.result-stream-card {
+  border-radius:20px; padding:24px;
+  margin:16px 0; color:white;
+  position:relative; overflow:hidden;
+}
+.result-stream-card .rs-icon { font-size:54px; margin-bottom:10px; }
+.result-stream-card h3 { font-size:22px; font-weight:900; margin:0 0 8px; font-family:"Poppins",sans-serif; }
+.result-stream-card p { font-size:13px; opacity:0.9; margin:0; line-height:1.6; }
+
+.result-scores {
+  display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:16px 0;
+}
+.score-item {
+  padding:10px 12px; border-radius:12px;
+  background:var(--soft); border:1px solid var(--border);
+  text-align:left;
+}
+.score-item .si-label { font-size:11px; font-weight:700; color:#64748b; margin-bottom:4px; }
+.score-item .si-bar-wrap { background:#e5e7eb; border-radius:4px; height:6px; }
+.score-item .si-bar { height:100%; border-radius:4px; }
+.score-item .si-val { font-size:13px; font-weight:800; color:var(--deep); margin-top:4px; }
+
+.careers-list {
+  display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:14px 0;
+}
+.career-tag {
+  padding:6px 14px; border-radius:20px; font-size:12px; font-weight:700;
+  background:rgba(30,58,138,0.08); color:var(--deep);
+  border:1px solid rgba(30,58,138,0.15);
+}
+
+/* VOICE */
+.mic-btn {
+  position:fixed; bottom:30px; right:30px;
+  width:60px; height:60px;
+  background:linear-gradient(135deg,#1e3a8a,#f97316);
+  border-radius:50%; border:none; color:white;
+  font-size:24px; box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  cursor:pointer; z-index:1000;
+  display:flex; justify-content:center; align-items:center; transition:0.3s;
+}
+.mic-btn:hover { transform:scale(1.1); }
+.mic-btn.listening { animation:pulse 1.5s infinite; background:#dc2626; }
+@keyframes pulse {
+  0%{box-shadow:0 0 0 0 rgba(220,38,38,0.7);}
+  70%{box-shadow:0 0 0 20px rgba(220,38,38,0);}
+  100%{box-shadow:0 0 0 0 rgba(220,38,38,0);}
+}
+.voice-status {
+  position:fixed; bottom:100px; right:30px;
+  background:white; padding:10px 20px; border-radius:12px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2); font-weight:600; color:#1e3a8a;
+  display:none; z-index:1000; font-size:13px;
+}
+.speak-btn {
+  background:rgba(30,58,138,0.1); border:none; color:var(--deep);
+  width:35px; height:35px; border-radius:50%;
+  cursor:pointer; transition:0.3s; font-size:16px;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.speak-btn:hover { background:var(--deep); color:white; }
+
+/* NEW: STOP BUTTON SPECIFIC STYLE */
+.stop-btn {
+  background: rgba(220, 38, 38, 0.1) !important;
+  color: #dc2626 !important;
+}
+.stop-btn:hover {
+  background: #dc2626 !important;
+  color: white !important;
+}
+
+/* PHASE 3 SCENARIO */
+.scenario-box {
+  background:linear-gradient(135deg,rgba(30,58,138,0.06),rgba(249,115,22,0.06));
+  border:1.5px solid rgba(30,58,138,0.15);
+  border-radius:16px; padding:16px 18px; margin-bottom:18px;
+  font-size:14px; color:#334155; line-height:1.7; font-weight:600;
+}
+.scenario-box .sc-label {
+  font-size:11px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--sun); margin-bottom:6px;
+}
+
+/* Transition overlay */
+#transitionOverlay {
+  position:fixed; inset:0;
+  background:linear-gradient(135deg,var(--deep),var(--sun));
+  z-index:500; display:none;
+  justify-content:center; align-items:center;
+  flex-direction:column; gap:16px; color:white; text-align:center;
+}
+#transitionOverlay .tov-icon { font-size:72px; }
+#transitionOverlay h2 { font-size:28px; font-weight:900; margin:0; font-family:"Poppins",sans-serif; }
+#transitionOverlay p { font-size:15px; opacity:0.9; margin:0; }
+</style>
+</head>
+
+<body>
+
+<div id="phaseIntro">
+  <div class="lang-box" style="position:absolute;top:20px;right:20px;">
+    <select class="lang-select" onchange="changeLanguage(this.value)" id="introLangSelect">
+      <option value="en">English</option>
+      <option value="hi">हिंदी</option>
+      <option value="mr">मराठी</option>
+    </select>
+  </div>
+  <div class="phase-badge" id="introBadge">🚀 UDAAN Aptitude Journey</div>
+  <div class="phase-icon-big" id="introIcon">🧠</div>
+  <h1 id="introTitle">3-Phase Aptitude Discovery</h1>
+  <p id="introDesc">A smart 3-phase test to discover your true career path across Engineering, Medical, Design, Business & Government streams.</p>
+  
+  <div class="stream-preview-grid">
+    <div class="stream-chip" style="background:rgba(99,102,241,0.1);color:#6366f1;">
+      <span class="s-icon">💻</span>Engineering & Tech
+    </div>
+    <div class="stream-chip" style="background:rgba(16,185,129,0.1);color:#059669;">
+      <span class="s-icon">🏥</span>Medical & Health
+    </div>
+    <div class="stream-chip" style="background:rgba(244,63,94,0.1);color:#e11d48;">
+      <span class="s-icon">🎨</span>Design & Creative
+    </div>
+    <div class="stream-chip" style="background:rgba(245,158,11,0.1);color:#d97706;">
+      <span class="s-icon">📈</span>Business & Mgmt
+    </div>
+    <div class="stream-chip" style="background:rgba(139,92,246,0.1);color:#7c3aed;">
+      <span class="s-icon">⚖️</span>Govt & Services
+    </div>
+  </div>
+
+  <div style="background:#f8fafc;border-radius:18px;padding:18px;margin:16px 0;text-align:left;">
+    <div style="display:flex;gap:12px;margin-bottom:12px;">
+      <div style="background:linear-gradient(135deg,var(--deep),var(--sky2));color:white;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:800;white-space:nowrap;">Phase 1</div>
+      <div style="font-size:13px;color:#334155;"><b>Mixed Stream Exploration</b><br>Short exploration across all streams</div>
+    </div>
+    <div style="display:flex;gap:12px;margin-bottom:12px;">
+      <div style="background:linear-gradient(135deg,var(--sky2),var(--sun));color:white;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:800;white-space:nowrap;">Phase 2</div>
+      <div style="font-size:13px;color:#334155;"><b>Deep Dive into Your Streams</b><br>Targeted questions for your top 2 streams</div>
+    </div>
+    <div style="display:flex;gap:12px;">
+      <div style="background:linear-gradient(135deg,var(--sun),#dc2626);color:white;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:800;white-space:nowrap;">Phase 3</div>
+      <div style="font-size:13px;color:#334155;"><b>Interactive Scenario Choices</b><br>Real-world picture-based decisions</div>
+    </div>
+  </div>
+
+  <button class="btn-start" onclick="startTest()">
+    🚀 Begin My Career Journey
+  </button>
+</div>
+
+<div class="container" id="mainContainer" style="display:none;">
+
+  <div class="lang-box">
+    <select class="lang-select" onchange="changeLanguage(this.value)" id="langSelect">
+      <option value="en">English</option>
+      <option value="hi">हिंदी</option>
+      <option value="mr">मराठी</option>
+    </select>
+  </div>
+
+  <div class="phase-strip" id="phaseStrip">
+    <div class="phase-dot active" id="pd1">1</div>
+    <div class="phase-line" id="pl1"></div>
+    <div class="phase-dot" id="pd2">2</div>
+    <div class="phase-line" id="pl2"></div>
+    <div class="phase-dot" id="pd3">3</div>
+    <span class="phase-label" id="phaseLabel">Phase 1: Exploration</span>
+  </div>
+
+  <div class="stream-ctx" id="streamCtx">
+    <span class="ctx-icon" id="ctxIcon">💻</span>
+    <span id="ctxText">Engineering & Tech Deep Dive</span>
+  </div>
+
+  <div class="fact-card" id="factCard">
+    <span class="fact-icon">💡</span>
+    <span id="factText"></span>
+  </div>
+
+  <div class="top">
+    <p id="qCount">Question 1 / 6</p>
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </div>
+
+  <div class="question-box">
+    <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px;">
+      <h2 id="question" style="margin:0;flex:1;"></h2>
+      <div style="display:flex; gap: 8px;">
+        <button type="button" onclick="readQuestion()" class="speak-btn" id="questionSpeakBtn" title="Listen">
+          <i class="fa-solid fa-volume-high"></i>
+        </button>
+        <button type="button" onclick="stopSpeechPlayback()" class="speak-btn stop-btn" id="questionStopBtn" title="Stop Speaking">
+          <i class="fa-solid fa-circle-stop"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="scenario-box" id="scenarioBox" style="display:none;">
+      <div class="sc-label">📋 Scenario</div>
+      <span id="scenarioText"></span>
+    </div>
+
+    <div id="options"></div>
+  </div>
+
+  <button class="btn" id="nextBtn">Next →</button>
+</div>
+
+<div id="transitionOverlay">
+  <div class="tov-icon" id="tovIcon">🎯</div>
+  <h2 id="tovTitle">Phase 2 Unlocked!</h2>
+  <p id="tovDesc">Based on your answers, we're diving deeper...</p>
+</div>
+
+<div class="modal" id="resultModal">
+  <div class="modal-content">
+    <div class="phase-badge">🎓 Your UDAAN Result</div>
+    <div class="result-stream-card" id="resultCard">
+      <div class="rs-icon" id="rsIcon">💻</div>
+      <h3 id="rsTitle">Engineering & Technology</h3>
+      <p id="rsDesc">You have a natural aptitude for logical thinking, problem-solving, and innovation.</p>
+    </div>
+    
+    <div style="font-size:13px;font-weight:700;color:#64748b;margin-bottom:8px;text-align:left;">Score Breakdown</div>
+    <div class="result-scores" id="scoreBreakdown"></div>
+
+    <div style="font-size:13px;font-weight:700;color:#64748b;margin:14px 0 8px;text-align:left;">🎯 Recommended Careers</div>
+    <div class="careers-list" id="careersList"></div>
+
+    <div style="font-size:13px;font-weight:700;color:#64748b;margin:14px 0 8px;text-align:left;">📚 Next Steps</div>
+    <div style="background:#f8fafc;border-radius:12px;padding:14px;font-size:13px;color:#334155;line-height:1.7;text-align:left;" id="nextStepsTxt"></div>
+
+    <form method="POST" action="{{ url_for('submit_aptitude') }}">
+      <input type="hidden" name="aptitude_result" id="aptitudeInput">
+      <button class="btn active" type="submit" id="modalBtn" style="width:100%;margin-top:20px;">
+        Save Result & Go to Dashboard
+      </button>
+    </form>
+  </div>
+</div>
+
+<div id="voiceStatus" class="voice-status">Listening... Speak now 🎙️</div>
+<button class="mic-btn" onclick="toggleVoice()" title="Voice Assistant">🎙️</button>
+
+<script>
+// =========================================================
+//  DATA
+// =========================================================
+let currentLang = 'en';
+let availableVoices = [];
+let currentAudio = null;
+let audioSessionId = 0;
+
+function getSpeechEngine() {
+  return 'speechSynthesis' in window ? window.speechSynthesis : null;
+}
+
+function canPlaySpeech() {
+  return typeof Audio !== 'undefined' || !!getSpeechEngine();
+}
+
+function loadVoices() {
+  const synth = getSpeechEngine();
+  if(!synth) return [];
+  availableVoices = synth.getVoices();
+  return availableVoices;
+}
+
+function getSpeechLang(lang = currentLang) {
+  return {en:'en-IN',hi:'hi-IN',mr:'mr-IN'}[lang] || 'en-IN';
+}
+
+function getTtsLang(lang = currentLang) {
+  return {en:'en',hi:'hi',mr:'mr'}[lang] || 'en';
+}
+
+function pickVoice(lang = currentLang) {
+  const targetLang = getSpeechLang(lang).toLowerCase();
+  const baseLang = targetLang.split('-')[0];
+  const voices = availableVoices.length ? availableVoices : loadVoices();
+  return voices.find(v => (v.lang || '').toLowerCase() === targetLang)
+    || voices.find(v => (v.lang || '').toLowerCase().startsWith(baseLang))
+    || null;
+}
+
+function hasPreferredVoice(lang = currentLang) {
+  return Boolean(pickVoice(lang));
+}
+
+function setQuestionAudioState(isPlaying) {
+  const playIcon = document.querySelector('#questionSpeakBtn i');
+  const stopBtn = document.getElementById('questionStopBtn');
+
+  if (playIcon) {
+    playIcon.className = isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-volume-high';
+  }
+
+  if (stopBtn) {
+    stopBtn.disabled = !isPlaying;
+    stopBtn.style.opacity = isPlaying ? '1' : '0.65';
+  }
+}
+
+function speakText(text, options = {}) {
+  if(!text) return null;
+
+  stopSpeechPlayback();
+
+  const lang = options.lang || currentLang;
+  const rate = options.rate || 0.7;
+  const chunks = splitTtsText(text);
+  const sessionId = ++audioSessionId;
+
+  if (chunks.length) {
+    playAudioChunks(chunks, {
+      lang,
+      rate,
+      sessionId,
+      onend: options.onend,
+      onerror: () => playBrowserSpeech(text, { lang, rate, onend: options.onend, onerror: options.onerror })
+    });
+    return { mode: 'audio', sessionId };
+  }
+
+  return playBrowserSpeech(text, { ...options, lang, rate });
+}
+
+function splitTtsText(text, maxLength = 180) {
+  const cleanText = (text || '').replace(/\s+/g, ' ').trim();
+  if (!cleanText) return [];
+
+  const sentences = cleanText.split(/(?<=[.!?])\s+/);
+  const chunks = [];
+  let currentChunk = '';
+
+  sentences.forEach(sentence => {
+    if ((currentChunk + ' ' + sentence).trim().length <= maxLength) {
+      currentChunk = `${currentChunk} ${sentence}`.trim();
+      return;
+    }
+
+    if (currentChunk) chunks.push(currentChunk);
+
+    if (sentence.length <= maxLength) {
+      currentChunk = sentence;
+      return;
+    }
+
+    const words = sentence.split(' ');
+    currentChunk = '';
+    words.forEach(word => {
+      if ((currentChunk + ' ' + word).trim().length <= maxLength) {
+        currentChunk = `${currentChunk} ${word}`.trim();
+      } else {
+        if (currentChunk) chunks.push(currentChunk);
+        currentChunk = word;
+      }
+    });
+  });
+
+  if (currentChunk) chunks.push(currentChunk);
+  return chunks;
+}
+
+function playAudioChunks(chunks, options = {}, index = 0) {
+  if (index >= chunks.length) {
+    if (options.onend) options.onend();
+    return;
+  }
+
+  if (options.sessionId !== audioSessionId) return;
+
+  const audio = new Audio(buildTtsUrl(chunks[index], options.lang));
+  currentAudio = audio;
+  audio.playbackRate = Math.min(Math.max(options.rate || 1, 0.5), 1.5);
+  audio.preload = 'auto';
+
+  audio.onended = () => playAudioChunks(chunks, options, index + 1);
+  audio.onerror = () => {
+    currentAudio = null;
+    if (options.onerror) options.onerror();
+  };
+
+  audio.play().catch(() => {
+    currentAudio = null;
+    if (options.onerror) options.onerror();
+  });
+}
+
+function buildTtsUrl(text, lang) {
+  const targetLang = getTtsLang(lang);
+  return `/tts?lang=${targetLang}&text=${encodeURIComponent(text)}`;
+}
+
+function playBrowserSpeech(text, options = {}) {
+  const synth = getSpeechEngine();
+  if(!synth || !text) return null;
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  const lang = options.lang || currentLang;
+  utterance.lang = getSpeechLang(lang);
+  utterance.rate = options.rate || 0.7;
+
+  const voice = pickVoice(lang);
+  if(voice) utterance.voice = voice;
+  if(options.onend) utterance.onend = options.onend;
+  if(options.onerror) utterance.onerror = options.onerror;
+
+  synth.cancel();
+  window.setTimeout(() => {
+    try { synth.resume(); } catch (e) {}
+    synth.speak(utterance);
+    window.setTimeout(() => {
+      try { synth.resume(); } catch (e) {}
+    }, 100);
+  }, 120);
+  return utterance;
+}
+
+function stopSpeechPlayback() {
+  audioSessionId++;
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+    currentAudio = null;
+  }
+  const synth = getSpeechEngine();
+  if (synth) {
+    try { synth.cancel(); } catch (e) {}
+  }
+  setQuestionAudioState(false);
+}
+
+loadVoices();
+if(getSpeechEngine()) {
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+}
+let currentPhase = 1;
+let phaseIndex = 0;
+let selected = null;
+let phase1Score = {tech:0, medical:0, design:0, business:0, govt:0};
+let phase2Score = {tech:0, medical:0, design:0, business:0, govt:0};
+let phase3Score = {tech:0, medical:0, design:0, business:0, govt:0};
+let phase2Streams = [];
+let phase2QueueIndex = 0;
+let phase3QueueIndex = 0;
+let phase2Questions = [];
+let phase3Questions = [];
+
+const uiText = {
+  en:{qPrefix:"Question",next:"Next →",phase1Label:"Phase 1: Exploration",phase2Label:"Phase 2: Deep Dive",phase3Label:"Phase 3: Scenarios"},
+  hi:{qPrefix:"प्रश्न",next:"अगला →",phase1Label:"चरण 1: खोज",phase2Label:"चरण 2: गहन",phase3Label:"चरण 3: परिदृश्य"},
+  mr:{qPrefix:"प्रश्न",next:"पुढे →",phase1Label:"टप्पा 1: शोध",phase2Label:"टप्पा 2: सखोल",phase3Label:"टप्पा 3: परिस्थिती"}
+};
+
+// ---- STREAM META ----
+const streamMeta = {
+  tech:{
+    icon:"💻",
+    color:"linear-gradient(135deg,#4f46e5,#06b6d4)",
+    barColor:"#6366f1",
+    en:{name:"Engineering & Technology",
+      desc:"You have a natural aptitude for logical thinking, problem-solving, and innovation. You thrive with computers, machines, and systems.",
+      careers:["Software Engineer","Data Scientist","AI/ML Engineer","Robotics Engineer","Civil/Mechanical Eng","IT Architect"],
+      next:"Focus on Maths, Physics, and Computer Science. Aim for JEE / MHT-CET. Explore coding projects and hackathons."},
+    hi:{name:"इंजीनियरिंग और प्रौद्योगिकी",
+      desc:"आपकी तार्किक सोच और समस्या-समाधान में प्राकृतिक योग्यता है। कंप्यूटर, मशीनें और सिस्टम आपको आकर्षित करते हैं।",
+      careers:["सॉफ्टवेयर इंजीनियर","डेटा साइंटिस्ट","AI/ML इंजीनियर","रोबोटिक्स","सिविल/मैकेनिकल","IT आर्किटेक्ट"],
+      next:"गणित, भौतिकी और कंप्यूटर साइंस पर ध्यान दें। JEE / MHT-CET की तैयारी करें।"},
+    mr:{name:"अभियांत्रिकी आणि तंत्रज्ञान",
+      desc:"तर्कशास्त्र, समस्या-निराकरण आणि नवकल्पनांमध्ये तुमची नैसर्गिक क्षमता आहे.",
+      careers:["सॉफ्टवेअर अभियंता","डेटा शास्त्रज्ञ","AI/ML","रोबोटिक्स","स्थापत्य अभियंता","IT"],
+      next:"गणित, भौतिकशास्त्र व संगणकशास्त्र शिका. JEE / MHT-CET साठी तयारी करा."}
+  },
+  medical:{
+    icon:"🏥",
+    color:"linear-gradient(135deg,#059669,#0d9488)",
+    barColor:"#10b981",
+    en:{name:"Medical & Healthcare",
+      desc:"You are driven by empathy, science, and the desire to heal. You are detail-oriented and remain calm under pressure.",
+      careers:["Doctor (MBBS)","Dentist","Pharmacist","Physiotherapist","Nurse","Biomedical Researcher"],
+      next:"Focus on Biology, Chemistry, Physics. Prepare for NEET. Volunteer at hospitals to gain experience."},
+    hi:{name:"चिकित्सा और स्वास्थ्य सेवा",
+      desc:"आप सहानुभूति, विज्ञान और उपचार की इच्छा से प्रेरित हैं। दबाव में भी शांत और विस्तार-उन्मुखी हैं।",
+      careers:["डॉक्टर (MBBS)","दंत चिकित्सक","फार्मासिस्ट","फिजियोथेरेपिस्ट","नर्स","बायोमेडिकल"],
+      next:"जीव विज्ञान, रसायन, भौतिकी पर ध्यान दें। NEET की तैयारी करें।"},
+    mr:{name:"वैद्यकीय आणि आरोग्य सेवा",
+      desc:"सहानुभूती, विज्ञान आणि उपचाराची इच्छा तुम्हाला प्रेरित करते.",
+      careers:["डॉक्टर (MBBS)","दंतचिकित्सक","फार्मासिस्ट","फिजिओ","परिचारिका","बायोमेडिकल"],
+      next:"जीवशास्त्र, रसायनशास्त्र शिका. NEET साठी तयारी करा."}
+  },
+  design:{
+    icon:"🎨",
+    color:"linear-gradient(135deg,#e11d48,#f97316)",
+    barColor:"#f43f5e",
+    en:{name:"Design & Creative Field",
+      desc:"You express ideas visually and emotionally. You have a unique perspective on aesthetics, storytelling, and human experience.",
+      careers:["Graphic Designer","UX/UI Designer","Architect","Fashion Designer","Animator","Film Director"],
+      next:"Build a portfolio. Learn design tools (Figma, Photoshop). Explore NID, NIFT entrance exams."},
+    hi:{name:"डिजाइन और रचनात्मक क्षेत्र",
+      desc:"आप विचारों को दृश्य और भावनात्मक रूप से व्यक्त करते हैं। सौंदर्यशास्त्र पर आपकी अनूठी नजर है।",
+      careers:["ग्राफिक डिजाइनर","UX/UI","आर्किटेक्ट","फैशन डिजाइनर","एनिमेटर","फिल्म डायरेक्टर"],
+      next:"पोर्टफोलियो बनाएं। NID, NIFT परीक्षाओं की तैयारी करें।"},
+    mr:{name:"डिझाइन आणि क्रिएटिव्ह फील्ड",
+      desc:"तुम्ही कल्पना दृश्यदृष्ट्या आणि भावनिकरित्या व्यक्त करता.",
+      careers:["ग्राफिक डिझायनर","UX/UI","आर्किटेक्ट","फॅशन","अॅनिमेटर","चित्रपट दिग्दर्शक"],
+      next:"पोर्टफोलिओ तयार करा. NID, NIFT परीक्षांसाठी तयारी करा."}
+  },
+  business:{
+    icon:"📈",
+    color:"linear-gradient(135deg,#d97706,#f59e0b)",
+    barColor:"#f59e0b",
+    en:{name:"Business & Management",
+      desc:"You are a natural leader and strategist. You understand markets, people, and opportunities, and turn ideas into reality.",
+      careers:["Entrepreneur","MBA Manager","Marketing Head","Finance Analyst","Startup Founder","CA/CMA"],
+      next:"Study Economics, Business Studies. Aim for top colleges. Build projects, join debate, develop leadership."},
+    hi:{name:"व्यवसाय और प्रबंधन",
+      desc:"आप एक प्राकृतिक नेता और रणनीतिकार हैं। बाज़ार, लोग और अवसरों को समझते हैं।",
+      careers:["उद्यमी","MBA मैनेजर","मार्केटिंग हेड","फाइनेंस एनालिस्ट","CA/CMA","स्टार्टअप फाउंडर"],
+      next:"अर्थशास्त्र, व्यावसायिक अध्ययन पढ़ें। नेतृत्व कौशल विकसित करें।"},
+    mr:{name:"व्यवसाय आणि व्यवस्थापन",
+      desc:"तुम्ही नैसर्गिक नेते आणि रणनीतिकार आहात. बाजार, लोक आणि संधी समजून घेता.",
+      careers:["उद्योजक","MBA","मार्केटिंग","फायनान्स","CA/CMA","स्टार्टअप"],
+      next:"अर्थशास्त्र, व्यवसाय अभ्यास शिका. नेतृत्व कौशल्य विकसित करा."}
+  },
+  govt:{
+    icon:"⚖️",
+    color:"linear-gradient(135deg,#7c3aed,#a855f7)",
+    barColor:"#8b5cf6",
+    en:{name:"Government & Public Services",
+      desc:"You are disciplined, principled, and committed to public welfare. You understand systems and wish to bring positive change.",
+      careers:["IAS/IPS Officer","Judge/Lawyer","Defence Officer","Teacher","Social Worker","Diplomat"],
+      next:"Study History, Polity, Geography. Start UPSC/MPSC foundation early. Develop reading and writing habits."},
+    hi:{name:"सरकारी और सामाजिक सेवाएँ",
+      desc:"आप अनुशासित, सिद्धांतवादी और लोककल्याण के प्रति प्रतिबद्ध हैं।",
+      careers:["IAS/IPS अधिकारी","जज/वकील","रक्षा अधिकारी","शिक्षक","सामाजिक कार्यकर्ता","राजनयिक"],
+      next:"इतिहास, राजनीति, भूगोल पढ़ें। UPSC/MPSC की नींव जल्दी डालें।"},
+    mr:{name:"सरकारी आणि सामाजिक सेवा",
+      desc:"तुम्ही शिस्तबद्ध, तत्त्वनिष्ठ आणि लोककल्याणासाठी वचनबद्ध आहात.",
+      careers:["IAS/IPS","न्यायाधीश/वकील","संरक्षण अधिकारी","शिक्षक","समाजसेवक","राजदूत"],
+      next:"इतिहास, राज्यशास्त्र शिका. UPSC/MPSC चा पाया लवकर तयार करा."}
+  }
+};
+
+// ---- PHASE 1 QUESTIONS (mixed) ----
+const phase1Q = {
+  en:[
+    {q:"When solving a difficult problem, what is your first instinct?",
+      o:["Break it into logical steps 🔢","Think about how it affects people 💊","Sketch or visualize a solution 🎨","Calculate profit and loss 📊","Find the rule or law that applies ⚖️"],
+      s:["tech","medical","design","business","govt"],
+      fact:"Logical thinkers excel in engineering roles — they break problems into algorithms."},
+    {q:"Which school project would you enjoy the most?",
+      o:["Build a working robot or app 🤖","Awareness campaign on health 🏥","Design a poster or mural 🖌️","Create a business plan 💼","Report on social issues ✊"],
+      s:["tech","medical","design","business","govt"],
+      fact:"Hands-on tech projects are early indicators of engineering aptitude."},
+    {q:"What kind of pressure energizes you?",
+      o:["Fixing a crashing software at 2am 💻","Staying calm in a medical emergency 🚑","Meeting a creative deadline 🎬","Making a high-stakes deal 🤝","Managing public order smoothly 🏛️"],
+      s:["tech","medical","design","business","govt"],
+      fact:"Medical professionals handle high-stress life situations daily."},
+    {q:"What impact do you dream of making in the world?",
+      o:["Invent technology that changes lives ⚡","Save millions through medicine 💉","Inspire people through art 🌟","Build a company that employs thousands 🏢","Make policies that uplift society 📜"],
+      s:["tech","medical","design","business","govt"],
+      fact:"India needs 10 lakh more doctors by 2030 — healthcare has huge scope."},
+    {q:"What sounds most exciting to you?",
+      o:["Coding a cool game or AI system 🎮","Studying how the human body works 🧬","Redesigning a brand identity 🏷️","Analyzing market trends 📉","Understanding the constitution deeply 📖"],
+      s:["tech","medical","design","business","govt"],
+      fact:"AI engineers are among the highest-paid professionals globally."},
+    {q:"Your strongest natural skill is?",
+      o:["Logical & analytical thinking 🔍","Empathy and patient care 🤗","Visual creativity & aesthetics 🖼️","Leadership and strategy 🦁","Discipline and integrity 🎖️"],
+      s:["tech","medical","design","business","govt"],
+      fact:"Empathy is a core skill for doctors, nurses, and healthcare workers."},
+    {q:"If you had ₹10 crore, what would you do?",
+      o:["Build an AI startup 🚀","Open free medical clinics 🏥","Launch a design studio or film 🎥","Invest in stocks and businesses 💰","Fund a social movement 🤲"],
+      s:["tech","medical","design","business","govt"],
+      fact:"India has over 100 unicorn startups — entrepreneurship is booming!"},
+    {q:"Which of these subjects feels most natural to you?",
+      o:["Maths + Computer Science 💡","Biology + Chemistry 🧪","Art + Psychology 🖌️","Economics + Commerce 📈","History + Civics 🏛️"],
+      s:["tech","medical","design","business","govt"],
+      fact:"Biology+Chemistry is the foundation for 90% of healthcare careers."},
+    {q:"What kind of team would you love to lead?",
+      o:["Engineers building a product 🛠️","Doctors saving patients 🧑‍⚕️","Designers creating campaigns 🎭","Sales and marketing team 📣","Policy makers changing the nation 🗳️"],
+      s:["tech","medical","design","business","govt"],
+      fact:"Leadership skills are crucial for success in all career fields."},
+    {q:"Your ideal career success looks like?",
+      o:["World-class tech expert or CTO 🖥️","Renowned specialist doctor 🩺","Famous creative director 🏆","Self-made entrepreneur/CEO 💎","Senior civil servant (IAS/IPS) 🎖️"],
+      s:["tech","medical","design","business","govt"],
+      fact:"There are only 5000 IAS officers serving 1.4 billion Indians — it's elite!"}
+  ],
+  hi:[
+    {q:"किसी कठिन समस्या को हल करते समय, आपकी पहली प्रवृत्ति क्या है?",
+      o:["इसे तार्किक चरणों में तोड़ना 🔢","यह लोगों को कैसे प्रभावित करता है 💊","समाधान का स्केच या विज़ुअलाइज़ करना 🎨","लाभ-हानि की गणना करना 📊","लागू नियम या कानून खोजना ⚖️"],
+      s:["tech","medical","design","business","govt"],
+      fact:"तार्किक विचारक इंजीनियरिंग में उत्कृष्ट होते हैं।"},
+    {q:"आप कौन सा स्कूल प्रोजेक्ट सबसे ज्यादा पसंद करेंगे?",
+      o:["एक काम करने वाला रोबोट या ऐप बनाना 🤖","स्वास्थ्य जागरूकता अभियान 🏥","पोस्टर या भित्ति चित्र डिजाइन करना 🖌️","व्यवसाय योजना बनाना 💼","सामाजिक मुद्दों पर रिपोर्ट ✊"],
+      s:["tech","medical","design","business","govt"],
+      fact:"हैंड्स-ऑन टेक प्रोजेक्ट इंजीनियरिंग योग्यता के शुरुआती संकेत हैं।"},
+    {q:"किस तरह का दबाव आपको ऊर्जा देता है?",
+      o:["रात 2 बजे क्रैश होते सॉफ्टवेयर को ठीक करना 💻","चिकित्सा आपात स्थिति में शांत रहना 🚑","रचनात्मक समय सीमा पूरी करना 🎬","उच्च-दांव वाला सौदा करना 🤝","सार्वजनिक व्यवस्था सुचारू रखना 🏛️"],
+      s:["tech","medical","design","business","govt"],
+      fact:"चिकित्सा पेशेवर दैनिक उच्च-तनाव परिस्थितियों को संभालते हैं।"},
+    {q:"आप दुनिया में क्या प्रभाव डालना चाहते हैं?",
+      o:["ऐसी तकनीक बनाना जो जीवन बदल दे ⚡","चिकित्सा से लाखों को बचाना 💉","कला से लोगों को प्रेरित करना 🌟","हजारों को रोजगार देने वाली कंपनी बनाना 🏢","समाज को उत्थान करने वाली नीतियाँ बनाना 📜"],
+      s:["tech","medical","design","business","govt"],
+      fact:"2030 तक भारत को 10 लाख से ज्यादा डॉक्टरों की जरूरत होगी।"},
+    {q:"आपको सबसे रोमांचक क्या लगता है?",
+      o:["एक कूल गेम या AI सिस्टम कोड करना 🎮","मानव शरीर कैसे काम करता है यह समझना 🧬","किसी ब्रांड की पहचान को नए सिरे से डिजाइन करना 🏷️","बाज़ार के रुझानों का विश्लेषण करना 📉","संविधान को गहराई से समझना 📖"],
+      s:["tech","medical","design","business","govt"],
+      fact:"AI इंजीनियर वैश्विक स्तर पर सबसे अधिक वेतन पाने वालों में हैं।"},
+    {q:"आपका सबसे मजबूत स्वाभाविक कौशल क्या है?",
+      o:["तार्किक और विश्लेषणात्मक सोच 🔍","सहानुभीति और रोगी देखभाल 🤗","दृश्य रचनात्मकता और सौंदर्यशास्त्र 🖼️","नेतृत्व और रणनीति 🦁","अनुशासन और ईमानदारी 🎖️"],
+      s:["tech","medical","design","business","govt"],
+      fact:"सहानुभूति डॉक्टरों, नर्सों के लिए मूल कौशल है।"},
+    {q:"यदि आपके पास ₹10 करोड़ हों, तो आप क्या करेंगे?",
+      o:["AI स्टार्टअप बनाएंगे 🚀","मुफ्त चिकित्सा क्लीनिक खोलेंगे 🏥","डिजाइन स्टूडियो या फिल्म लॉन्च करेंगे 🎥","शेयरों और व्यवसायों में निवेश करेंगे 💰","सामाजिक आंदोलन को फंड करेंगे 🤲"],
+      s:["tech","medical","design","business","govt"],
+      fact:"भारत में 100 से अधिक यूनिकॉर्न स्टार्टअप हैं।"},
+    {q:"कौन से विषय आपको सबसे स्वाभाविक लगते हैं?",
+      o:["गणित + कंप्यूटर साइंस 💡","जीव विज्ञान + रसायन विज्ञान 🧪","कला + मनोविज्ञान 🖌️","अर्थशास्त्र + वाणिज्य 📈","इतिहास + नागरिक शास्त्र 🏛️"],
+      s:["tech","medical","design","business","govt"],
+      fact:"जीव विज्ञान+रसायन स्वास्थ्य सेवा करियर की नींव है।"},
+    {q:"आप किस प्रकार की टीम का नेतृत्व करना पसंद करेंगे?",
+      o:["उत्पाद बनाने वाले इंजीनियर 🛠️","मरीजों को बचाने वाले डॉक्टर 🧑‍⚕️","अभियान बनाने वाले डिजाइनर 🎭","बिक्री और मार्केटिंग टीम 📣","राष्ट्र बदलने वाले नीति निर्माता 🗳️"],
+      s:["tech","medical","design","business","govt"],
+      fact:"नेतृत्व कौशल सभी करियर क्षेत्रों में महत्वपूर्ण है।"},
+    {q:"आपकी आदर्श करियर सफलता कैसी दिखती है?",
+      o:["विश्व स्तरीय टेक विशेषज्ञ या CTO 🖥️","प्रसिद्ध विशेषज्ञ डॉक्टर 🩺","प्रसिद्ध क्रिएटिव डायरेक्टर 🏆","स्वयं निर्मित उद्यमी/CEO 💎","वरिष्ठ सिविल सेवक (IAS/IPS) 🎖️"],
+      s:["tech","medical","design","business","govt"],
+      fact:"केवल 5000 IAS अधिकारी 1.4 अरब भारतीयों की सेवा करते हैं।"}
+  ],
+  mr:[
+    {q:"एखादी कठीण समस्या सोडवताना, तुमची पहिली प्रवृत्ती काय असते?",
+      o:["तार्किक पायऱ्यांमध्ये मोडणे 🔢","लोकांवर होणाऱ्या परिणामाचा विचार करणे 💊","उपाय स्केच किंवा व्हिज्युअलाइझ करणे 🎨","नफा-तोटा मोजणे 📊","लागू नियम किंवा कायदा शोधणे ⚖️"],
+      s:["tech","medical","design","business","govt"],
+      fact:"तार्किक विचारवंत अभियांत्रिकीमध्ये उत्कृष्ट असतात."},
+    {q:"तुम्हाला कोणता शाळा प्रकल्प सर्वात जास्त आवडेल?",
+      o:["काम करणारा रोबोट किंवा अॅप बनवणे 🤖","आरोग्य जागरूकता मोहीम 🏥","पोस्टर किंवा भिंतीचित्र डिझाइन करणे 🖌️","व्यवसाय योजना तयार करणे 💼","सामाजिक समस्यांवर अहवाल ✊"],
+      s:["tech","medical","design","business","govt"],
+      fact:"हँड्स-ऑन टेक प्रकल्प अभियांत्रिकी योग्यतेचे प्रारंभिक संकेत आहेत."},
+    {q:"कोणत्या प्रकारचा दबाव तुम्हाला ऊर्जा देतो?",
+      o:["रात्री 2 वाजता क्रॅश होणारे सॉफ्टवेअर दुरुस्त करणे 💻","वैद्यकीय आपत्कालीन स्थितीत शांत राहणे 🚑","सर्जनशील डेडलाइन पूर्ण करणे 🎬","उच्च-जोखमीचा करार करणे 🤝","सार्वजनिक सुव्यवस्था राखणे 🏛️"],
+      s:["tech","medical","design","business","govt"],
+      fact:"वैद्यकीय व्यावसायिक दैनंदिन उच्च-तणावाच्या परिस्थिती हाताळतात."},
+    {q:"तुम्हाला जगावर कोणता प्रभाव पाडायचा आहे?",
+      o:["जीवन बदलणे तंत्रज्ञान निर्माण करणे ⚡","वैद्यकाने लाखोंना वाचवणे 💉","कलेतून लोकांना प्रेरित करणे 🌟","हजारोंना रोजगार देणारी कंपनी बांधणे 🏢","समाजाला उभारणाऱ्या धोरणे बनवणे 📜"],
+      s:["tech","medical","design","business","govt"],
+      fact:"2030 पर्यंत भारताला 10 लाखाहून अधिक डॉक्टरांची गरज असेल."},
+    {q:"तुम्हाला सर्वात रोमांचक काय वाटते?",
+      o:["कूल गेम किंवा AI सिस्टम कोड करणे 🎮","मानवी शरीर कसे कार्य करते हे समजून घेणे 🧬","ब्रँड ओळख पुन्हा डिझाइन करणे 🏷️","बाजार कल विश्लेषण करणे 📉","संविधान खोलवर समजून घेणे 📖"],
+      s:["tech","medical","design","business","govt"],
+      fact:"AI अभियंते जागतिक स्तरावर सर्वाधिक पगारदार व्यावसायिकांमध्ये आहेत."},
+    {q:"तुमचे सर्वात मजबूत नैसर्गिक कौशल्य काय आहे?",
+      o:["तार्किक आणि विश्लेषणात्मक विचार 🔍","सहानुभूती आणि रुग्ण सेवा 🤗","दृश्य सर्जनशीलता आणि सौंदर्यशास्त्र 🖼️","नेतृत्व आणि धोरण 🦁","शिस्त आणि प्रामाणिकपणा 🎖️"],
+      s:["tech","medical","design","business","govt"],
+      fact:"सहानुभूती डॉक्टर, परिचारिकांसाठी मूलभूत कौशल्य आहे."},
+    {q:"जर तुमच्याकडे ₹10 कोटी असतील, तर तुम्ही काय कराल?",
+      o:["AI स्टार्टअप तयार कराल 🚀","मोफत वैद्यकीय दवाखाने उघडाल 🏥","डिझाइन स्टुडिओ किंवा चित्रपट लॉन्च कराल 🎥","शेअर्स आणि व्यवसायात गुंतवणूक कराल 💰","सामाजिक चळवळीला निधी द्याल 🤲"],
+      s:["tech","medical","design","business","govt"],
+      fact:"भारतात 100 हून अधिक युनिकॉर्न स्टार्टअप आहेत."},
+    {q:"कोणते विषय तुम्हाला सर्वात नैसर्गिक वाटतात?",
+      o:["गणित + संगणकशास्त्र 💡","जीवशास्त्र + रसायनशास्त्र 🧪","कला + मानसशास्त्र 🖌️","अर्थशास्त्र + वाणिज्य 📈","इतिहास + नागरी शास्त्र 🏛️"],
+      s:["tech","medical","design","business","govt"],
+      fact:"जीवशास्त्र+रसायन आरोग्य सेवा करियरचा पाया आहे."},
+    {q:"तुम्हाला कोणत्या प्रकारच्या टीमचे नेतृत्व करायला आवडेल?",
+      o:["उत्पादन बनवणारे अभियंते 🛠️","रुग्णांना वाचवणारे डॉक्टर 🧑‍⚕️","मोहिमा तयार करणारे डिझायनर 🎭","विक्री आणि मार्केटिंग टीम 📣","देश बदलणारे धोरण निर्माते 🗳️"],
+      s:["tech","medical","design","business","govt"],
+      fact:"नेतृत्व कौशल्य सर्व करियर क्षेत्रांमध्ये महत्त्वपूर्ण आहे."},
+    {q:"तुमचे आदर्श करियर यश कसे दिसते?",
+      o:["जागतिक दर्जाचे टेक तज्ज्ञ किंवा CTO 🖥️","प्रसिद्ध विशेषज्ञ डॉक्टर 🩺","प्रसिद्ध क्रिएटिव्ह डायरेक्टर 🏆","स्व-निर्मित उद्योजक/CEO 💎","वरिष्ठ नागरी सेवक (IAS/IPS) 🎖️"],
+      s:["tech","medical","design","business","govt"],
+      fact:"केवळ 5000 IAS अधिकारी 1.4 अब्ज भारतीयांची सेवा करतात."}
+  ]
+};
+
+// REDUCE PHASE 1 QUESTIONS TO 6
+phase1Q.en = phase1Q.en.slice(0, 6);
+phase1Q.hi = phase1Q.hi.slice(0, 6);
+phase1Q.mr = phase1Q.mr.slice(0, 6);
+
+// ---- PHASE 2 QUESTIONS ----
+const phase2Q = {
+  tech:{
+    en:[
+      {q:"Which technology concept fascinates you most?",o:["Artificial Intelligence 🤖","Web Development 🌐","Cybersecurity 🔒","Hardware/Robotics ⚙️","Data Science 📊"],s:["tech","tech","tech","tech","tech"],fact:"India's IT sector employs 5.4 million professionals."},
+      {q:"What would you enjoy building for 10 hours straight?",o:["A mobile app","An algorithm","A secure network","A robot","A data dashboard"],s:["tech","tech","tech","tech","tech"],fact:"India produces 1.5 million engineering graduates yearly."},
+      {q:"Which challenge excites you in tech?",o:["Ethical AI 🧠","Bug-free coding ✅","Cyber protection 🛡️","Hardware assembly 🔧","Data trends 📈"],s:["tech","tech","tech","tech","tech"],fact:"Ethical AI is a top-growing field."},
+      {q:"What's your ideal work environment in tech?",o:["Silicon Valley Startup 🚀","Google-style Tech Giant","Future Tech Lab 🔬","Defence/Space 🛸","Your own startup 🇮🇳"],s:["tech","tech","tech","tech","tech"],fact:"India has the world's 3rd largest startup ecosystem."},
+      {q:"Which tech course would you take first?",o:["ML with Python","Full Stack Web","Ethical Hacking","IoT Systems","Business Analytics"],s:["tech","tech","tech","tech","tech"],fact:"Python is the world's most popular language."},
+      {q:"How do you prefer to learn technical skills?",o:["YouTube + Projects 🛠️","College Degree 🎓","Online certs 📜","Internships 💼","Hackathons ⚡"],s:["tech","tech","tech","tech","tech"],fact:"Self-taught developers build world-class tech."}
+    ],
+    hi:[
+      {q:"कौन सी तकनीकी अवधारणा आपको सबसे ज्यादा आकर्षित करती है?",o:["आर्टिफिशियल इंटेलिजेंस 🤖","वेब डेवलपमेंट 🌐","साइबरसिक्योरिटी 🔒","हार्डवेयर/रोबोटिक्स ⚙️","डेटा साइंस 📊"],s:["tech","tech","tech","tech","tech"],fact:"भारत का IT क्षेत्र 5.4 मिलियन पेशेवरों को रोजगार देता है।"},
+      {q:"आप 10 घंटे लगातार क्या बनाने में आनंद लेंगे?",o:["मोबाइल ऐप","एल्गोरिदम","नेटवर्क","रोबोट","डेटा डैशबोर्ड"],s:["tech","tech","tech","tech","tech"],fact:"भारत हर साल 1.5 मिलियन इंजीनियर तैयार करता है।"},
+      {q:"तकनीक में कौन सी चुनौती आपको उत्साहित करती है?",o:["AI नैतिकता 🧠","बग-फ्री कोडिंग ✅","सिस्टम सुरक्षा 🛡️","हार्डवेयर निर्माण 🔧","डेटा ट्रेंड्स 📈"],s:["tech","tech","tech","tech","tech"],fact:"एथिकल AI तेजी से बढ़ रहा है।"},
+      {q:"तकनीक में आपका आदर्श कार्य वातावरण?",o:["सिलिकॉन वैली स्टार्टअप 🚀","बड़ी कंपनी","अनुसंधान लैब 🔬","रक्षा/अंतरिक्ष 🛸","अपना स्टार्टअप 🇮🇳"],s:["tech","tech","tech","tech","tech"],fact:"भारत का स्टार्टअप इकोसिस्टम दुनिया में तीसरा बड़ा है।"}
+    ],
+    mr:[
+      {q:"कोणती तांत्रिक संकल्पना तुम्हाला सर्वात जास्त आकर्षित करते?",o:["कृत्रिम बुद्धिमत्ता 🤖","वेब डेव्हलपमेंट 🌐","सायबर सुरक्षा 🔒","हार्डवेअर/रोबोटिक्स ⚙️","डेटा सायन्स 📊"],s:["tech","tech","tech","tech","tech"],fact:"भारताचा IT क्षेत्र ५४ लाख लोकांना रोजगार देतो."},
+      {q:"तुम्ही १० तास सतत काय बनवण्यात आनंद घ्याल?",o:["मोबाइल अॅप","अल्गोरिदम","नेटवर्क","रोबोट","डेटा डॅशबोर्ड"],s:["tech","tech","tech","tech","tech"],fact:"भारत दरवर्षी १५ लाख अभियांत्रिकी पदवीधर तयार करतो."},
+      {q:"तंत्रज्ञानातील कोणती आव्हाने तुम्हाला उत्साहित करतात?",o:["AI नैतिकता 🧠","कोडिंग ✅","सायबर संरक्षण 🛡️","हार्डवेअर बनवणे 🔧","डेटा अंदाज 📈"],s:["tech","tech","tech","tech","tech"],fact:"एथिकल AI हे वेगाने वाढणारे क्षेत्र आहे."},
+      {q:"तुमचे आदर्श कार्य वातावरण कोणते?",o:["स्टार्टअप 🚀","मोठी कंपनी","संशोधन प्रयोगशाळा 🔬","संरक्षण/अंतराळ 🛸","स्वतःचे स्टार्टअप 🇮🇳"],s:["tech","tech","tech","tech","tech"],fact:"भारताची स्टार्टअप इकोसिस्टम जगात तिसरी मोठी आहे."}
+    ]
+  },
+  medical:{
+    en:[
+      {q:"Which medical field interests you most?",o:["Surgery ✂️","Research 🔬","Mental health 🧠","Public health 🌍","Dentistry 🦷"],s:["medical","medical","medical","medical","medical"],fact:"India needs more doctors for its large population."},
+      {q:"How do you handle seeing pain?",o:["Stay focused 💪","Stay professional 🤝","Understand cause 🔍","Coordinate 📋","Document 📝"],s:["medical","medical","medical","medical","medical"],fact:"Emotional resilience is vital for doctors."},
+      {q:"What motivates you about medicine?",o:["Helping patients 🙏","New treatments 🧪","The human mind 🧠","Community health 🏘️","Rural dental care 🦷"],s:["medical","medical","medical","medical","medical"],fact:"Healing joy is why most choose medicine."},
+      {q:"Where would you like to practice?",o:["Metro Hospital 🏙️","Govt Hospital 🏥","Research Institute 🎓","Rural Centre 🌿","International Org 🌍"],s:["medical","medical","medical","medical","medical"],fact:"Rural doctors see fast career growth."}
+    ],
+    hi:[
+      {q:"कौन सा चिकित्सा क्षेत्र सबसे अधिक रुचिकर है?",o:["सर्जरी ✂️","रिसर्च 🔬","मानसिक स्वास्थ्य 🧠","सार्वजनिक स्वास्थ्य 🌍","दंत चिकित्सा 🦷"],s:["medical","medical","medical","medical","medical"],fact:"भारत में डॉक्टरों की बड़ी मांग है।"},
+      {q:"मरीज का दर्द देखकर आप क्या करेंगे?",o:["शांत रहकर कार्य 💪","पेशेवर रहेंगे 🤝","मूल कारण 🔍","टीम समन्वय 📋","सटीक रिकॉर्ड 📝"],s:["medical","medical","medical","medical","medical"],fact:"भावनात्मक मजबूती डॉक्टरों का मुख्य गुण है।"},
+      {q:"चिकित्सा में क्या प्रेरित करता है?",o:["मरीज की मदद 🙏","नया इलाज 🧪","मानव मन 🧠","सामुदायिक स्वास्थ्य 🏘️","ग्रामीण दंत स्वास्थ्य 🦷"],s:["medical","medical","medical","medical","medical"],fact:"उपचार की खुशी ही सबसे बड़ी प्रेरणा है।"},
+      {q:"आप चिकित्सा कहाँ करना चाहेंगे?",o:["शहर का अस्पताल 🏙️","सरकारी अस्पताल 🏥","अनुसंधान संस्थान 🎓","ग्रामीण केंद्र 🌿","अंतर्राष्ट्रीय संगठन 🌍"],s:["medical","medical","medical","medical","medical"],fact:"ग्रामीण डॉक्टरों को विशेष प्रोत्साहन मिलता है।"}
+    ],
+    mr:[
+      {q:"कोणते वैद्यकीय क्षेत्र तुम्हाला आवडते?",o:["शस्त्रक्रिया ✂️","संशोधन 🔬","मानसिक आरोग्य 🧠","सार्वजनिक आरोग्य 🌍","दंतचिकित्सा 🦷"],s:["medical","medical","medical","medical","medical"],fact:"भारतात डॉक्टरांची मोठी गरज आहे."},
+      {q:"रुग्णाच्या वेदना पाहून तुम्ही काय कराल?",o:["शांत राहून कार्य 💪","व्यावसायिक राहाल 🤝","मूळ कारण 🔍","समन्वय 📋","अचूक नोंद 📝"],s:["medical","medical","medical","medical","medical"],fact:"भावनिक लवचिकता डॉक्टरांना यशस्वी बनवते."},
+      {q:"वैद्यकशास्त्रात काय प्रेरित करते?",o:["मदत करणे 🙏","नवीन उपचार 🧪","मानवी मन 🧠","आरोग्य टाळणे 🏘️","ग्रामीण दंत आरोग्य 🦷"],s:["medical","medical","medical","medical","medical"],fact:"उपचारातील आनंद ही सर्वात मोठी निवड आहे."},
+      {q:"तुम्ही वैद्यक कुठे करायला आवडेल?",o:["शहरातील रुग्णालय 🏙️","सरकारी रुग्णालय 🏥","संशोधन संस्था 🎓","ग्रामीण केंद्र 🌿","आंतरराष्ट्रीय संस्था 🌍"],s:["medical","medical","medical","medical","medical"],fact:"ग्रामीण डॉक्टरांना जलद करियर वाढ मिळते."}
+    ]
+  },
+  design:{
+    en:[
+      {q:"Which creative field excites you?",o:["Graphic design 🎨","UX/UI 📱","Architecture 🏛️","Fashion 👗","Animation 🎬"],s:["design","design","design","design","design"],fact:"India's design industry grows 25% annually."},
+      {q:"What makes a design great?",o:["Solves problems 🔧","Beautiful 😍","Storytelling 📖","Functional ✅","Emotional 💓"],s:["design","design","design","design","design"],fact:"Functional aesthetics is the key."},
+      {q:"Which tool would you master?",o:["Figma 📐","Photoshop 🖼️","AutoCAD 🏗️","Blender 🎲","Premiere Pro 🎬"],s:["design","design","design","design","design"],fact:"Figma is the world's #1 design tool."},
+      {q:"Your dream project?",o:["App UI 📱","Award poster ✨","Eco-building 🌿","Fashion brand 👘","Animated film 🎬"],s:["design","design","design","design","design"],fact:"Indian designers are winning global awards."}
+    ],
+    hi:[
+      {q:"कौन सा क्रिएटिव क्षेत्र उत्साहित करता है?",o:["ग्राफिक डिजाइन 🎨","UX/UI 📱","आर्किटेक्चर 🏛️","फैशन 👗","एनिमेशन 🎬"],s:["design","design","design","design","design"],fact:"डिजाइन उद्योग ₹60,000 करोड़ का है।"},
+      {q:"डिजाइन को क्या महान बनाता है?",o:["समस्या हल करना 🔧","शानदार रूप 😍","कहानी 📖","सरलता ✅","भावनाएं 💓"],s:["design","design","design","design","design"],fact:"सर्वश्रेष्ठ डिजाइन कार्यक्षमता पर आधारित होते हैं।"},
+      {q:"कौन सा टूल मास्टर करेंगे?",o:["Figma 📐","Photoshop 🖼️","AutoCAD 🏗️","Blender 🎲","Premiere Pro 🎬"],s:["design","design","design","design","design"],fact:"Figma आधुनिक डिजाइन का आधार है।"},
+      {q:"आपका सपना प्रोजेक्ट?",o:["ऐप UI 📱","पोस्टर ✨","इको-बिल्डिंग 🌿","फैशन ब्रांड 👘","शॉर्ट फिल्म 🎬"],s:["design","design","design","design","design"],fact:"भारतीय डिजाइनर्स वैश्विक स्तर पर चमक रहे हैं।"}
+    ],
+    mr:[
+      {q:"कोणते सर्जनशील क्षेत्र आवडते?",o:["ग्राफिक डिझाइन 🎨","UX/UI 📱","वास्तुकला 🏛️","फॅशन 👗","अॅनिमेशन 🎬"],s:["design","design","design","design","design"],fact:"भारताचा डिझाइन उद्योग २५% वेगाने वाढत आहे."},
+      {q:"डिझाइनला काय महान बनवते?",o:["समस्या सोडवणे 🔧","अप्रतिम दृश्य 😍","कथा सांगणे 📖","सोपे ✅","भावना 💓"],s:["design","design","design","design","design"],fact:"सौंदर्य आणि कार्यक्षमता एकत्र करणे महत्त्वाचे आहे."},
+      {q:"तुम्ही कोणते टूल मास्टर कराल?",o:["Figma 📐","Photoshop 🖼️","AutoCAD 🏗️","Blender 🎲","Premiere Pro 🎬"],s:["design","design","design","design","design"],fact:"Figma हे जगातील #१ डिझाइन टूल आहे."},
+      {q:"तुमचा स्वप्नातील प्रकल्प?",o:["अॅप UI 📱","पुरस्कार पोस्टर ✨","इको-बिल्डिंग 🌿","फॅशन ब्रँड 👘","लघुचित्रपट 🎬"],s:["design","design","design","design","design"],fact:"भारतीय डिझायनर जागतिक पुरस्कार जिंकत आहेत."}
+    ]
+  },
+  business:{
+    en:[
+      {q:"What venture excites you?",o:["Tech startup 🚀","Family business 🌍","Media brand 🎥","Finance company 💰","Social enterprise 🌾"],s:["business","business","business","business","business"],fact:"India creates 3 unicorns every month."},
+      {q:"Your gifted skill?",o:["Selling ideas 🗣️","Numbers 📊","Networking 🤝","Marketing 📢","Operations ⚙️"],s:["business","business","business","business","business"],fact:"Sales is a top-rated CEO skill."},
+      {q:"Natural leadership style?",o:["Visionary 🌟","Analytical 📈","Empathetic 🤗","Bold 🎯","Structured ⚙️"],s:["business","business","business","business","business"],fact:"Great leaders combine vision with execution."},
+      {q:"Your study choice?",o:["Marketing 🧠","Finance 💰","Operations ⚙️","Innovation 🚀","HR 👥"],s:["business","business","business","business","business"],fact:"Marketing + Psychology is very powerful."}
+    ],
+    hi:[
+      {q:"कौन सा उद्यम उत्साहित करता है?",o:["स्टार्टअप 🚀","पारिवारिक व्यवसाय 🌍","मीडिया ब्रांड 🎥","फाइनेंस कंपनी 💰","ग्रामीण उद्यम 🌾"],s:["business","business","business","business","business"],fact:"भारत में स्टार्टअप तेजी से बढ़ रहे हैं।"},
+      {q:"आपका स्वाभाविक कौशल?",o:["विचार बेचना 🗣️","डेटा पढ़ना 📊","नेटवर्किंग 🤝","मार्केटिंग 📢","मैनेजमेंट ⚙️"],s:["business","business","business","business","business"],fact:"सेल्स स्किल्स सबसे मूल्यवान मानी जाती हैं।"},
+      {q:"आपका नेतृत्व कैसा है?",o:["दूरदर्शी 🌟","विश्लेषणात्मक 📈","सहानुभूतिपूर्ण 🤗","साहसी 🎯","संरचित ⚙️"],s:["business","business","business","business","business"],fact:"महान नेता सबको साथ लेकर चलते हैं।"},
+      {q:"बिजनेस स्कूल में क्या पढ़ेंगे?",o:["मार्केटिंग 🧠","फाइनेंस 💰","सप्लाई चेन ⚙️","उद्यमिता 🚀","HR 👥"],s:["business","business","business","business","business"],fact:"मार्केटिंग और मनोविज्ञान का गहरा रिश्ता है।"}
+    ],
+    mr:[
+      {q:"कोणता उपक्रम आवडतो?",o:["स्टार्टअप 🚀","कौटुंबिक व्यवसाय 🌍","मीडिया ब्रँड 🎥","वित्त कंपनी 💰","ग्रामीण उपक्रम 🌾"],s:["business","business","business","business","business"],fact:"भारत दर महिन्याला ३ युनिकॉर्न तयार करतो."},
+      {q:"तुमचे नैसर्गिक कौशल्य?",o:["कल्पना विकणे 🗣️","आकडेवारी 📊","नेटवर्किंग 🤝","मार्केटिंग 📢","ऑपरेशन्स ⚙️"],s:["business","business","business","business","business"],fact:"विक्री कौशल्य हे सर्वात महत्त्वाचे आहे."},
+      {q:"नेते म्हणून तुमची शैली?",o:["दूरदर्शी 🌟","विश्लेषणात्मक 📈","सहानुभूती 🤗","धाडसी 🎯","संरचित ⚙️"],s:["business","business","business","business","business"],fact:"उत्तम नेते दृष्टी आणि अंमलबजावणी एकत्र करतात."},
+      {q:"काय शिकायला आवडेल?",o:["मार्केटिंग 🧠","फायनान्स 💰","ऑपरेशन्स ⚙️","नवकल्पना 🚀","HR 👥"],s:["business","business","business","business","business"],fact:"मार्केटिंग + मानसशास्त्र हे आधुनिक व्यवसाय यश आहे."}
+    ]
+  },
+  govt:{
+    en:[
+      {q:"Which govt area interests you?",o:["IAS/IPS 🏛️","Defence 🛡️","Judiciary ⚖️","Teaching 📚","Social work 🤲"],s:["govt","govt","govt","govt","govt"],fact:"Civil services are the nation's steel frame."},
+      {q:"What change motivates you?",o:["Transparency 📜","Rural development 🌿","Education 📚","Safety 🛡️","Unity 🤝"],s:["govt","govt","govt","govt","govt"],fact:"RTE Act changed millions of lives."},
+      {q:"How to handle power?",o:["Uplift 🤲","Data decisions 📊","Delegate 👥","Integrity 🎖️","Reform ⚡"],s:["govt","govt","govt","govt","govt"],fact:"Best officers create systemic change."},
+      {q:"Your idea of justice?",o:["Punishment ⚖️","Rehabilitation 🔄","Prevention 🛡️","Equality 🌈","Protection 🤲"],s:["govt","govt","govt","govt","govt"],fact:"India has a massive judicial system."}
+    ],
+    hi:[
+      {q:"कौन सा सरकारी क्षेत्र रुचिकर है?",o:["IAS/IPS 🏛️","रक्षा 🛡️","न्यायपालिका ⚖️","शिक्षण 📚","सामाजिक कार्य 🤲"],s:["govt","govt","govt","govt","govt"],fact:"सिविल सेवा शासन का आधार है।"},
+      {q:"कौन सा परिवर्तन प्रेरित करता है?",o:["पारदर्शिता 📜","ग्रामीण विकास 🌿","शिक्षा 📚","सुरक्षा 🛡️","एकता 🤝"],s:["govt","govt","govt","govt","govt"],fact:"शिक्षा का अधिकार एक ऐतिहासिक कदम था।"},
+      {q:"शक्ति का उपयोग कैसे करेंगे?",o:["वंचितों के लिए 🤲","डेटा निर्णयों के लिए 📊","टीम के लिए 👥","ईमानदारी के लिए 🎖️","सुधार के लिए ⚡"],s:["govt","govt","govt","govt","govt"],fact:"प्रशासन में ईमानदारी सबसे जरूरी है।"},
+      {q:"न्याय के बारे में विचार?",o:["सजा ⚖️","पुनर्वास 🔄","रोकथाम 🛡️","समानता 🌈","रक्षा 🤲"],s:["govt","govt","govt","govt","govt"],fact:"भारत की न्यायिक प्रणाली बहुत बड़ी है।"}
+    ],
+    mr:[
+      {q:"कोणते सरकारी क्षेत्र आवडते?",o:["IAS/IPS 🏛️","संरक्षण 🛡️","न्यायपालिका ⚖️","अध्यापन 📚","समाजकार्य 🤲"],s:["govt","govt","govt","govt","govt"],fact:"नागरी सेवा प्रशासनाचा कणा आहे."},
+      {q:"कोणता बदल प्रेरित करतो?",o:["पारदर्शकता 📜","ग्रामीण विकास 🌿","शिक्षण 📚","सुरक्षा 🛡️","एकता 🤝"],s:["govt","govt","govt","govt","govt"],fact:"शिक्षण हक्क कायद्याने मोठे बदल घडवले."},
+      {q:"शक्तीचा वापर कसा कराल?",o:["वंचितांसाठी 🤲","डेटा निर्णयासाठी 📊","टीमसाठी 👥","प्रामाणिकपणासाठी 🎖️","सुधारणेसाठी ⚡"],s:["govt","govt","govt","govt","govt"],fact:"उत्तम अधिकारी व्यवस्था बदलतात."},
+      {q:"न्यायाबद्दल तुमची कल्पना?",o:["शिक्षा ⚖️","पुनर्वसन 🔄","प्रतिबंध 🛡️","समानता 🌈","संरक्षण 🤲"],s:["govt","govt","govt","govt","govt"],fact:"भारताची न्यायव्यवस्था जगात मोठी आहे."}
+    ]
+  }
+};
+
+// REDUCE PHASE 2 TO 4 PER STREAM
+for(let stream in phase2Q){
+  phase2Q[stream].en = phase2Q[stream].en.slice(0, 4);
+  phase2Q[stream].hi = phase2Q[stream].hi.slice(0, 4);
+  phase2Q[stream].mr = phase2Q[stream].mr.slice(0, 4);
+}
+
+// ---- PHASE 3 QUESTIONS ----
+const phase3Scenarios = {
+  en:[
+    {
+      q:"School holiday weekend plan:",
+      scenario:"It's Saturday morning. What do you end up doing?",
+      opts:[
+        {icon:"💻",label:"Coding/App project",stream:"tech"},
+        {icon:"🏥",label:"First aid camp",stream:"medical"},
+        {icon:"🎨",label:"Video editing/Art",stream:"design"},
+        {icon:"📈",label:"Selling online",stream:"business"},
+        {icon:"⚖️",label:"Reading politics",stream:"govt"}
+      ],
+      fact:"Weekend habits predict career passion."
+    },
+    {
+      q:"A friend needs advice. You:",
+      scenario:"A friend is in trouble. How do you help?",
+      opts:[
+        {icon:"🧠",label:"Logical solutions",stream:"tech"},
+        {icon:"🤗",label:"Listen patiently",stream:"medical"},
+        {icon:"✉️",label:"Creative expression",stream:"design"},
+        {icon:"📋",label:"Action plan",stream:"business"},
+        {icon:"⚖️",label:"Stand up for rights",stream:"govt"}
+      ],
+      fact:"Helping others reveals strengths."
+    },
+    {
+      q:"Choose a day trip:",
+      scenario:"Pick the place that excites you.",
+      opts:[
+        {icon:"🔬",label:"ISRO/Research lab",stream:"tech"},
+        {icon:"🏥",label:"Emergency hospital",stream:"medical"},
+        {icon:"🎭",label:"Creative studio",stream:"design"},
+        {icon:"💼",label:"Boardroom",stream:"business"},
+        {icon:"🏛️",label:"Parliament/Court",stream:"govt"}
+      ],
+      fact:"Dream environment matters."
+    },
+    {
+      q:"In a group project, you are the:",
+      scenario:"Teacher announces a project. You start:",
+      opts:[
+        {icon:"🛠️",label:"Building technically",stream:"tech"},
+        {icon:"🩺",label:"Including everyone",stream:"medical"},
+        {icon:"🖼️",label:"Designing look",stream:"design"},
+        {icon:"🗣️",label:"Planning strategy",stream:"business"},
+        {icon:"📜",label:"Researching facts",stream:"govt"}
+      ],
+      fact:"Natural role is career personality."
+    },
+    {
+      q:"City needs help. You:",
+      scenario:"A crisis hits your city. You:",
+      opts:[
+        {icon:"📱",label:"Build a tracker app",stream:"tech"},
+        {icon:"🚑",label:"Provide first-aid",stream:"medical"},
+        {icon:"📢",label:"Create awareness",stream:"design"},
+        {icon:"📊",label:"Organize resources",stream:"business"},
+        {icon:"🏛️",label:"Demand accountability",stream:"govt"}
+      ],
+      fact:"Crisis response reveals values."
+    }
+  ],
+  hi:[
+    {
+      q:"छुट्टी के दिन की योजना:",
+      scenario:"शनिवार सुबह है। आप क्या करते हैं?",
+      opts:[
+        {icon:"💻",label:"कोडिंग प्रोजेक्ट",stream:"tech"},
+        {icon:"🏥",label:"फर्स्ट एड कैंप",stream:"medical"},
+        {icon:"🎨",label:"वीडियो एडिटिंग",stream:"design"},
+        {icon:"📈",label:"ऑनलाइन बिक्री",stream:"business"},
+        {icon:"⚖️",label:"राजनीति पढ़ना",stream:"govt"}
+      ],
+      fact:"आपकी आदतें करियर बताती हैं।"
+    },
+    {
+      q:"दोस्त को मदद चाहिए:",
+      scenario:"मुसीबत में दोस्त की मदद कैसे करेंगे?",
+      opts:[
+        {icon:"🧠",label:"तार्किक समाधान",stream:"tech"},
+        {icon:"🤗",label:"धैर्य से सुनना",stream:"medical"},
+        {icon:"✉️",label:"कला के माध्यम से",stream:"design"},
+        {icon:"📋",label:"एक्शन प्लान",stream:"business"},
+        {icon:"⚖️",label:"अधिकारों के लिए",stream:"govt"}
+      ],
+      fact:"मदद का तरीका ताकत दर्शाता है।"
+    }
+  ],
+  mr:[
+    {
+      q:"सुट्टीच्या दिवसाची योजना:",
+      scenario:"शनिवार सकाळ आहे. तुम्ही काय कराल?",
+      opts:[
+        {icon:"💻",label:"कोडिंग प्रकल्प",stream:"tech"},
+        {icon:"🏥",label:"फर्स्ट एड शिबिर",stream:"medical"},
+        {icon:"🎨",label:"व्हिडिओ एडिटिंग",stream:"design"},
+        {icon:"📈",label:"ऑनलाइन विक्री",stream:"business"},
+        {icon:"⚖️",label:"राजकारण वाचन",stream:"govt"}
+      ],
+      fact:"सवयी भवितव्य ठरवतात."
+    },
+    {
+      q:"मित्राला मदत हवी आहे:",
+      scenario:"संकटात मित्राला कशी मदत कराल?",
+      opts:[
+        {icon:"🧠",label:"तार्किक उपाय",stream:"tech"},
+        {icon:"🤗",label:"शांतपणे ऐकणे",stream:"medical"},
+        {icon:"✉️",label:"कलेच्या माध्यमातून",stream:"design"},
+        {icon:"📋",label:"कृती योजना",stream:"business"},
+        {icon:"⚖️",label:"हक्कासाठी उभे राहणे",stream:"govt"}
+      ],
+      fact:"मदतीची पद्धत तुमची शक्ती आहे."
+    }
+  ]
+};
+
+// =========================================================
+//  LOGIC
+// =========================================================
+function startTest() {
+  document.getElementById('phaseIntro').style.display = 'none';
+  document.getElementById('mainContainer').style.display = 'flex';
+  currentPhase = 1;
+  phaseIndex = 0;
+  selected = null;
+  phase1Score = {tech:0,medical:0,design:0,business:0,govt:0};
+  phase2Score = {tech:0,medical:0,design:0,business:0,govt:0};
+  phase3Score = {tech:0,medical:0,design:0,business:0,govt:0};
+  updatePhaseStrip();
+  loadCurrentQuestion();
+  setTimeout(()=>readQuestion(),800);
+}
+
+function updatePhaseStrip() {
+  const labels = {en:["Phase 1: Exploration","Phase 2: Deep Dive","Phase 3: Scenarios"],
+                  hi:["चरण 1: खोज","चरण 2: गहन","चरण 3: परिदृश्य"],
+                  mr:["टप्पा 1: शोध","टप्पा 2: सखोल","टप्पा 3: परिस्थिती"]};
+  const phaseIdx = currentPhase - 1;
+  document.getElementById('phaseLabel').innerText = labels[currentLang][phaseIdx];
+  
+  for(let i=1;i<=3;i++){
+    const dot = document.getElementById('pd'+i);
+    dot.className = 'phase-dot';
+    if(i < currentPhase) dot.classList.add('done');
+    else if(i === currentPhase) dot.classList.add('active');
+  }
+  for(let i=1;i<=2;i++){
+    const line = document.getElementById('pl'+i);
+    line.className = 'phase-line';
+    if(i < currentPhase) line.classList.add('done');
+  }
+}
+
+function getPhase1Total() { return phase1Q[currentLang].length; }
+function getPhase2Total() { return phase2Questions.length; }
+function getPhase3Total() { return phase3Scenarios[currentLang].length; }
+
+function loadCurrentQuestion() {
+  document.getElementById('factCard').style.display = 'none';
+  document.getElementById('scenarioBox').style.display = 'none';
+  document.getElementById('streamCtx').style.display = 'none';
+  document.getElementById('options').innerHTML = '';
+  
+  const nextBtn = document.getElementById('nextBtn');
+  nextBtn.innerText = uiText[currentLang].next;
+  nextBtn.classList.remove('active');
+
+  if(currentPhase === 1) loadPhase1Question();
+  else if(currentPhase === 2) loadPhase2Question();
+  else if(currentPhase === 3) loadPhase3Question();
+}
+
+function loadPhase1Question() {
+  const qs = phase1Q[currentLang];
+  const total = qs.length;
+  const qData = qs[phaseIndex];
+  
+  document.getElementById('question').innerText = qData.q;
+  document.getElementById('qCount').innerText = `${uiText[currentLang].qPrefix} ${phaseIndex+1} / ${total}`;
+  document.getElementById('progressBar').style.width = (phaseIndex/total*100)+"%";
+  
+  const factCard = document.getElementById('factCard');
+  document.getElementById('factText').innerText = "💡 " + qData.fact;
+  factCard.style.display = 'flex';
+  
+  const opts = document.getElementById('options');
+  qData.o.forEach((opt,i)=>{
+    const div = document.createElement('div');
+    div.className = 'option';
+    div.innerHTML = `<span class="option-num">${i+1}</span>${opt}`;
+    div.onclick = () => {
+      document.querySelectorAll('.option').forEach(o=>o.classList.remove('selected'));
+      div.classList.add('selected');
+      selected = qData.s[i]; 
+      document.getElementById('nextBtn').classList.add('active');
+      speakConfirm(opt);
+    };
+    opts.appendChild(div);
+  });
+}
+
+function buildPhase2Queue() {
+  const sorted = Object.keys(phase1Score).sort((a,b)=>phase1Score[b]-phase1Score[a]);
+  phase2Streams = [sorted[0], sorted[1]];
+  phase2Questions = [];
+  phase2Streams.forEach(stream=>{
+    const qs = phase2Q[stream][currentLang] || phase2Q[stream]['en'];
+    qs.forEach(q=>{ phase2Questions.push({...q, _stream: stream}); });
+  });
+  phase2QueueIndex = 0;
+}
+
+function loadPhase2Question() {
+  const qData = phase2Questions[phase2QueueIndex];
+  const total = phase2Questions.length;
+  const streamKey = qData._stream;
+  const meta = streamMeta[streamKey];
+  
+  const ctx = document.getElementById('streamCtx');
+  ctx.style.display = 'flex';
+  ctx.style.background = meta.color;
+  document.getElementById('ctxIcon').innerText = meta.icon;
+  document.getElementById('ctxText').innerText = meta[currentLang].name + ' — Deep Dive';
+  
+  document.getElementById('question').innerText = qData.q;
+  document.getElementById('qCount').innerText = `${uiText[currentLang].qPrefix} ${phase2QueueIndex+1} / ${total}`;
+  document.getElementById('progressBar').style.width = ((phase2QueueIndex/total)*100)+"%";
+  
+  const factCard = document.getElementById('factCard');
+  factCard.style.display = 'flex';
+  document.getElementById('factText').innerText = "💡 " + qData.fact;
+  
+  const opts = document.getElementById('options');
+  qData.o.forEach((opt,i)=>{
+    const div = document.createElement('div');
+    div.className = 'option';
+    div.innerHTML = `<span class="option-num">${i+1}</span>${opt}`;
+    div.onclick = () => {
+      document.querySelectorAll('.option').forEach(o=>o.classList.remove('selected'));
+      div.classList.add('selected');
+      selected = qData.s[i];
+      document.getElementById('nextBtn').classList.add('active');
+      speakConfirm(opt);
+    };
+    opts.appendChild(div);
+  });
+}
+
+function loadPhase3Question() {
+  const scenarios = phase3Scenarios[currentLang] || phase3Scenarios['en'];
+  const sc = scenarios[phase3QueueIndex];
+  const total = scenarios.length;
+  
+  document.getElementById('question').innerText = sc.q;
+  document.getElementById('qCount').innerText = `${uiText[currentLang].qPrefix} ${phase3QueueIndex+1} / ${total}`;
+  document.getElementById('progressBar').style.width = ((phase3QueueIndex/total)*100)+"%";
+  
+  const scBox = document.getElementById('scenarioBox');
+  scBox.style.display = 'block';
+  document.getElementById('scenarioText').innerText = sc.scenario;
+  
+  document.getElementById('factCard').style.display = 'flex';
+  document.getElementById('factText').innerText = "💡 " + sc.fact;
+  
+  const opts = document.getElementById('options');
+  const grid = document.createElement('div');
+  grid.className = 'options-grid';
+  
+  sc.opts.forEach((opt,i)=>{
+    const card = document.createElement('div');
+    card.className = 'option-card';
+    const streamGrad = streamMeta[opt.stream].color;
+    card.innerHTML = `
+      <div class="card-img">${opt.icon}</div>
+      <div class="card-label">${opt.label}</div>
+      <div class="selected-tick">✓</div>
+    `;
+    card.onclick = ()=>{
+      document.querySelectorAll('.option-card').forEach(c=>{
+        c.classList.remove('selected');
+        c.querySelector('.card-img').style.background = '';
+        c.querySelector('.card-label').style.background = '';
+      });
+      card.classList.add('selected');
+      card.querySelector('.card-img').style.background = streamGrad;
+      card.querySelector('.card-img').style.color = 'white';
+      card.querySelector('.card-label').style.background = streamGrad;
+      card.querySelector('.card-label').style.color = 'white';
+      selected = opt.stream;
+      document.getElementById('nextBtn').classList.add('active');
+      speakConfirm(opt.label);
+    };
+    grid.appendChild(card);
+  });
+  opts.appendChild(grid);
+}
+
+document.getElementById('nextBtn').onclick = ()=>{
+  if(!selected) return;
+  stopSpeechPlayback();
+  
+  if(currentPhase === 1) {
+    phase1Score[selected]++;
+    phaseIndex++;
+    selected = null;
+    if(phaseIndex >= phase1Q[currentLang].length) {
+      showTransition(2, ()=>{
+        currentPhase = 2;
+        buildPhase2Queue();
+        phase2QueueIndex = 0;
+        updatePhaseStrip();
+        loadCurrentQuestion();
+        setTimeout(()=>readQuestion(),500);
+      });
+    } else { loadCurrentQuestion(); setTimeout(()=>readQuestion(),500); }
+  } else if(currentPhase === 2) {
+    phase2Score[selected]++;
+    phase2QueueIndex++;
+    selected = null;
+    if(phase2QueueIndex >= phase2Questions.length) {
+      showTransition(3, ()=>{
+        currentPhase = 3;
+        phase3QueueIndex = 0;
+        updatePhaseStrip();
+        loadCurrentQuestion();
+        setTimeout(()=>readQuestion(),500);
+      });
+    } else { loadCurrentQuestion(); setTimeout(()=>readQuestion(),500); }
+  } else if(currentPhase === 3) {
+    phase3Score[selected]++;
+    phase3QueueIndex++;
+    selected = null;
+    if(phase3QueueIndex >= (phase3Scenarios[currentLang] || phase3Scenarios['en']).length) { showResult(); }
+    else { loadCurrentQuestion(); setTimeout(()=>readQuestion(),500); }
+  }
+};
+
+function showTransition(toPhase, callback) {
+  const overlay = document.getElementById('transitionOverlay');
+  const icons = {2:'🎯',3:'⚡'};
+  const titles = {
+    en:{2:'Phase 2 Unlocked!',3:'Final Phase — Scenarios!'},
+    hi:{2:'चरण 2 शुरू!',3:'अंतिम चरण — परिदृश्य!'},
+    mr:{2:'टप्पा 2 सुरू!',3:'अंतिम टप्पा — परिस्थिती!'}
+  };
+  document.getElementById('tovIcon').innerText = icons[toPhase];
+  document.getElementById('tovTitle').innerText = titles[currentLang][toPhase];
+  overlay.style.display = 'flex';
+  
+  speakText(titles[currentLang][toPhase], { rate: 0.8 });
+  
+  setTimeout(()=>{ overlay.style.display = 'none'; callback(); }, 2800);
+}
+
+function showResult() {
+  const finalScore = {};
+  ['tech','medical','design','business','govt'].forEach(s=>{
+    finalScore[s] = phase1Score[s] + (phase2Score[s]||0)*1.5 + (phase3Score[s]||0)*2;
+  });
+  const top = Object.keys(finalScore).reduce((a,b)=>finalScore[a]>finalScore[b]?a:b);
+  const meta = streamMeta[top];
+  const info = meta[currentLang];
+  
+  document.getElementById('resultCard').style.background = meta.color;
+  document.getElementById('rsIcon').innerText = meta.icon;
+  document.getElementById('rsTitle').innerText = info.name;
+  document.getElementById('rsDesc').innerText = info.desc;
+  
+  const totalMax = Math.max(...Object.values(finalScore)) || 1;
+  const breakdown = document.getElementById('scoreBreakdown');
+  breakdown.innerHTML = '';
+  ['tech','medical','design','business','govt'].forEach(s=>{
+    const pct = Math.round((finalScore[s]/totalMax)*100);
+    const item = document.createElement('div');
+    item.className = 'score-item';
+    item.innerHTML = `
+      <div class="si-label">${streamMeta[s].icon} ${streamMeta[s][currentLang].name}</div>
+      <div class="si-bar-wrap"><div class="si-bar" style="width:${pct}%;background:${streamMeta[s].barColor}"></div></div>
+      <div class="si-val">${pct}%</div>
+    `;
+    breakdown.appendChild(item);
+  });
+  
+  const careersList = document.getElementById('careersList');
+  careersList.innerHTML = '';
+  info.careers.forEach(c=>{
+    const tag = document.createElement('div');
+    tag.className = 'career-tag'; tag.innerText = c;
+    careersList.appendChild(tag);
+  });
+  
+  document.getElementById('nextStepsTxt').innerText = info.next;
+  document.getElementById('aptitudeInput').value = streamMeta[top]['en'].name;
+  document.getElementById('resultModal').style.display = 'flex';
+  
+  const resultPrefix = {en:'Congratulations! Your aptitude is: ',hi:'बधाई हो! आपका योग्यता क्षेत्र है: ',mr:'अभिनंदन! तुमचे योग्यता क्षेत्र आहे: '};
+  speakText(resultPrefix[currentLang] + info.name, { rate: 0.7 });
+}
+
+function changeLanguage(lang) {
+  currentLang = lang;
+  document.getElementById('langSelect').value = lang;
+  document.getElementById('introLangSelect').value = lang;
+  if(document.getElementById('resultModal').style.display === 'flex') { showResult(); }
+  else if(document.getElementById('mainContainer').style.display !== 'none') {
+    if(currentPhase === 2) buildPhase2Queue();
+    loadCurrentQuestion();
+  }
+  updateIntroLang(lang);
+}
+
+function updateIntroLang(lang) {
+  const introData = {
+    en:{badge:"🚀 UDAAN Aptitude Journey",title:"3-Phase Aptitude Discovery", desc:"A smart test to discover your true career path."},
+    hi:{badge:"🚀 UDAAN योग्यता यात्रा",title:"3-चरण योग्यता खोज", desc:"अपना असली करियर पथ खोजने के लिए स्मार्ट परीक्षण।"},
+    mr:{badge:"🚀 UDAAN योग्यता प्रवास",title:"3-टप्पा योग्यता शोध", desc:"खरा करियर मार्ग शोधण्यासाठी स्मार्ट चाचणी."}
+  };
+  document.getElementById('introBadge').innerText = introData[lang].badge;
+  document.getElementById('introTitle').innerText = introData[lang].title;
+  document.getElementById('introDesc').innerText = introData[lang].desc;
+}
+
+function readQuestion() {
+  const qText = document.getElementById('question').innerText;
+  if(!qText) return;
+  const scenarioBox = document.getElementById('scenarioBox');
+  const scenarioText = document.getElementById('scenarioText').innerText.trim();
+  const fullText = scenarioBox && scenarioBox.style.display !== 'none' && scenarioText
+    ? `${qText}. ${scenarioText}`
+    : qText;
+  if(!canPlaySpeech()) {
+    alert("Audio is not supported in this browser.");
+    return;
+  }
+  setQuestionAudioState(true);
+  speakText(fullText, {
+    lang: currentLang,
+    rate: 0.65,
+    onend: ()=>{ setQuestionAudioState(false); },
+    onerror: ()=>{ setQuestionAudioState(false); }
+  });
+}
+
+function speakConfirm(text) {
+  const prefix = {en:'Selected: ',hi:'चुना: ',mr:'निवडले: '};
+  speakText(prefix[currentLang] + text, { rate: 0.7 });
+}
+
+// ADVANCED VOICE ASSISTANT
+function toggleVoice() {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){ alert("Voice not supported."); return; }
+  const recognition = new SR();
+  const langMap = {en:'en-IN', hi:'hi-IN', mr:'mr-IN'};
+  recognition.lang = langMap[currentLang] || 'en-IN';
+  recognition.continuous = false;
+  
+  const btn = document.querySelector('.mic-btn');
+  const status = document.getElementById('voiceStatus');
+  
+  recognition.start();
+  btn.classList.add('listening');
+  status.style.display = 'block';
+  status.innerText = "Listening...";
+
+  recognition.onresult = function(event){
+    const transcript = event.results[0][0].transcript.toLowerCase();
+    status.innerText = `Heard: "${transcript}"`;
+    let handled = false;
+
+    // 1. Language Commands
+    if(transcript.includes("hindi") || transcript.includes("हिंदी")) { changeLanguage('hi'); handled=true; }
+    else if(transcript.includes("marathi") || transcript.includes("मराठी")) { changeLanguage('mr'); handled=true; }
+    else if(transcript.includes("english")) { changeLanguage('en'); handled=true; }
+
+    // 2. Navigation Commands
+    const nextWords = ["next", "agla", "pudhe", "aage", "chalo", "अगला", "पुढे"];
+    if(!handled && nextWords.some(word => transcript.includes(word))) {
+      document.getElementById('nextBtn').click();
+      handled = true;
+    }
+
+    // 3. Selection Commands
+    if(!handled) {
+      const selections = [
+        { keys: ["1", "one", "पहला", "ek", "एक"], index: 0 },
+        { keys: ["2", "two", "दूसरा", "don", "दोन", "do"], index: 1 },
+        { keys: ["3", "three", "तीसरा", "teen", "तीन"], index: 2 },
+        { keys: ["4", "four", "चौथा", "char", "चार"], index: 3 },
+        { keys: ["5", "five", "पांचवा", "paanch", "पाच"], index: 4 }
+      ];
+      for(let item of selections) {
+        if(item.keys.some(key => transcript.includes(key))) {
+          const allOpts = document.querySelectorAll('.option');
+          const allCards = document.querySelectorAll('.option-card');
+          if(allOpts.length && allOpts[item.index]) { allOpts[item.index].click(); handled=true; break; }
+          else if(allCards.length && allCards[item.index]) { allCards[item.index].click(); handled=true; break; }
+        }
+      }
+    }
+    setTimeout(() => { status.style.display = 'none'; btn.classList.remove('listening'); }, 2000);
+  };
+  recognition.onerror = () => { status.style.display = 'none'; btn.classList.remove('listening'); };
+}
+</script>
+</body>
+</html>

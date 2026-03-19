@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UDAAN | Admin Control Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root { --ashoka: #1e3a8a; --sun: #f97316; --green: #16a34a; --bg: #f8fafc; }
+        
+        body { 
+            margin: 0; 
+            font-family: 'Segoe UI', sans-serif; 
+            background: var(--bg); 
+            color: var(--ashoka);
+        }
+
+        /* HEADER */
+        .admin-header {
+            background: white;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+
+        /* STATS CARDS */
+        .stats-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 25px; 
+            margin-bottom: 40px; 
+        }
+        .stat-card { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
+            text-align: center;
+            border-top: 5px solid var(--sun);
+        }
+        .stat-card h3 { margin: 0; font-size: 14px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-card .value { font-size: 40px; font-weight: 900; color: var(--ashoka); margin-top: 10px; }
+
+        /* DATA TABLES */
+        .section-card { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 24px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
+            margin-bottom: 40px;
+        }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th { text-align: left; padding: 15px; background: #f1f5f9; border-radius: 8px; }
+        td { padding: 15px; border-bottom: 1px solid #f1f5f9; }
+        .badge { background: #e0f2fe; color: #0369a1; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+
+        /* FOOTER EXIT BUTTON */
+        .footer-exit {
+            text-align: center;
+            margin: 60px 0;
+            padding-bottom: 40px;
+        }
+        .btn-exit {
+            background: var(--ashoka);
+            color: white;
+            padding: 18px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(30, 58, 138, 0.2);
+        }
+        .btn-exit:hover { background: #1e40af; transform: translateY(-3px); }
+    </style>
+</head>
+<body>
+
+    <div class="admin-header">
+        <div style="font-size: 24px; font-weight: 900;">
+            <i class="fa-solid fa-user-shield" style="color: var(--sun);"></i> UDAAN <span style="font-weight: 300;">CONTROL CENTER</span>
+        </div>
+        <div style="font-weight: 600;">Logged in as: <span style="color: var(--sun);">Admin</span></div>
+    </div>
+
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Students</h3>
+                <div class="value">{{ users|length }}</div>
+            </div>
+            <div class="stat-card">
+                <h3>Parent Feedback</h3>
+                <div class="value">{{ feedbacks|length }}</div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2 style="margin: 0;"><i class="fa-solid fa-users"></i> Student Database</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Contact Number</th>
+                        <th>Aptitude Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in users %}
+                    <tr>
+                        <td><strong>{{ u.fullname }}</strong></td>
+                        <td>{{ u.contact }}</td>
+                        <td><span class="badge">{{ u.aptitude_label }}</span></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-card">
+            <h2 style="margin: 0;"><i class="fa-solid fa-comments"></i> Parent Feedback</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parent Name</th>
+                        <th>Rating</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for f in feedbacks %}
+                    <tr>
+                        <td><strong>{{ f.name }}</strong></td>
+                        <td style="color: var(--sun); font-weight: 800;"><i class="fa-solid fa-star"></i> {{ f.rating }}/5</td>
+                        <td>{{ f.message }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer-exit">
+            <a href="{{ url_for('logout') }}" class="btn-exit">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> Exit Admin Panel
+            </a>
+        </div>
+    </div>
+</body>
+</html>

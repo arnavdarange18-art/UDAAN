@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UDAAN | Admin Access</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root { --ashoka: #1e3a8a; --sun: #f97316; --sky: #0ea5e9; }
+        body { 
+            margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center;
+            background: radial-gradient(circle at top, rgba(255,255,255,.4), transparent 60%), 
+                        linear-gradient(135deg, #ea580c, #0ea5e9, #16a34a, #4338ca);
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .login-card {
+            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px);
+            padding: 40px; border-radius: 24px; box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            width: 380px; text-align: center; border-top: 6px solid var(--ashoka);
+        }
+        .login-card i { color: var(--ashoka); font-size: 50px; margin-bottom: 15px; }
+        h2 { color: var(--ashoka); margin-bottom: 5px; font-weight: 900; }
+        input { 
+            width: 100%; padding: 15px; margin: 20px 0; border-radius: 12px;
+            border: 2px solid #ddd; outline: none; font-size: 16px; transition: 0.3s;
+        }
+        input:focus { border-color: var(--sun); box-shadow: 0 0 10px rgba(249, 115, 22, 0.2); }
+        .btn-unlock {
+            width: 100%; padding: 15px; border: none; border-radius: 12px;
+            background: linear-gradient(135deg, var(--ashoka), #1e40af);
+            color: white; font-weight: 800; cursor: pointer; transition: 0.3s;
+        }
+        .btn-unlock:hover { transform: translateY(-3px); background: var(--sun); }
+        .back-link { display: block; margin-top: 20px; color: var(--ashoka); text-decoration: none; font-size: 14px; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <i class="fa-solid fa-user-shield"></i>
+        <h2>Admin Verification</h2>
+        <p style="color: #64748b;">Secure access to UDAAN Database</p>
+        <form method="POST">
+            <input type="password" name="admin_password" placeholder="Enter Access Key" required autofocus>
+            <button type="submit" class="btn-unlock">UNLOCK DASHBOARD</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}<p style="color: #dc2626; font-size: 13px; margin-top: 10px;">{{ messages[0] }}</p>{% endif %}
+        {% endwith %}
+        <a href="{{ url_for('dashboard') }}" class="back-link">← Return to App</a>
+    </div>
+</body>
+</html>
