@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>UDAAN | Admin Control Center</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root { --ashoka: #1e3a8a; --sun: #f97316; --green: #16a34a; --bg: #f8fafc; }
@@ -14,7 +15,7 @@
             color: var(--ashoka);
         }
 
-        /* HEADER */
+        /* HEADER - Responsive */
         .admin-header {
             background: white;
             padding: 20px 50px;
@@ -26,7 +27,7 @@
 
         .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
 
-        /* STATS CARDS */
+        /* STATS CARDS - Responsive Grid */
         .stats-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
@@ -44,25 +45,21 @@
         .stat-card h3 { margin: 0; font-size: 14px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
         .stat-card .value { font-size: 40px; font-weight: 900; color: var(--ashoka); margin-top: 10px; }
 
-        /* DATA TABLES */
+        /* DATA TABLES - Scrollable on Mobile */
         .section-card { 
             background: white; 
             padding: 30px; 
             border-radius: 24px; 
             box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
             margin-bottom: 40px;
+            overflow-x: auto; /* Enable horizontal scroll for tables */
         }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; min-width: 500px; }
         th { text-align: left; padding: 15px; background: #f1f5f9; border-radius: 8px; }
         td { padding: 15px; border-bottom: 1px solid #f1f5f9; }
         .badge { background: #e0f2fe; color: #0369a1; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
 
-        /* FOOTER EXIT BUTTON */
-        .footer-exit {
-            text-align: center;
-            margin: 60px 0;
-            padding-bottom: 40px;
-        }
+        .footer-exit { text-align: center; margin: 60px 0; padding-bottom: 40px; }
         .btn-exit {
             background: var(--ashoka);
             color: white;
@@ -76,11 +73,22 @@
             transition: 0.3s;
             box-shadow: 0 10px 20px rgba(30, 58, 138, 0.2);
         }
-        .btn-exit:hover { background: #1e40af; transform: translateY(-3px); }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .admin-header {
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                gap: 15px;
+            }
+            .container { margin: 20px auto; }
+            .section-card { padding: 20px 15px; }
+            .btn-exit { width: 100%; justify-content: center; }
+        }
     </style>
 </head>
 <body>
-
     <div class="admin-header">
         <div style="font-size: 24px; font-weight: 900;">
             <i class="fa-solid fa-user-shield" style="color: var(--sun);"></i> UDAAN <span style="font-weight: 300;">CONTROL CENTER</span>

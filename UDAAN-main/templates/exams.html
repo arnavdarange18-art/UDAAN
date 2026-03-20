@@ -76,7 +76,24 @@ body{ margin:0; font-family:"Segoe UI", "Nirmala UI", sans-serif; background: va
 .tip-box h4{ margin:0 0 5px; color:var(--text); }
 .tip-box p{ font-size:13px; color:#64748b; margin:0; }
 
-@media(max-width:768px){ .filter-bar{ top:0; overflow-x:auto; justify-content:flex-start; padding-bottom:15px; } .filter-btn{ white-space:nowrap; } }
+@media(max-width:768px){
+  .navbar{
+    flex-direction:column;
+    gap:12px;
+    padding:15px 20px;
+    text-align:center;
+  }
+  .nav-right{
+    width:100%;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .header h1{ font-size:28px; }
+  .grid{ grid-template-columns:1fr; }
+  .prep-section{ padding:24px 18px; }
+  .filter-bar{ top:0; overflow-x:auto; justify-content:flex-start; padding-bottom:15px; }
+  .filter-btn{ white-space:nowrap; }
+}
 </style>
 </head>
 <body>

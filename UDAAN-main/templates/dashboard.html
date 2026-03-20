@@ -34,6 +34,7 @@ body{
 .navbar{
   display:flex; justify-content:space-between; align-items:center;
   padding:18px 30px; background:rgba(255,255,255,.15); backdrop-filter:blur(10px);
+  flex-wrap: wrap; /* Allows wrapping on very small screens */
 }
 
 .brand{ font-size:30px; font-weight:900; letter-spacing:2px; text-decoration: none; }
@@ -65,6 +66,8 @@ body{
 }
 
 .container{ max-width:1200px; margin:auto; padding:35px 30px; }
+
+/* Responsive Grid Logic */
 .grid{ display:grid; grid-template-columns:2fr 1fr; gap:28px; }
 
 .roadmap, .actions, .feature, .motivation{
@@ -91,6 +94,57 @@ body{
 
 .motivation{ margin-top:35px; background:linear-gradient(135deg,var(--ashoka),#1e40af); color:white; }
 
+/* Mobile Media Queries */
+@media (max-width: 900px) {
+    .grid { 
+        grid-template-columns: 1fr !important; /* Stack Roadmap and Actions */
+    }
+    
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        padding: 15px 20px;
+    }
+
+    .nav-right {
+        width: 100%;
+        justify-content: center;
+        border-right: none !important;
+        padding-right: 0 !important;
+    }
+
+    .hero {
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .hero h1 { font-size: 26px !important; }
+    
+    .features {
+        grid-template-columns: 1fr !important; /* Stack features */
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .mic-btn {
+        width: 56px;
+        height: 56px;
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .voice-status {
+        right: 16px;
+        bottom: 84px;
+        max-width: calc(100vw - 32px);
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+}
+
 /* VOICE ASSISTANT CSS */
 .mic-btn {
     position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
@@ -110,8 +164,6 @@ body{
     padding: 10px 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     font-weight: 600; color: #1e3a8a; display: none; z-index: 1000;
 }
-
-@media(max-width:900px){ .grid{ grid-template-columns:1fr; } }
 </style>
 </head>
 
@@ -148,9 +200,6 @@ body{
         <i class="fa-solid fa-power-off"></i>
     </a>
 </div>
-
-</div>
-  </div>
 </div>
 
 <div class="hero">
@@ -192,6 +241,7 @@ body{
     <p id="motivationText">“UDAAN is not about where you start, but how high you fly.”</p>
   </div>
 </div>
+
 <div id="voiceStatus" class="voice-status" style="display: none; position: fixed; bottom: 100px; right: 30px; background: white; padding: 12px 25px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); font-weight: 700; color: var(--ashoka); z-index: 1000; border-left: 5px solid var(--sun);">
     Listening... Speak now 🎙️
 </div>
@@ -199,20 +249,6 @@ body{
 <button class="mic-btn" onclick="toggleVoice()" title="Voice Assistant" style="position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: linear-gradient(135deg, var(--ashoka), var(--sun)); border: none; border-radius: 50%; color: white; font-size: 28px; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 1000; display: flex; justify-content: center; align-items: center; transition: 0.3s;">
     <i class="fa-solid fa-microphone" id="micIcon"></i>
 </button>
-
-<style>
-    /* Pulse Animation when listening */
-    .mic-btn.listening {
-        animation: pulse-red 1.5s infinite;
-        background: #dc2626 !important;
-    }
-
-    @keyframes pulse-red {
-        0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
-        70% { box-shadow: 0 0 0 20px rgba(220, 38, 38, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
-    }
-</style>
 
 <script>
     // --- DICTIONARY FOR FAST UI TRANSITION (RETAINS ICONS) ---
@@ -222,9 +258,7 @@ body{
         'mr': { 'hero_title': 'तुमचे करिअर घेईल "उडाण" 🚀', 'hero_desc': 'विद्यार्थ्यांना स्वप्नांकडून योग्य दिशेकडे नेणारे माध्यम', 'aptitude_label': 'अभियोग्यता फोकस:', 'roadmap_title': 'तुमचा करिअर रोडमॅप', 'view_roadmap': 'पूर्ण रोडमॅप पहा →', 'act_aptitude': 'अभियोग्यता चाचणी पुन्हा द्या', 'act_exams': 'परीक्षा', 'act_parents': 'पालक मार्गदर्शन', 'act_feedback': 'पालकांचा अभिप्राय' }
     };
 
-    // --- 1. DEEP AUTO-TRANSLATION LOGIC ---
     async function changeLanguage(targetLang) {
-        // Show Spinner
         const overlay = document.getElementById('loadingOverlay');
         const loadingText = document.getElementById('loadingText');
         if(overlay) {
@@ -234,15 +268,12 @@ body{
 
         localStorage.setItem('udaan_lang', targetLang);
         
-        // A. Immediate Manual Swap for Main UI
         const t = translations[targetLang];
         document.querySelectorAll("[data-i18n]").forEach(el => {
             const key = el.getAttribute("data-i18n");
             if (t[key]) el.innerText = t[key];
         });
 
-        // B. Deep Scan Auto-Translate for dynamic/nested text
-        // This targets steps, features, motivation, and paragraph descriptions
         const elementsToDeepTranslate = document.querySelectorAll('.step h4, .step p, .motivation p, .feature h4, .feature p, .roadmap p');
 
         try {
@@ -261,7 +292,6 @@ body{
         }
     }
 
-    // --- 2. VOICE ASSISTANT LOGIC (Navigation) ---
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     let recognition;
 
@@ -275,7 +305,6 @@ body{
             const status = document.getElementById('voiceStatus');
             if(status) status.innerText = `Heard: "${transcript}"`;
 
-            // Smart Commands Sync
             const commands = {
                 '/aptitude': ['aptitude', 'test', 'yogyata', 'chachani', 'योग्यता'],
                 '/roadmap': ['roadmap', 'guide', 'path', 'marg', 'road map'],
@@ -294,53 +323,36 @@ body{
     }
 
     function toggleVoice() {
-        if (!recognition) return alert("Voice not supported.");
+        if (!recognition) return alert("Voice recognition not supported in this browser.");
+        
         const btn = document.querySelector('.mic-btn');
         const status = document.getElementById('voiceStatus');
+        const icon = document.getElementById('micIcon');
 
         if (!btn.classList.contains('listening')) {
             const currentLang = localStorage.getItem('udaan_lang') || 'en';
             recognition.lang = currentLang === 'hi' ? 'hi-IN' : currentLang === 'mr' ? 'mr-IN' : 'en-IN';
+            
             recognition.start();
             btn.classList.add('listening');
-            if(status) status.style.display = 'block';
+            icon.classList.replace('fa-microphone', 'fa-stop'); 
+            if(status) {
+                status.style.display = 'block';
+                status.innerText = "Listening... 🎤";
+            }
         } else {
             recognition.stop();
             btn.classList.remove('listening');
+            icon.classList.replace('fa-stop', 'fa-microphone'); 
             if(status) status.style.display = 'none';
         }
     }
 
-    // Initialize on Page Load
     window.onload = () => {
         const savedLang = localStorage.getItem('udaan_lang') || 'en';
         document.getElementById('langSelect').value = savedLang;
         changeLanguage(savedLang); 
     };
-
-    function toggleVoice() {
-    if (!recognition) return alert("Voice recognition not supported in this browser.");
-    
-    const btn = document.querySelector('.mic-btn');
-    const status = document.getElementById('voiceStatus');
-    const icon = document.getElementById('micIcon');
-
-    if (!btn.classList.contains('listening')) {
-        const currentLang = localStorage.getItem('udaan_lang') || 'en';
-        recognition.lang = currentLang === 'hi' ? 'hi-IN' : currentLang === 'mr' ? 'mr-IN' : 'en-IN';
-        
-        recognition.start();
-        btn.classList.add('listening');
-        icon.classList.replace('fa-microphone', 'fa-stop'); // Change icon to stop
-        status.style.display = 'block';
-        status.innerText = "Listening... 🎤";
-    } else {
-        recognition.stop();
-        btn.classList.remove('listening');
-        icon.classList.replace('fa-stop', 'fa-microphone'); // Change icon back
-        status.style.display = 'none';
-    }
-}
 </script>
 </body>
 </html>

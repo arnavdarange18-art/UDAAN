@@ -52,14 +52,20 @@ body{
   opacity:0.95;
 }
 
+/* Updated for Mobile Responsiveness */
 .auth-card{
-  width:380px;
+  width: 90%;          /* Mobile: Uses 90% of screen width */
+  max-width: 380px;    /* Desktop: Never gets wider than 380px */
   background:var(--card);
-  padding:34px;
+  padding: 25px;       /* Slightly smaller padding for mobile */
   border-radius:var(--radius);
   box-shadow:0 35px 70px rgba(0,0,0,0.25);
   text-align:center;
   color:var(--text);
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 { font-size: 28px; } /* Smaller tagline on mobile */
 }
 
 .logo{

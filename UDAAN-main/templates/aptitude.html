@@ -94,6 +94,13 @@ body{
   margin:22px 0;
 }
 
+/* Added Mobile Media Query */
+@media (max-width: 600px) {
+  .stream-preview-grid {
+    grid-template-columns: repeat(2, 1fr); /* Change from 5 to 2 columns */
+  }
+}
+
 .stream-chip {
   border-radius:14px;
   padding:12px 6px;
@@ -404,6 +411,75 @@ h2{
 #transitionOverlay .tov-icon { font-size:72px; }
 #transitionOverlay h2 { font-size:28px; font-weight:900; margin:0; font-family:"Poppins",sans-serif; }
 #transitionOverlay p { font-size:15px; opacity:0.9; margin:0; }
+
+@media (max-width: 600px) {
+  body{
+    padding:12px 8px;
+    align-items:flex-start;
+  }
+
+  #phaseIntro{
+    padding:24px 16px;
+    border-radius:20px;
+  }
+
+  #phaseIntro h1{
+    font-size:22px;
+  }
+
+  .container{
+    min-height:auto;
+    padding:22px 16px;
+    border-radius:20px;
+  }
+
+  .lang-box{
+    position:static;
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:12px;
+  }
+
+  .top{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .progress{
+    width:100%;
+  }
+
+  h2{
+    font-size:18px;
+  }
+
+  .options-grid{
+    grid-template-columns:1fr;
+  }
+
+  .result-scores{
+    grid-template-columns:1fr;
+  }
+
+  .modal-content{
+    padding:24px 18px;
+    border-radius:20px;
+  }
+
+  .mic-btn{
+    width:56px;
+    height:56px;
+    right:16px;
+    bottom:16px;
+  }
+
+  .voice-status{
+    right:16px;
+    bottom:84px;
+    max-width:calc(100vw - 32px);
+  }
+}
 </style>
 </head>
 
@@ -1613,3 +1689,11 @@ function toggleVoice() {
 </script>
 </body>
 </html>
+
+don't change anything in the code just add below code in it 
+
+@media (max-width: 600px) {
+  .stream-preview-grid {
+    grid-template-columns: repeat(2, 1fr); /* Change from 5 to 2 columns */
+  }
+}

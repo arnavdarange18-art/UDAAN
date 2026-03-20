@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>UDAAN | Admin Access</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root { --ashoka: #1e3a8a; --sun: #f97316; --sky: #0ea5e9; }
@@ -12,11 +13,17 @@
                         linear-gradient(135deg, #ea580c, #0ea5e9, #16a34a, #4338ca);
             font-family: 'Segoe UI', sans-serif;
         }
+        
+        /* Updated for Mobile Responsiveness */
         .login-card {
             background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px);
-            padding: 40px; border-radius: 24px; box-shadow: 0 25px 50px rgba(0,0,0,0.2);
-            width: 380px; text-align: center; border-top: 6px solid var(--ashoka);
+            padding: 25px;       /* Slightly smaller padding for mobile */
+            border-radius: 24px; box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            width: 90%;          /* Mobile: Uses 90% of screen width */
+            max-width: 380px;    /* Desktop: Never gets wider than 380px */
+            text-align: center; border-top: 6px solid var(--ashoka);
         }
+        
         .login-card i { color: var(--ashoka); font-size: 50px; margin-bottom: 15px; }
         h2 { color: var(--ashoka); margin-bottom: 5px; font-weight: 900; }
         input { 

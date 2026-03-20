@@ -103,11 +103,13 @@ body {
   display: flex; align-items: center; gap: 15px; text-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
+/* Desktop Flow Logic */
 .flow-container {
   display: flex; justify-content: space-between; align-items: center;
   background: var(--card-bg); padding: 20px 35px; border-radius: 50px;
   margin-bottom: 40px; box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
+
 .flow-step { 
     text-align: center; flex: 1; font-weight: 800; color: var(--primary-blue); font-size: 13px; 
     animation: flowPulse 2s infinite ease-in-out;
@@ -140,12 +142,51 @@ body {
   cursor: pointer; border: none;
 }
 
-@media(max-width:768px){
-    .flow-container { flex-direction: column; border-radius: 20px; padding: 20px; gap: 10px; }
-    .flow-arrow { transform: rotate(90deg); }
+/* Mobile Responsive Overrides */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 15px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-header { padding: 40px 15px; }
+    .hero-header h1 { font-size: 28px !important; }
+
+    /* Stack the 5-Step Path vertically */
+    .flow-container {
+        flex-direction: column;
+        border-radius: 20px;
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .flow-arrow {
+        transform: rotate(90deg); /* Point arrow downwards */
+        margin: 5px 0;
+    }
+
+    /* Handle the Table - Enable horizontal swipe */
+    .exam-table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .exam-table {
+        min-width: 500px; /* Forces table to keep structure while scrolling */
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr !important; /* One card per row */
+    }
+
+    .salary-banner {
+        font-size: 20px !important;
+        padding: 15px;
+    }
 }
 
-/* Stop Button and Speed Selector */
+/* Stop Button and Speed Selector Controls */
 .master-audio-controls {
     margin-top: 20px;
     display: flex;
@@ -203,72 +244,6 @@ body {
     display: none;
 }
 
-.master-speed-controls {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
-
-.speed-btn {
-    padding: 10px 16px;
-    border-radius: 50px;
-    border: 2px solid #ccc;
-    background: white;
-    color: #333;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    outline: none;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-}
-
-.speed-btn.slow {
-    border-color: #ef4444;
-    color: #991b1b;
-}
-
-.speed-btn.slow:hover {
-    background: rgba(239, 68, 68, 0.1);
-}
-
-.speed-btn.slow.active {
-    background: #ef4444;
-    color: white;
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
-}
-
-.speed-btn.normal {
-    border-color: #3b82f6;
-    color: #1e40af;
-}
-
-.speed-btn.normal:hover {
-    background: rgba(59, 130, 246, 0.1);
-}
-
-.speed-btn.normal.active {
-    background: #3b82f6;
-    color: white;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-}
-
-.speed-btn.fast {
-    border-color: #16a34a;
-    color: #15803d;
-}
-
-.speed-btn.fast:hover {
-    background: rgba(22, 163, 74, 0.1);
-}
-
-.speed-btn.fast.active {
-    background: #16a34a;
-    color: white;
-    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
-}
-
-/* Single Speed Dropdown Button */
 .speed-dropdown-btn {
     padding: 10px 16px;
     border-radius: 50px;
@@ -285,10 +260,6 @@ body {
     align-items: center;
     gap: 6px;
     position: relative;
-}
-
-.speed-dropdown-btn:hover {
-    background: rgba(59, 130, 246, 0.1);
 }
 
 .speed-dropdown-menu {
@@ -323,37 +294,6 @@ body {
     transition: all 0.3s ease;
     border-bottom: 1px solid #e5e7eb;
     text-transform: uppercase;
-}
-
-.speed-dropdown-menu button:last-child {
-    border-bottom: none;
-}
-
-.speed-dropdown-menu button:hover {
-    background: rgba(59, 130, 246, 0.1);
-}
-
-.speed-dropdown-menu button.slow {
-    color: #991b1b;
-}
-
-.speed-dropdown-menu button.slow:hover {
-    background: rgba(239, 68, 68, 0.1);
-}
-
-.speed-dropdown-menu button.fast {
-    color: #15803d;
-}
-
-.speed-dropdown-menu button.fast:hover {
-    background: rgba(22, 163, 74, 0.1);
-}
-
-.speed-label {
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 </style>
 </head>
@@ -533,7 +473,7 @@ body {
 <script>
     // Language and Translation Support
     let currentLang = localStorage.getItem('udaan_lang') || 'en';
-    let currentMasterSpeed = 1; // Track current speed for dropdown button
+    let currentMasterSpeed = 1; 
     
     const speedLabels = {
         en: { slow: 'Slow', normal: 'Normal', fast: 'Fast' },
@@ -541,7 +481,6 @@ body {
         mr: { slow: 'हळू', normal: 'सामान्य', fast: 'वेगवान' }
     };
     
-    // Update speed button labels based on language
     function updateSpeedLabels(lang) {
         currentLang = lang;
         const labels = speedLabels[lang] || speedLabels.en;
@@ -551,22 +490,19 @@ body {
         document.getElementById('currentSpeedLabel').innerText = labels.normal;
     }
     
-    // Toggle speed dropdown menu
     function toggleSpeedDropdown() {
         const dropdown = document.getElementById('speedDropdown');
         dropdown.classList.toggle('active');
     }
     
-    // Close dropdown when clicking outside
     document.addEventListener('click', function(event) {
         const dropdown = document.getElementById('speedDropdown');
         const btn = document.querySelector('.speed-dropdown-btn');
-        if (!btn.contains(event.target) && !dropdown.contains(event.target)) {
+        if (btn && dropdown && !btn.contains(event.target) && !dropdown.contains(event.target)) {
             dropdown.classList.remove('active');
         }
     });
     
-    // AUTOMATIC TRANSLATION LOGIC
     window.translationUtterance = null;
     window.isTranslating = false;
 
@@ -587,35 +523,27 @@ body {
         const translationMsg = targetLang === 'hi' ? 'अनुवाद हो रहा है' : targetLang === 'mr' ? 'भाषांतर होत आहे' : 'TRANSLATING';
         loadingText.innerText = translationMsg;
         
-        // Announce translation with speech
         window.translationUtterance = speakText(translationMsg, {
             lang: targetLang,
             rate: 0.6
         });
-        try {
-            // Speech already started by speakText.
-        } catch (e) { console.log('Speech skipped'); }
 
         localStorage.setItem('udaan_lang', targetLang);
         const elements = document.querySelectorAll('.translate-me');
 
         try {
-            // Add delay to translation process - make it take longer
             await new Promise(resolve => setTimeout(resolve, 500));
             
             await Promise.all(Array.from(elements).map(async (el) => {
                 const text = el.innerText;
                 if (!text.trim()) return;
-                // Add small delay between each translation request
                 await new Promise(resolve => setTimeout(resolve, 50));
                 const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURI(text)}`);
                 const result = await res.json();
                 el.innerText = result[0][0][0];
             }));
         } finally { 
-            // Update speed button labels when language changes
             updateSpeedLabels(targetLang);
-            
             stopSpeech();
             window.translationUtterance = null;
             window.isTranslating = false;
@@ -623,8 +551,6 @@ body {
         }
     }
 
-    // MASTER VOICE SUMMARY FUNCTION
-    // FULL ROADMAP VOICE SUMMARY
     window.currentUtterance = null;
     window.availableSpeechVoices = [];
     window.currentAudio = null;
@@ -662,15 +588,9 @@ body {
             || null;
     }
 
-    function hasPreferredVoice(lang) {
-        return Boolean(pickVoice(lang));
-    }
-
     function speakText(text, options = {}) {
         if (!text) return null;
-
         stopSpeech();
-
         const lang = options.lang || currentLang;
         const rate = options.rate || 1;
         const chunks = splitTtsText(text);
@@ -678,39 +598,30 @@ body {
 
         if (chunks.length) {
             playAudioChunks(chunks, {
-                lang,
-                rate,
-                sessionId,
-                onend: options.onend,
+                lang, rate, sessionId, onend: options.onend,
                 onerror: () => playBrowserSpeech(text, { lang, rate, onend: options.onend, onerror: options.onerror })
             });
             return { mode: 'audio', sessionId };
         }
-
         return playBrowserSpeech(text, { ...options, lang, rate });
     }
 
     function splitTtsText(text, maxLength = 180) {
         const cleanText = (text || '').replace(/\s+/g, ' ').trim();
         if (!cleanText) return [];
-
         const sentences = cleanText.split(/(?<=[.!?])\s+/);
         const chunks = [];
         let currentChunk = '';
-
         sentences.forEach(sentence => {
             if ((currentChunk + ' ' + sentence).trim().length <= maxLength) {
                 currentChunk = `${currentChunk} ${sentence}`.trim();
                 return;
             }
-
             if (currentChunk) chunks.push(currentChunk);
-
             if (sentence.length <= maxLength) {
                 currentChunk = sentence;
                 return;
             }
-
             const words = sentence.split(' ');
             currentChunk = '';
             words.forEach(word => {
@@ -722,7 +633,6 @@ body {
                 }
             });
         });
-
         if (currentChunk) chunks.push(currentChunk);
         return chunks;
     }
@@ -736,9 +646,7 @@ body {
             if (options.onend) options.onend();
             return;
         }
-
         if (options.sessionId !== window.audioSessionId) return;
-
         const audio = new Audio(buildTtsUrl(chunks[index], options.lang));
         window.currentAudio = audio;
         audio.playbackRate = Math.min(Math.max(options.rate || 1, 0.5), 1.5);
@@ -757,24 +665,17 @@ body {
     function playBrowserSpeech(text, options = {}) {
         const synth = getSpeechEngine();
         if (!synth || !text) return null;
-
         const utterance = new SpeechSynthesisUtterance(text);
         const lang = options.lang || currentLang;
         utterance.lang = getSpeechLang(lang);
         utterance.rate = options.rate || 1;
-
         const voice = pickVoice(lang);
         if (voice) utterance.voice = voice;
         if (options.onend) utterance.onend = options.onend;
-        if (options.onerror) utterance.onerror = options.onerror;
-
         synth.cancel();
         window.setTimeout(() => {
             try { synth.resume(); } catch (e) {}
             synth.speak(utterance);
-            window.setTimeout(() => {
-                try { synth.resume(); } catch (e) {}
-            }, 100);
         }, 120);
         return utterance;
     }
@@ -791,38 +692,14 @@ body {
             alert('Audio is not supported in this browser.');
             return;
         }
-        
-        // 1. GATHER ALL PAGE CONTENT
         const branchName = document.querySelector('.hero-header h1').innerText;
-        
-        // Get all academic paths
         const paths = Array.from(document.querySelectorAll('.card-grid:first-of-type .card'))
             .map(c => c.innerText).join(". ");
-            
-        // Get entrance exams
         const exams = Array.from(document.querySelectorAll('.exam-table tbody tr td:first-child'))
             .map(td => td.innerText).join(", ");
-
         const salaryText = document.querySelector('.salary-banner').innerText;
-        
-        // 2. CONSTRUCT SPEECH
-        let intro = activeLang === 'hi' ? `${branchName} का पूरा विवरण। ` : 
-                    activeLang === 'mr' ? `${branchName} चा पूर्ण तपशील। ` : 
-                    `Full roadmap for ${branchName}. `;
-        
-        let pathIntro = activeLang === 'hi' ? `आपके शैक्षणिक मार्ग हैं: ` : 
-                        activeLang === 'mr' ? `तुमचे शैक्षणिक मार्ग आहेत: ` : 
-                        `Your academic paths are: `;
-
-        let examIntro = activeLang === 'hi' ? `प्रमुख प्रवेश परीक्षाएं हैं: ` : 
-                        activeLang === 'mr' ? `प्रमुख प्रवेश परीक्षा आहेत: ` : 
-                        `Key entrance exams include: `;
-
-        const fullText = `${intro} ${pathIntro} ${paths}. ${examIntro} ${exams}. ${salaryText}.`;
-
-        // Get selected speed
+        const fullText = `${branchName}. ${paths}. ${exams}. ${salaryText}.`;
         const speed = currentMasterSpeed || 1;
-
         const icon = document.getElementById('masterVoiceIcon');
         const stopBtn = document.querySelector('.master-stop-btn');
         if (icon) icon.className = "fa-solid fa-pause";
@@ -841,27 +718,10 @@ body {
         });
     }
 
-    // Stop master speech specifically
     function stopMasterSpeech() {
-        window.audioSessionId++;
-        if (window.currentAudio) {
-            window.currentAudio.pause();
-            window.currentAudio.currentTime = 0;
-            window.currentAudio = null;
-        }
-        try {
-            window.speechSynthesis.cancel();
-            const icon = document.getElementById('masterVoiceIcon');
-            const stopBtn = document.querySelector('.master-stop-btn');
-            if (icon) icon.className = 'fa-solid fa-play';
-            if (stopBtn) stopBtn.classList.remove('active');
-            window.currentUtterance = null;
-        } catch (e) {
-            console.error('Error stopping speech', e);
-        }
+        stopSpeech();
     }
 
-    // Stop master/any speech on double-click or lifecycle events
     function stopSpeech() {
         window.audioSessionId++;
         if (window.currentAudio) {
@@ -870,23 +730,17 @@ body {
             window.currentAudio = null;
         }
         try {
-            if (window.currentUtterance) {
-                window.speechSynthesis.cancel();
-                window.currentUtterance = null;
-            } else {
-                window.speechSynthesis.cancel();
-            }
-        } catch (e) { console.error('Error stopping speech', e); }
+            if (window.speechSynthesis) window.speechSynthesis.cancel();
+            window.currentUtterance = null;
+        } catch (e) {}
         const icon = document.getElementById('masterVoiceIcon');
         const stopBtn = document.querySelector('.master-stop-btn');
         if (icon) icon.className = 'fa-solid fa-play';
         if (stopBtn) stopBtn.classList.remove('active');
     }
 
-    // Set speed for master audio
     function setMasterSpeed(speed) {
         currentMasterSpeed = speed;
-        const speedMap = { 0.5: 'Slow', 1: 'Normal', 1.5: 'Fast' };
         const speedMapLang = {
             en: { 0.5: 'Slow', 1: 'Normal', 1.5: 'Fast' },
             hi: { 0.5: 'धीमा', 1: 'सामान्य', 1.5: 'तेज' },
@@ -897,15 +751,13 @@ body {
         document.getElementById('speedDropdown').classList.remove('active');
     }
 
-    // Initialize saved language on load
     window.onload = () => {
         const savedLang = localStorage.getItem('udaan_lang') || 'en';
         document.getElementById('langSelect').value = savedLang;
-        updateSpeedLabels(savedLang); // Initialize speed button labels
+        updateSpeedLabels(savedLang);
         if(savedLang !== 'en') changeLanguage(savedLang);
     };
 
-    // Ensure speech stops when user navigates away or tab becomes hidden
     window.addEventListener('beforeunload', stopSpeech);
     document.addEventListener('visibilitychange', function() { if (document.hidden) stopSpeech(); });
 </script>
